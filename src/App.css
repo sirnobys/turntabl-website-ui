@@ -185,7 +185,7 @@
 
 .button-welcoming {
   background-color: #b8ffee !important;
-  color: #000;
+  color: #000 !important;
 
 }
 
@@ -223,7 +223,7 @@
 }
 
 .text-inspiration {
-  background-color: #b0b0ff;
+  color: #b0b0ff;
 }
 
 .text-insightful {
@@ -250,3 +250,39 @@
 .text-pixel-black {
   color: #000000 !important;
 }
+
+.text-grey{
+  color: #6d6e71 !important;
+}
+
+.call-to-action{
+  padding-bottom: 180px;
+  font-size: 40px;
+}
+
+.clients{
+  font-size: 40px;
+}
+
+.clients{
+  .layout-x{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* padding: 60px; */
+    justify-content: space-around;
+    
+  }
+
+  }
+
+  .testimony{
+    padding-top: 170px;
+    .intro {
+      font-size: 40px;
+    }
+  }
+
+  .center{
+    margin-left: auto;
+    margin-right: auto;
+  }
