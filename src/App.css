@@ -48,11 +48,11 @@
 .nav-link {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  gap: 100px;
+  /* justify-content: right; */
+  gap: 50px;
   align-items: center;
   font-size: 20px;
-  padding-right: 120px;
+  /* padding-right: 120px; */
 }
 
 .section {
@@ -72,7 +72,7 @@
   .leading {
     text-align: left;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 50px;
     color: #6d6e71;
   }
 
@@ -129,12 +129,12 @@
     color: #000
   }
 
-  .button-event-coming {
+  /* .button-event-coming {
     box-shadow: none;
     background-color: transparent;
     text-transform: none;
     height: 0;
-    width: 220px;
+    width: 120px;
     border-bottom: 40px solid #bdff00;
     border-right: 50px solid transparent;
     border-top-left-radius: 14px;
@@ -146,7 +146,7 @@
       text-transform: none;
       color: #000;
     }
-  }
+  } */
 
   .button-event-coming:hover {
     background-color: transparent;
@@ -286,3 +286,43 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+
+  /* xs: 0,
+  sm: 600,
+  md: 900,
+  lg: 1200,
+  xl: 1536, */
+
+
+  @media only screen and (max-width: 600px)
+   {
+
+    .section{
+      /* flex-direction: column;
+      padding: 30px;
+      gap: 30px; */
+    }
+
+    .btn{
+      min-width: 20px !important;
+    }
+
+    .clients{
+        .layout-x{
+          padding: 30px;
+          flex-direction: column;
+        }
+    }
+
+    .nav{
+      padding: 20px 6px 60px 20px;
+    }
+
+    body {
+      /* background-color: lightblue; */
+    }
+  }
+
+
+  
