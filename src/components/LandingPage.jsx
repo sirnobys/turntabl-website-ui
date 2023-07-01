@@ -1,26 +1,35 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Nav } from './Nav';
-import pc from "../images/geek.jpg"
-import smile from "../images/smile.png"
 import { Button, Grid } from '@mui/material';
 import { Slider, slides } from './carousel/Carousel';
 import { Testimonial } from './testimonial/Testimonial';
 import { useTheme } from '@mui/material/styles';
+import { motion } from "framer-motion"
+
+import pc from "../images/geek.jpg"
+import smile from "../images/smile.png"
+import service from "../images/service.jpg"
+import home from "../images/home.jpg"
+import thumb from "../images/thumb.png"
+
+// const animate = () => (
+
+// )
 
 export const LandingPage = (props) => {
     const theme = useTheme();
     console.log(theme.breakpoints.up('sm'));
     return (
         <div>
-            <Nav />
+
             <div className='body'>
-                <Grid container spacing={2} alignItems={'center'}>
+                <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                     <Grid item xs={12} lg={6}>
                         <div className='section'>
                             <div className='text'>
-                                <span className='leading'>We build the best product design & engineering teams</span>
-                                <span className='end'>We build the best product design & engineering teams <img width={16} src={smile} /> </span>
+                                <span className='leading'>Next level of Software Engineering</span>
+                                <span className='end'>Picturesque of Ultimate excellence on show<img width={16} src={smile} /> </span>
                                 <span>
                                     <Button className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                 </span>
@@ -28,16 +37,24 @@ export const LandingPage = (props) => {
                         </div>
                     </Grid>
                     <Grid item xs={12} lg={6}>
-                        <span><img width="100%" src={pc} /></span>
+                        <motion.div
+                            animate={{
+                                rotate: [20, -20, 20, -20, 20, -20, 0]
+                            }}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 1.9 }}
+                        >
+                            <span><img width="30%" src={smile} /></span>
+                        </motion.div>
                     </Grid>
                 </Grid>
 
                 <div className='slider'>
-                    <div className='layout-x'>
+                    {/* <div className='layout-x'>
                         <span><Button className='btn button-welcoming button-partial-rounded' variant="text">Upcoming Events</Button></span>
                         <span><Button className='btn button-inspiration button-partial-rounded' variant="contained">Current Events</Button></span>
                         <span><Button className='btn button-insightful button-partial-rounded' variant="contained">Blogs</Button></span>
-                    </div>
+                    </div> */}
                     <div className='slider-content'>
                         <Slider slides={slides} />
                     </div>
@@ -51,7 +68,8 @@ export const LandingPage = (props) => {
                     <Grid item xs={12} lg={6}>
                         <div className='section'>
                             <div className='text'>
-                                <span className='leading'>We build the best product design & engineering teams</span>
+                                <span className='leading'>
+                                    World class IT solutions delivered to a global client base</span>
                                 <span className='end'>We build the best product design & engineering teams <img width={16} src={smile} /> </span>
                                 <span>
                                     <Button className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
@@ -60,7 +78,15 @@ export const LandingPage = (props) => {
                         </div>
                     </Grid>
                     <Grid item xs={12} lg={6}>
-                        <span><img width="100%" src={pc} /></span>
+                        <motion.div
+                            animate={{
+                                rotate: [20, -20, 20, -20, 20, -20, 0]
+                            }}
+                            whileHover={{ scale: 1.2, rotate: [0, 20, -20, 20, -20, 20, -20, 0] }}
+                            whileTap={{ scale: 1.9 }}
+                        >
+                            <span><img width="50%" src={thumb} /></span>
+                        </motion.div>
                     </Grid>
                 </Grid>
 
@@ -71,10 +97,28 @@ export const LandingPage = (props) => {
                 <div className='clients'>
                     <span>Trusted By</span>
                     <span className='layout-x'>
-                        <span>logos</span>
-                        <span>logos</span>
-                        <span>logos</span>
-                        <span>logos</span>
+                        <div class="slider-logo">
+                            <div class="slide-track">
+                                <div class="slide">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                                </div>
+                                <div class="slide">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                                </div>
+                                <div class="slide">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                                </div>
+                                <div class="slide">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                                </div>
+                                <div class="slide">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                                </div>
+                                <div class="slide">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                                </div>
+                            </div>
+                        </div>
                     </span>
                 </div>
                 <div className='testimony'>
