@@ -2,6 +2,10 @@ import React from 'react'
 import classNames from 'classnames';
 
 import './Carousel.scss'
+import event from '../../images/people.jpg'
+import event2 from '../../images/IMG_9308.jpg'
+import home from '../../images/home.jpg'
+
 export class Slider extends React.Component {
   constructor(props) {
     super(props);
@@ -46,24 +50,24 @@ export class Slider extends React.Component {
     const { activeSlide, prevSlide, sliderReady } = this.state;
     return (
       <div className={classNames('slider', { 's--ready': sliderReady })}>
-        <div className="slider__slides">
+        <div className="slider__slides" >
           {this.props.slides?.map((slide, index) => (
             <div
-            className={classNames('slider__slide', { 's--active': activeSlide === index, 's--prev': prevSlide === index })}
-            key={slide.city}
+              className={classNames('slider__slide', { 's--active': activeSlide === index, 's--prev': prevSlide === index })}
+              key={slide.city}
             >
               <div className="slider__slide-content">
-            <h1 className="slider__slide-heading"> {slide.title.split(',').map((l, index) => <span key={index}>{l}</span>)}</h1>
-                <h3 className="slider__slide-subheading">{slide.country || slide.city}</h3>
+              <h1 className="slider__slide-heading" > {slide.title.split(',').map((l, index) => <span className=' captions' key={index}>{l}</span>)}</h1>
+                <h3 className="slider__slide-subheading text-disruption captions">{slide.country || slide.city}</h3>
                 <h2 className="slider__slide-subheading">
                   {/* {slide.city.split('').map((l, index) => <span key={index}>{l}</span>)} */}
                 </h2>
-                <p className="slider__slide-readmore text-welcoming">read more</p>
+                <p className="slider__slide-readmore text-pixel-black" style={{background:'white',padding:5, fontWeight:'bold'}}>read more</p>
               </div>
               <div className="slider__slide-parts">
                 {[...Array(this.IMAGE_PARTS).fill()].map((x, i) => (
                   <div className="slider__slide-part" key={i}>
-                    <div className="slider__slide-part-inner" style={{opacity:0.4, backgroundImage: `url(${slide.img})` }} />
+                    <div className="slider__slide-part-inner" style={{ opacity: .8, backgroundImage: `url(${slide.img})` }} />
                   </div>
                 ))}
               </div>
@@ -82,17 +86,17 @@ export const slides = [
     title: 'Coming Events',
     city: 'Presenting occasions this fall',
     // country: 'France',
-    img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/paris.jpg',
+    img: event2,
   },
   {
     title: 'Current Events',
     city: 'Ongoing seasons of events',
-    img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/singapore.jpg',
+    img: home,
   },
   {
     title: 'Blog',
     city: 'Articles by our very own hands',
     // country: 'Czech Republic',
-    img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/prague.jpg',
+    img: event,
   },
 ];

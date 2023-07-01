@@ -12,6 +12,10 @@ import smile from "../images/smile.png"
 import service from "../images/service.jpg"
 import home from "../images/home.jpg"
 import thumb from "../images/thumb.png"
+import citi from "../images/trusted/citi.png"
+import ms from "../images/trusted/MS.jpg"
+import fidelity from "../images/trusted/fidelity.jpg"
+import finos from "../images/trusted/finos.jpg"
 
 // const animate = () => (
 
@@ -100,23 +104,23 @@ export const LandingPage = (props) => {
                         <div class="slider-logo">
                             <div class="slide-track">
                                 <div class="slide">
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                                    <img src={citi} height="100" width="100" alt="" />
                                 </div>
                                 <div class="slide">
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                                    <img src={ms} height="100" width="100" alt="" />
                                 </div>
                                 <div class="slide">
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                                    <img src={fidelity} height="100" width="100" alt="" />
                                 </div>
                                 <div class="slide">
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                                    <img src={finos} height="100" width="100" alt="" />
                                 </div>
-                                <div class="slide">
+                                {/* <div class="slide">
                                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
                                 </div>
                                 <div class="slide">
                                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </span>

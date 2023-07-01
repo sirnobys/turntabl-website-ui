@@ -333,6 +333,7 @@
   }
   
   .slider-logo {
+    padding: 100px;
     height: 100px;
     margin: auto;
     overflow:hidden;
@@ -340,13 +341,13 @@
     width: auto;
     
     .slide-track {
-      animation: scroll 20s linear infinite;
+      animation: scroll 30s linear infinite;
       display: flex;
       width: calc(250px * 14);
     }
     .slide {
       height: 100px;
-      width: 250px;
+      width: 600px;
     }
   }
 

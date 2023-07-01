@@ -17,6 +17,11 @@ $maxLettersStagger: 6;
 $letterStagger: 0.1s;
 
 .slider {
+  .captions{
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 20px;
+  }
   background: #000;
   overflow: hidden;
   position: relative;
@@ -283,7 +288,7 @@ $letterStagger: 0.1s;
     height: $size;
     margin-top: $size/-2;
     border-radius: 50%;
-    background: #b8ffee;
+    background: rgba(255,255,255,0.4);
     transform: translateX($size*-1);
     opacity: 0;
     transition: $sliderReadyTrans;
