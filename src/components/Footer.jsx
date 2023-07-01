@@ -1,16 +1,17 @@
 import { Grid } from '@mui/material';
 import React, { useEffect } from 'react';
-import logo from "../images/logo.png"
-
 import { Twitter, YouTube, LinkedIn } from '@mui/icons-material';
 
-export const Footer = () => {
+import { images } from '../constants';
+
+
+const Footer = () => {
     return (
         <div className="footer">
             <div className="footer-ceil">
                 <Grid container spacing={2} alignItems={'center'}>
                     <Grid item xs={12} md={5} lg={5}>
-                        <span><img width="50%" src={logo} /></span>
+                        <span><img width="50%" src={images.logo} /></span>
                         <div className='social-media'>
                             <span><YouTube className='icons' /></span>
                             <span><Twitter className='icons' /></span>
@@ -65,3 +66,4 @@ export const Footer = () => {
         </div>
     )
 }
+export default Footer;

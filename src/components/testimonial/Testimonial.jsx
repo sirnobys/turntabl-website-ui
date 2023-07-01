@@ -1,5 +1,6 @@
 import './Testimonial.scss'
-export const Testimonial = () => {
+
+const Testimonial = () => {
     return (
         <div className="main">
             <div className="testimonials">
@@ -99,3 +100,4 @@ export const Testimonial = () => {
         </div>
     )
 }
+export default Testimonial;

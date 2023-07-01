@@ -2,9 +2,7 @@ import React from 'react'
 import classNames from 'classnames';
 
 import './Carousel.scss'
-import event from '../../images/people.jpg'
-import event2 from '../../images/IMG_9308.jpg'
-import home from '../../images/home.jpg'
+import { images } from '../../constants';
 
 export class Slider extends React.Component {
   constructor(props) {
@@ -86,17 +84,17 @@ export const slides = [
     title: 'Coming Events',
     city: 'Presenting occasions this fall',
     // country: 'France',
-    img: event2,
+    img: images.IMG_9308,
   },
   {
     title: 'Current Events',
     city: 'Ongoing seasons of events',
-    img: home,
+    img: images.home,
   },
   {
     title: 'Blog',
     city: 'Articles by our very own hands',
     // country: 'Czech Republic',
-    img: event,
+    img: images.people,
   },
 ];

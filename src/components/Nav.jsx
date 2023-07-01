@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from "../images/logo.png"
 import useMediaQuery from '@mui/material/useMediaQuery';
-
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
+
+import { images } from '../constants';
+
 
 export function BasicMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,12 +47,12 @@ export function BasicMenu() {
     );
 }
 
-export const Nav = (props) => {
+const Nav = (props) => {
     const matches = useMediaQuery('(min-width:800px)');
     if (!matches) {
         return (
             <div className='nav'>
-                <div className='logo'><img width={150} src={logo} /></div>
+                <div className='logo'><img width={150} src={images.logo} /></div>
                 <BasicMenu />
             </div>
         )
@@ -60,7 +61,7 @@ export const Nav = (props) => {
         return (
             <div>
                 <div className='nav'>
-                    <div className='logo'><img width={150} src={logo} /></div>
+                    <div className='logo'><img width={150} src={images.logo} /></div>
                     <div className='nav-link'>
                         <span>Home</span>
                         <span>About Us</span>
@@ -71,3 +72,4 @@ export const Nav = (props) => {
             </div>
         )
 }
+export default Nav;
