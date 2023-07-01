@@ -104,16 +104,49 @@ export const LandingPage = (props) => {
                         <div class="slider-logo">
                             <div class="slide-track">
                                 <div class="slide">
-                                    <img src={citi} height="100" width="100" alt="" />
+                                    <motion.div
+                                        animate={{
+                                            rotate: [20, -20, 20, -20, 20, -20, 0]
+                                        }}
+                                        whileHover={{ scale: 1.2 }}
+                                        whileTap={{ scale: 1.9 }}
+                                    >
+                                        <img src={citi} height="100" width="100" alt="" />
+                                    </motion.div>
+
                                 </div>
                                 <div class="slide">
-                                    <img src={ms} height="100" width="100" alt="" />
+                                    <motion.div
+                                        animate={{
+                                            rotate: [20, -20, 20, -20, 20, -20, 0]
+                                        }}
+                                        whileHover={{ scale: 1.2, rotate: [20, -20, 20, -20, 20, -20, 0] }}
+                                        whileTap={{ scale: 1.9 }}
+                                    >
+                                        <img src={ms} height="100" width="100" alt="" />
+                                    </motion.div>
                                 </div>
                                 <div class="slide">
-                                    <img src={fidelity} height="100" width="100" alt="" />
+                                    <motion.div
+                                        animate={{
+                                            rotate: [20, -200, 20, -200, 20, -20, 0]
+                                        }}
+                                        whileHover={{ scale: 1.9 }}
+                                        whileTap={{ rotate: [20, -200, 20, -200, 20, -20, 0], scale: 1.9 }}
+                                    >
+                                        <img src={fidelity} height="100" width="100" alt="" />
+                                    </motion.div>
                                 </div>
                                 <div class="slide">
-                                    <img src={finos} height="100" width="100" alt="" />
+                                    <motion.div
+                                        animate={{
+                                            rotate: [20, -200, 20, -20, 20, -20, 0]
+                                        }}
+                                        whileHover={{ scale: 1.2, rotate: [20, -20, 20, -20, 20, -20, 0] }}
+                                        whileTap={{ scale: 1.9 }}
+                                    >
+                                        <img src={finos} height="100" width="100" alt="" />
+                                    </motion.div>
                                 </div>
                                 {/* <div class="slide">
                                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
