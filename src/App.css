@@ -224,18 +224,22 @@
 }
 
 .text-inspiration {
+  text-transform: none !important;
   color: #b0b0ff;
 }
 
 .text-insightful {
+  text-transform: none !important;
   color: #ffdcbb !important;
 }
 
 .text-welcoming {
+  text-transform: none !important;
   color: #b8ffee !important;
 }
 
 .text-clear-white {
+  text-transform: none !important;
   color: #ffffff !important;
 }
 
@@ -245,14 +249,17 @@
 }
 
 .text-software-grey {
+  text-transform: none !important;
   color: #efefef !important;
 }
 
 .text-pixel-black {
+  text-transform: none !important;
   color: #000000 !important;
 }
 
 .text-grey {
+  text-transform: none !important;
   color: #6d6e71 !important;
 }
 
@@ -289,32 +296,31 @@
   margin-right: auto;
 }
 
-.footer {
-  .social-media {
-    padding: 10px;
-  }
-
-  .icons{
-    font-size: 70px;
-  }
-
-  /* height: 500px; */
+#page-container{
+  position: relative;
+  /* min-height: 100vh; */
 }
 
-.footer-ceil {
-  /* height: 200px; */
-  padding: 60px;
+#footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #efefef;
+  height: 400px 
 }
 
-.footer-floor {
-  color: #b8ffee;
-  background-color: #000;
-  padding: 30px;
+.footer-ceil{
+  padding: 50px 0px 0px;
+}
 
+#content-wrap {
+  padding-bottom: 30rem;    /* Footer height */
+}
+
+.mission {
   .layout-x {
-    /* justify-content: space-between; */
     align-items: center;
-    gap: 10px;
+    justify-content: center;
   }
 }
 
@@ -325,31 +331,37 @@
   lg: 1200,
   xl: 1536, */
 
-  
 
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 7))}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
-  
-  .slider-logo {
-    padding: 100px;
+
+  100% {
+    transform: translateX(calc(-250px * 7))
+  }
+}
+
+.slider-logo {
+  padding: 100px;
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+
+  .slide-track {
+    animation: scroll 30s linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+  }
+
+  .slide {
     height: 100px;
-    margin: auto;
-    overflow:hidden;
-    position: relative;
-    width: auto;
-    
-    .slide-track {
-      animation: scroll 30s linear infinite;
-      display: flex;
-      width: calc(250px * 14);
-    }
-    .slide {
-      height: 100px;
-      width: 600px;
-    }
+    width: 15%;
   }
+}
 
 @media only screen and (max-width: 600px) {
 

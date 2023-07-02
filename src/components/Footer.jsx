@@ -7,7 +7,7 @@ import { images } from '../constants';
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <div id='footer'>
             <div className="footer-ceil">
                 <Grid container spacing={2} alignItems={'center'}>
                     <Grid item xs={12} md={5} lg={5}>
@@ -38,7 +38,7 @@ const Footer = () => {
                     </Grid>
                 </Grid>
             </div>
-            <div className="footer-floor">
+            {/* <div className="footer-floor">
                 <Grid container spacing={1} alignItems={''}>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <span className="layout-x">
@@ -53,16 +53,7 @@ const Footer = () => {
                     </Grid>
 
                 </Grid>
-                {/* <div className="layout-x">
-                    <span>Copyright © 2023, All Right Reserved <span className="text-disruption">Turntabl</span></span>
-                    <span className="layout-x">
-                        <span>Home</span>
-                        <span>About Us</span>
-                        <span>Privacy</span>
-                        <span>Terms Of Service</span>
-                    </span>
-                </div> */}
-            </div>
+            </div> */}
         </div>
     )
 }

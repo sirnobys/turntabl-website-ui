@@ -1,54 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { useNavigate } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleIcon from '@mui/icons-material/People';
+import HailIcon from '@mui/icons-material/Hail';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { images } from '../constants';
 
 
-export function BasicMenu() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    return (
-        <div>
-            <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-            >
-                <MenuIcon className='text-inspiration'/>
-            </Button>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                <MenuItem onClick={handleClose}>Home</MenuItem>
-                <MenuItem onClick={handleClose}>About Us</MenuItem>
-                <MenuItem onClick={handleClose}>Clients</MenuItem>
-                <MenuItem onClick={handleClose}>Contact</MenuItem>
-            </Menu>
-        </div>
-    );
-}
 
 const Nav = (props) => {
+    const navigate = useNavigate();
+    const path = window.location.pathname
+    const [activeLink, setActiveLink] = useState(path)
+    console.log(activeLink);
     const matches = useMediaQuery('(min-width:800px)');
+
+    const BasicMenu = () => {
+        const [anchorEl, setAnchorEl] = React.useState(null);
+        const open = Boolean(anchorEl);
+        const handleClick = (event) => {
+            setAnchorEl(event.currentTarget);
+        };
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
+
+        return (
+            <div>
+                <Button
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                >
+                    <MenuIcon className='text-inspiration' />
+                </Button>
+                <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                    }}
+                >
+                    <MenuItem>
+                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/'), setActiveLink('/')]} startIcon={<HomeIcon />}> <Link className="text-grey" underline='none'>Home</Link></Button>
+                    </MenuItem>
+                    <MenuItem>
+                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/about-us'), setActiveLink('/about-us')]} startIcon={<PeopleIcon />}> <Link className="text-grey" underline='none'>About Us</Link></Button>
+                    </MenuItem>
+                    <MenuItem>
+                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/'), setActiveLink('/client')]} startIcon={<HailIcon />}> <Link className="text-grey" underline='none'>Clients</Link></Button>
+                    </MenuItem>
+                    <MenuItem>
+                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/contact'), setActiveLink('/contact')]} startIcon={<ContactMailIcon />}> <Link className="text-grey" underline='none'>Contact</Link></Button>
+                    </MenuItem>
+                </Menu>
+            </div>
+        );
+    }
+
     if (!matches) {
         return (
             <div className='nav'>
@@ -63,10 +82,10 @@ const Nav = (props) => {
                 <div className='nav'>
                     <div className='logo'><img width={150} src={images.logo} /></div>
                     <div className='nav-link'>
-                        <span>Home</span>
-                        <span>About Us</span>
-                        <span>Clients</span>
-                        <span>Contact</span>
+                        <Button variant="text" className={activeLink === "/" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/'), setActiveLink('/')]} startIcon={<HomeIcon />}> <Link className={activeLink === "/" ? 'text-inspiration' : 'text-grey'} underline='none'>Home</Link></Button>
+                        <Button variant="text" className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/about-us'), setActiveLink('/about-us')]} startIcon={<PeopleIcon />}> <Link className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} underline='none'>About Us</Link></Button>
+                        <Button variant="text" className={activeLink === "/client" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/'), setActiveLink('/client')]} startIcon={<HailIcon />}> <Link className={activeLink === "/client" ? 'text-inspiration' : 'text-grey'} underline='none'>Clients</Link></Button>
+                        <Button variant="text" className={activeLink === "/contact" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/contact'), setActiveLink('/contact')]} startIcon={<ContactMailIcon />}> <Link className={activeLink === "/contact" ? 'text-inspiration' : 'text-grey'} underline='none'>Contact</Link></Button>
                     </div>
                 </div>
             </div>
