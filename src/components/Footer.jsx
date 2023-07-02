@@ -16,7 +16,7 @@ const Footer = () => {
                         <div className='news-letter'>
                             <span className='layout-x'>
                                 <TextField placeholder='enter email' size='small' label="Subscribe to news letter" />
-                                <Button className='btn button-disruption' endIcon={<SendIcon />}>Subscribe</Button>
+                                <Button className='btn button-disruption text-clear-white' variant='contained' endIcon={<SendIcon />}>Subscribe</Button>
                             </span>
                         </div>
 

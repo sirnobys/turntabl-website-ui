@@ -31,12 +31,13 @@ export const LandingPage = (props) => {
                         <Grid item xs={12} lg={6}>
                             <motion.div
                                 animate={{
-                                    rotate: [20, -20, 20, -20, 20, -20, 0]
+                                    rotate: [20, -20, 20, -20, 20, -20, 0],
+                                    // scale: 1.2
                                 }}
                                 whileHover={{ scale: 1.2 }}
                                 whileTap={{ scale: 1.9 }}
                             >
-                                <span ><img style={{ borderRadius: 30 }} width="80%" src={images.service} /></span>
+                                <span ><img  width="400px" src={images.geek} /></span>
                             </motion.div>
                         </Grid>
                     </Grid>
@@ -80,14 +81,14 @@ export const LandingPage = (props) => {
                                 whileHover={{ scale: 1.2, rotate: [0, 20, -20, 20, -20, 20, -20, 0] }}
                                 whileTap={{ scale: 1.9 }}
                             >
-                                <span><img width="50%" src={images.thumb} /></span>
+                                <span><img style={{ borderRadius: 30 }} width="50%" src={images.service} /></span>
                             </motion.div>
                         </Grid>
                     </Grid>
 
                     <div className='layout-y call-to-action'>
                         <span className='text-grey'>Hire us for your next venture <img width={30} src={images.smile} /></span>
-                        <Button className='btn button-insightful button-full-rounded'>Say Hi</Button>
+                        <Button className='btn button-insightful button-full-rounded' variant="contained">Say Hi</Button>
                     </div>
                     <div className='clients'>
                         <span>Trusted By</span>
