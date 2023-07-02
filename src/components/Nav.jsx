@@ -11,40 +11,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import HailIcon from '@mui/icons-material/Hail';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { images } from '../constants';
-import classNames from 'classnames'
 
-const Header = _ => {
-    const [scrolled, setScrolled] = useState()
-    const classes = classNames('header', {
-        scrolled: scrolled,
-    })
-    useEffect(_ => {
-        const handleScroll = () => {
-            if (window.scrollY > 1) {
-                setScrolled(true)
-            } else {
-                setScrolled(false)
-            }
-        }
-        window.addEventListener('scroll', handleScroll)
-        return _ => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
-    return (
-        <div className={classes}>
-            <h1>Your website</h1>
-            <style jsx>{`
-          .header {
-            transition: background-color 2s;
-            background-color: rgba(0, 0, 0, .1);
-          }
-          .header.scrolled {
-          }
-        `}</style>
-        </div>
-    )
-}
 
 const Nav = (props) => {
     const navigate = useNavigate();
