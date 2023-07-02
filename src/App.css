@@ -42,9 +42,28 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 80px;
+  padding: 8px 80px;
 }
 
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 80px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  font-size: 14px;
+  background-color: #fff;
+  border-bottom: rgba(0,0,0,0.2) 1px solid;
+  -webkit-transition: all .800s;
+  -moz-transition: all .800s;
+  -o-transition: all .800s;
+  transition: all .800s;
+}
 .nav-link {
   display: flex;
   flex-direction: row;
@@ -264,7 +283,7 @@
 }
 
 .call-to-action {
-  padding-bottom: 180px;
+  padding:80px 0px 100px 0px;
   font-size: 40px;
 }
 

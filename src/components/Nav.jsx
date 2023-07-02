@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -11,15 +11,61 @@ import PeopleIcon from '@mui/icons-material/People';
 import HailIcon from '@mui/icons-material/Hail';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { images } from '../constants';
+import classNames from 'classnames'
 
-
+const Header = _ => {
+    const [scrolled, setScrolled] = useState()
+    const classes = classNames('header', {
+        scrolled: scrolled,
+    })
+    useEffect(_ => {
+        const handleScroll = () => {
+            if (window.scrollY > 1) {
+                setScrolled(true)
+            } else {
+                setScrolled(false)
+            }
+        }
+        window.addEventListener('scroll', handleScroll)
+        return _ => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+    return (
+        <div className={classes}>
+            <h1>Your website</h1>
+            <style jsx>{`
+          .header {
+            transition: background-color 2s;
+            background-color: rgba(0, 0, 0, .1);
+          }
+          .header.scrolled {
+          }
+        `}</style>
+        </div>
+    )
+}
 
 const Nav = (props) => {
     const navigate = useNavigate();
     const path = window.location.pathname
     const [activeLink, setActiveLink] = useState(path)
-    console.log(activeLink);
     const matches = useMediaQuery('(min-width:800px)');
+    const [scrolled, setScrolled] = useState()
+
+    useEffect(_ => {
+        const handleScroll = () => {
+            if (window.scrollY > 1) {
+                setScrolled(true)
+            } else {
+                setScrolled(false)
+            }
+        }
+        window.addEventListener('scroll', handleScroll)
+        return _ => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     const BasicMenu = () => {
         const [anchorEl, setAnchorEl] = React.useState(null);
@@ -70,7 +116,7 @@ const Nav = (props) => {
 
     if (!matches) {
         return (
-            <div className='nav'>
+            <div className={scrolled ? 'header' : 'nav'}>
                 <div className='logo'><img width={150} src={images.logo} /></div>
                 <BasicMenu />
             </div>
@@ -79,7 +125,7 @@ const Nav = (props) => {
     if (matches)
         return (
             <div>
-                <div className='nav'>
+                <div className={scrolled ? 'header' : 'nav'}>
                     <div className='logo'><img width={150} src={images.logo} /></div>
                     <div className='nav-link'>
                         <Button variant="text" className={activeLink === "/" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/'), setActiveLink('/')]} startIcon={<HomeIcon />}> <Link className={activeLink === "/" ? 'text-inspiration' : 'text-grey'} underline='none'>Home</Link></Button>
