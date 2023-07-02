@@ -306,15 +306,34 @@
   bottom: 0;
   width: 100%;
   background-color: #efefef;
-  height: 400px 
+  min-height: 400px;
+
+  .layout-y{
+    padding: 10px !important;
+  }
 }
 
 .footer-ceil{
-  padding: 50px 0px 0px;
+  padding: 60px 0px 0px;
 }
 
 #content-wrap {
-  padding-bottom: 30rem;    /* Footer height */
+  padding-bottom: 40rem;    /* Footer height */
+}
+
+.news-letter{
+  padding-top: 30px;
+  .layout-x{
+    justify-content: center;
+
+  }
+}
+
+.social-media{
+  .layout-x{
+    justify-content: space-around;
+    align-items: start;
+  }
 }
 
 .mission {
@@ -376,14 +395,14 @@
   }
 
   .clients {
-    .layout-x {
+    /* .layout-x {
       padding: 30px;
       flex-direction: column;
-    }
+    } */
   }
 
   .nav {
-    padding: 20px 6px 60px 20px;
+    /* padding: 20px 6px 60px 20px; */
   }
 
   body {
