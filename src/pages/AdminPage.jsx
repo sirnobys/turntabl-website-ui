@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,12 +16,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import EventIcon from '@mui/icons-material/Event';
 import WorkIcon from '@mui/icons-material/Work';
 import FeedIcon from '@mui/icons-material/Feed';
 import ArticleIcon from '@mui/icons-material/Article';
+
+import { Events, Blogs, Careers, Newsletters } from '../components';
 
 const drawerWidth = 240;
 
@@ -92,7 +92,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const AdminPage = () => {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [section, setSection] = useState('events');
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -139,6 +140,7 @@ const AdminPage = () => {
                                 justifyContent: open ? 'initial' : 'center',
                                 px: 2.5,
                             }}
+                            onClick={() => setSection('events')}
                         >
                             <ListItemIcon
                                 sx={{
@@ -159,6 +161,7 @@ const AdminPage = () => {
                                 justifyContent: open ? 'initial' : 'center',
                                 px: 2.5,
                             }}
+                            onClick={() => setSection('blogs')}
                         >
                             <ListItemIcon
                                 sx={{
@@ -179,6 +182,7 @@ const AdminPage = () => {
                                 justifyContent: open ? 'initial' : 'center',
                                 px: 2.5,
                             }}
+                            onClick={() => setSection('careers')}
                         >
                             <ListItemIcon
                                 sx={{
@@ -199,6 +203,7 @@ const AdminPage = () => {
                                 justifyContent: open ? 'initial' : 'center',
                                 px: 2.5,
                             }}
+                            onClick={() => setSection('newsletters')}
                         >
                             <ListItemIcon
                                 sx={{
@@ -216,6 +221,15 @@ const AdminPage = () => {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, pt: { xs: 2, sm: 3 }, pl: { xs: 8, sm: 10 }, pr: { xs: 2, sm: 3 } }}>
                 <DrawerHeader />
+                {
+                    section === 'events' ?
+                    <Events />
+                    : section === 'blogs' ?
+                    <Blogs />
+                    : section === 'careers' ?
+                    <Careers />
+                    : <Newsletters />
+                }
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
