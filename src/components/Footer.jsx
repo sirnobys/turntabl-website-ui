@@ -15,7 +15,7 @@ const Footer = () => {
                         <span><img width="50%" src={images.logo} /></span>
                         <div className='news-letter'>
                             <span className='layout-x'>
-                                <TextField placeholder='enter email' label="Subscribe to news letter" />
+                                <TextField placeholder='enter email' size='small' label="Subscribe to news letter" />
                                 <Button className='btn button-disruption' endIcon={<SendIcon />}>Subscribe</Button>
                             </span>
                         </div>
@@ -61,9 +61,9 @@ const Footer = () => {
                     </Grid>
                 </Grid>
             </div>
-            <Divider/>
-            {/* <div className="footer-floor">
+            <div className="footer-floor">
                 <Grid container spacing={1} alignItems={''}>
+            <Divider sx={{padding:'10px', width:'100%'}}/>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <span className="layout-x">
                             <span>Home</span>
@@ -77,7 +77,7 @@ const Footer = () => {
                     </Grid>
 
                 </Grid>
-            </div> */}
+            </div>
         </div>
     )
 }

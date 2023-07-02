@@ -306,7 +306,7 @@
   bottom: 0;
   width: 100%;
   background-color: #efefef;
-  min-height: 400px;
+  min-height: 320px;
 
   .layout-y{
     padding: 10px !important;
@@ -315,6 +315,10 @@
 
 .footer-ceil{
   padding: 60px 0px 0px;
+}
+
+.footer-floor{
+  padding: 60px 60px 0px;
 }
 
 #content-wrap {
