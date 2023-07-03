@@ -31,7 +31,7 @@ export const LandingPage = (props) => {
                         <Grid item xs={12} lg={6}>
                             <motion.div
                                 animate={{
-                                    rotate: [20, -20, 20, -20, 20, -20, 0],
+                                    rotate: [20, -20, 20, 0],
                                     // scale: 1.2
                                 }}
                                 whileHover={{ scale: 1.07 }}
@@ -76,10 +76,10 @@ export const LandingPage = (props) => {
                         <Grid item xs={12} lg={6}>
                             <motion.div
                                 animate={{
-                                    rotate: [20, -20, 20, -20, 20, -20, 0]
+                                    rotate: [5, -2, 0]
                                 }}
-                                whileHover={{ scale: 1.2, rotate: [0, 20, -20, 20, -20, 20, -20, 0] }}
-                                whileTap={{ scale: 1.9 }}
+                                whileHover={{ scale: 1.1, rotate: [0, 2, -2, 0] }}
+                                whileTap={{ scale: 1.2 }}
                             >
                                 <span><img style={{ borderRadius: 40,padding:20 }} width="70%" src={images.service} /></span>
                             </motion.div>

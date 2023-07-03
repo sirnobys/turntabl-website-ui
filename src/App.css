@@ -303,7 +303,7 @@
 }
 
 .testimony {
-  padding-top: 170px;
+  padding-top: 60px;
 
   .intro {
     font-size: 40px;
@@ -340,7 +340,12 @@
 }
 
 .footer-floor {
-  padding: 60px 60px 0px;
+  padding: 70px 60px 0px;
+  .layout-x {
+    justify-content:center;
+    gap: 30px;
+
+  }
 }
 
 #content-wrap {
@@ -392,7 +397,7 @@
 
 .slider-logo {
   padding: 100px;
-  height: 100px;
+  /* height: 100px; */
   margin: auto;
   overflow: hidden;
   position: relative;
