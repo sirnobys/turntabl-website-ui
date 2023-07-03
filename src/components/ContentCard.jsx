@@ -9,8 +9,8 @@ import { motion } from "framer-motion"
 
 
 const ContentCard = (props) => {
-    const { id, name, description, image, status, links } = props;
-    console.log(id, name, description, image, status, links)
+    const { id, name, description, image, status, link } = props;
+    console.log(id, name, description, image, status, link)
     return (
         <motion.div
             className="box"
@@ -27,7 +27,7 @@ const ContentCard = (props) => {
                     component="img"
                     alt="green iguana"
                     height="140"
-                    image={image}
+                    image={''}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -48,20 +48,17 @@ const ContentCard = (props) => {
                                 backgroundColor: '#b0b0ff',
                             }
                         }}>Share</Button>
-                    {links.map((link, idx) => (
-                        <Button
-                            variant="contained"
-                            key={idx}
-                            size="small"
-                            sx={{
-                                backgroundColor: '#6d6e71',
-                                ":hover": {
-                                    backgroundColor: '#b0b0ff',
-                                }
-                            }}>
-                            <a style={{ textDecoration: 'none', color: '#fff' }} href={link}>{link.title}</a>
-                        </Button>
-                    ))}
+                    <Button
+                        variant="contained"
+                        size="small"
+                        sx={{
+                            backgroundColor: '#6d6e71',
+                            ":hover": {
+                                backgroundColor: '#b0b0ff',
+                            }
+                        }}>
+                        <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url}>{link?.title}</a>
+                    </Button>
                 </CardActions>
             </Card>
         </motion.div>
