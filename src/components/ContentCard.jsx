@@ -10,7 +10,14 @@ import { motion } from "framer-motion"
 
 const ContentCard = (props) => {
     const { id, name, description, image, status, link } = props;
-    console.log(id, name, description, image, status, link)
+    let imageUrl = null;
+
+    if (!image.endsWith('.jpg')) {
+        const base64Image = btoa(image);
+
+        imageUrl = `data:image/jpeg;base64,${base64Image}`;
+    }
+
     return (
         <motion.div
             className="box"
@@ -27,27 +34,31 @@ const ContentCard = (props) => {
                     component="img"
                     alt="green iguana"
                     height="140"
-                    image={''}
+                    image={imageUrl ? imageUrl : image}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography
+                        sx={{
+                            height: '80px',
+                            overflow: 'auto'
+                        }}
+                        variant="body2"
+                        color="text.secondary">
                         {description} Lizards are a widespread group of squamate reptiles, with over 6,000
                         species, ranging across all continents except Antarctica
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button
-                        variant="contained"
-                        size="small"
-                        sx={{
-                            backgroundColor: '#6d6e71',
-                            ":hover": {
-                                backgroundColor: '#b0b0ff',
-                            }
-                        }}>Share</Button>
+                <CardActions
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                    }}
+                >
                     <Button
                         variant="contained"
                         size="small"
@@ -59,6 +70,11 @@ const ContentCard = (props) => {
                         }}>
                         <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url}>{link?.title}</a>
                     </Button>
+                    <Typography
+                        sx={{
+                            color: '#b0b0ff',
+
+                        }}>{status}</Typography>
                 </CardActions>
             </Card>
         </motion.div>

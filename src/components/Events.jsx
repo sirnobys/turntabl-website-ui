@@ -2,42 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { Button, Grid } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Textarea from '@mui/joy/Textarea';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 
-import { images } from "../constants";
 import ContentCard from "./ContentCard";
+import { EventForm } from "./forms";
 
 
 const Events = () => {
     const [open, setOpen] = useState(false);
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [urlTitle, setUrlTitle] = useState(null);
-    const [urlLink, setUrlLink] = useState(null);
-    const [status, setStatus] = useState('current');
     const [events, setEvents] = useState([]);
     const [load, setLoad] = useState(true)
 
     let baseUrl = 'http://localhost:5000';
-    let events_ = [
-        { id: 1, name: 'event1', description: 'desc', image: images.citi, status: 'UPCOMING', link: { title: 'title1', link: 'url' } },
-        { id: 2, name: 'event2', description: 'desc', image: images.people, status: 'CURRENT', link: { title: 'title1', link: 'url' }  },
-        { id: 3, name: 'event3', description: 'desc', image: images.IMG_9005, status: 'UPCOMING', link: { title: 'title1', link: 'url' }  },
-        { id: 4, name: 'event3', description: 'desc', image: images.IMG_9005, status: 'UPCOMING', link:{ title: 'title1', link: 'url' }  },
-        { id: 5, name: 'event3', description: 'desc', image: images.IMG_9005, status: 'UPCOMING', link: { title: 'title1', link: 'url' }  },
-    ]
 
     useEffect(() => {
 
@@ -47,30 +22,25 @@ const Events = () => {
                 .then(data => {
                     console.log(data)
                     setEvents(data.result)
-                    setEvents(data.result.concat(events_))
                 })
-            // setEvents(responseJson?.result);
         }
         fetchEvents();
     }, [load])
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const sendEventData = () => {
+    const sendEventData = (data) => {
+        console.log(data)
+        console.log(data.name)
+        console.log(data['name'])
         const formData = new FormData();
-        formData.append('name', name);
-        formData.append('description', description);
-        formData.append('image', selectedImage);
-        formData.append('link', JSON.stringify({ title: urlTitle, url: urlLink }));
-        formData.append('status', status)
+        formData.append('name', 'name');
+        formData.append('description', data.description);
+        formData.append('image', data.image);
+        formData.append('link', JSON.stringify({ title: data.urlTitle, url: data.urlLink}));
+        formData.append('status', data.status)
 
-        console.log(formData)
+        for (let entry of formData.entries()) {
+            console.log(entry[0], entry[1]);
+          }
 
         fetch(`${baseUrl}/api/events`, {
             method: 'POST',
@@ -85,6 +55,16 @@ const Events = () => {
             .catch(error => {
                 // Handle any errors
             });
+
+        setOpen(false)
+    }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     }
 
     return (
@@ -114,106 +94,9 @@ const Events = () => {
                         endIcon={<AddIcon />}>
                         New Event
                     </Button>
-                    <Dialog open={open} onClose={handleClose}>
-                        <DialogTitle>Add New Event</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText>
-                                Fill in the details for new event
-                            </DialogContentText>
-                            <Box
-                                component="form"
-                                sx={{
-
-                                }}
-                                noValidate
-                                autoComplete="off"
-                            >
-                                <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    id="name"
-                                    label="Event Name"
-                                    type="text"
-                                    fullWidth
-                                    variant="outlined"
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                                <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    id="image"
-                                    // label="Add Image"
-                                    type="file"
-                                    onChange={(e) => setSelectedImage(e.target.files[0])}
-                                    fullWidth
-                                    variant="outlined"
-                                />
-                                <FormControl>
-                                    <FormLabel sx={{ color: 'black' }}>Status</FormLabel>
-                                    <RadioGroup
-                                        aria-labelledby="demo-controlled-radio-buttons-group"
-                                        name="controlled-radio-buttons-group"
-                                        value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
-                                        sx={{
-                                            display: 'flex',
-                                            flexDirection: 'row'
-                                        }}
-                                    >
-                                        <FormControlLabel value="current" control={<Radio />} label="Current" />
-                                        <FormControlLabel value="upcoming" control={<Radio />} label="Upcoming" />
-                                    </RadioGroup>
-                                </FormControl>
-                                <Box>
-                                    <Typography>Link</Typography>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            flexDirection: 'row',
-                                            gap: '5px'
-                                        }}
-                                    >
-                                        <TextField
-                                            autoFocus
-                                            margin="dense"
-                                            id="link-name"
-                                            label="Title"
-                                            type="text"
-                                            fullWidth
-                                            variant="outlined"
-                                            onChange={(e) => setUrlTitle(e.target.value)}
-                                        />
-                                        <TextField
-                                            autoFocus
-                                            margin="dense"
-                                            id="link-url"
-                                            label="Url"
-                                            type="text"
-                                            fullWidth
-                                            variant="outlined"
-                                            onChange={(e) => setUrlLink(e.target.value)}
-                                        />
-                                    </Box>
-                                </Box>
-                                <Textarea
-                                    sx={{
-                                        mt: 1
-                                    }}
-                                    placeholder="Event Description..."
-                                    minRows={3}
-                                    variant="outlined"
-                                    size="md"
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </Box>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Cancel</Button>
-                            <Button onClick={sendEventData}>Submit</Button>
-                        </DialogActions>
-                    </Dialog>
                 </div>
             </Box>
+            <EventForm open={open} sendEventData={sendEventData} handleClose={handleClose}/>
             <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 {events.map((event, idx) => (
                     <Grid item xs={12} sm={6} md={3} key={idx}>
