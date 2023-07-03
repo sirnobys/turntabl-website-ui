@@ -12,11 +12,11 @@ const ContentCard = (props) => {
     const { id, name, description, image, status, link } = props;
     let imageUrl = null;
 
-    if (!image.endsWith('.jpg')) {
-        const base64Image = btoa(image);
+    // if (!image.endsWith('.jpg')) {
+    const base64Image = btoa(image);
 
-        imageUrl = `data:image/jpeg;base64,${base64Image}`;
-    }
+    imageUrl = `data:image/jpeg;base64,${base64Image}`;
+    // }
 
     return (
         <motion.div
@@ -34,7 +34,7 @@ const ContentCard = (props) => {
                     component="img"
                     alt="green iguana"
                     height="140"
-                    image={imageUrl ? imageUrl : image}
+                    image={imageUrl}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -59,22 +59,25 @@ const ContentCard = (props) => {
                         alignItems: 'center'
                     }}
                 >
-                    <Button
-                        variant="contained"
-                        size="small"
-                        sx={{
-                            backgroundColor: '#6d6e71',
-                            ":hover": {
-                                backgroundColor: '#b0b0ff',
-                            }
-                        }}>
-                        <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url}>{link?.title}</a>
-                    </Button>
-                    <Typography
-                        sx={{
-                            color: '#b0b0ff',
+                    {link ?
+                        <Button
+                            variant="contained"
+                            size="small"
+                            sx={{
+                                backgroundColor: '#6d6e71',
+                                ":hover": {
+                                    backgroundColor: '#b0b0ff',
+                                }
+                            }}>
+                            <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url}>{link?.title}</a>
+                        </Button> : ''}
+                    {status ?
+                        <Typography
+                            sx={{
+                                color: '#b0b0ff',
 
-                        }}>{status}</Typography>
+                            }}>{status}</Typography> : ''
+                    }
                 </CardActions>
             </Card>
         </motion.div>

@@ -17,7 +17,7 @@ const Events = () => {
     useEffect(() => {
 
         const fetchEvents = () => {
-            fetch(`${baseUrl}/api/events`)
+            fetch(`${baseUrl}/api/v1/events`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -42,7 +42,7 @@ const Events = () => {
             console.log(entry[0], entry[1]);
           }
 
-        fetch(`${baseUrl}/api/events`, {
+        fetch(`${baseUrl}/api/v1/events`, {
             method: 'POST',
             body: formData
         })
