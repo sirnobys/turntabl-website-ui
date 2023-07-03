@@ -7,3 +7,4 @@ export { default as Blogs } from './Blogs';
 export { default as Careers } from './Careers';
 export { default as Newsletters } from './Newsletters';
 export { default as ContentCard } from './ContentCard';
+export { default as Preview } from './Preview';
