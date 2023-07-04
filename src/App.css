@@ -57,7 +57,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 80px 20px ;
+  padding: 8px 80px 10px ;
 }
 
 .header {
@@ -433,7 +433,7 @@
 }
 
 .banner {
-  height: 100vh;
+  height: 70vh;
   /* background-repeat: no-repeat; */
   /* background-position: center; */
   /* background-size: contain; */
