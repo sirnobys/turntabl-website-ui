@@ -246,7 +246,12 @@
 }
 
 .button-pixel-black {
-  background-color: #00000000 !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.button-pixel-black:hover {
+  background-color: #000000 !important;
   color: #ffffff !important;
 }
 
