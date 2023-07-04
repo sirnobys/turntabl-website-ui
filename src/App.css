@@ -1,6 +1,20 @@
+@font-face {
+  font-family: neuebit;
+  src: url('../public/fonts/Neuebit-Full/PPNeueBit-Regular.woff');
+}
+
+@font-face {
+  font-family: mondwest;
+  src: url('../public/fonts/Mondwest-Full/PPMondwest-Regular.ttf');
+}
+
+.mondwest{
+  font-family: mondwest !important;
+}
+
 .App {
   text-align: center;
-  font-family: "mondwest" !important;
+  /* font-family: "mondwest"; */
 }
 
 .logo {
@@ -43,7 +57,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 80px;
+  padding: 8px 80px 20px ;
 }
 
 .header {

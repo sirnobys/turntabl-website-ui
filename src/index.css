@@ -8,23 +8,23 @@ body {
   -moz-osx-font-smoothing: grayscale; */
 }
 
-@font-face {
-  font-family: neuebit ;
+/* @font-face {
+  font-family: neuebit;
   src: url('/public/fonts/Neuebit-Full/PPNeueBit-Regular.ttf');
 }
 
 @font-face {
-  font-family: mondwest !important;
+  font-family: mondwest;
   src: url('/public/fonts/Mondwest-Full/PPMondwest-Regular.ttf');
 }
 
 .mondwest{
-  font-family: mondwest !important;
+  font-family: mondwest;
 }
 
 .neuebit{
-  font-family: neuebit !important;
-}
+  font-family: neuebit;
+} */
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
