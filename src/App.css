@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "mondwest" !important;
 }
 
 .logo {
@@ -45,7 +46,7 @@
   padding: 8px 80px;
 }
 
-.header{
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -58,12 +59,13 @@
   z-index: 1000;
   font-size: 14px;
   background-color: #fff;
-  border-bottom: rgba(0,0,0,0.2) 1px solid;
+  border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
   -webkit-transition: all .800s;
   -moz-transition: all .800s;
   -o-transition: all .800s;
   transition: all .800s;
 }
+
 .nav-link {
   display: flex;
   flex-direction: row;
@@ -283,7 +285,7 @@
 }
 
 .call-to-action {
-  padding:80px 0px 100px 0px;
+  padding: 80px 0px 100px 0px;
   font-size: 40px;
 }
 
@@ -326,7 +328,7 @@
   /* width: 100%; */
   /* background-color: #efefef; */
   /* background-color: #6d6e71; */
-  box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6);
   border-radius: 50px 50px 0px 0px;
   min-height: 320px;
 
@@ -341,8 +343,9 @@
 
 .footer-floor {
   padding: 70px 60px 0px;
+
   .layout-x {
-    justify-content:center;
+    justify-content: center;
     gap: 30px;
 
   }
@@ -415,6 +418,15 @@
   }
 }
 
+.banner {
+  height: 100vh;
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: contain; */
+  /* background-color: red; */
+  /* background-size:cover; */
+}
+
 @media only screen and (max-width: 600px) {
 
   .section {
@@ -435,7 +447,11 @@
   }
 
   .nav {
-    /* padding: 20px 6px 60px 20px; */
+    padding: 8px 20px 10px 20px;
+  }
+
+  .header {
+    padding: 8px 20px 10px 20px;
   }
 
   body {

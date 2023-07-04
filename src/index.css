@@ -3,7 +3,7 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
-    font-family: "", "mondwest";
+    font-family: "mondwest" !important;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
@@ -14,12 +14,16 @@ body {
 }
 
 @font-face {
-  font-family: mondwest ;
+  font-family: mondwest !important;
   src: url('/public/fonts/Mondwest-Full/PPMondwest-Regular.ttf');
 }
 
+.mondwest{
+  font-family: mondwest !important;
+}
+
 .neuebit{
-  font-family: neuebit;
+  font-family: neuebit !important;
 }
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
