@@ -1,17 +1,10 @@
 import React from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion"
-import { CardHeader } from "@mui/material";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import LabelIcon from '@mui/icons-material/Label';
 
 
 const Preview = (props) => {
@@ -28,62 +21,150 @@ const Preview = (props) => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
-            <Card sx={{ flexGrow: 1, height: { xs: '455px', sm: '600px', md: '650px' } }}>
-                <CardHeader title={career.name} subheader={career.department} />
+            <Card
+                sx={{
+                    flexGrow: 1,
+                    height: { xs: '455px', sm: '600px', md: '600px' },
+                    border: '2px solid #6d6e71'
+                }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            fontSize: { xs: '16px', sm: '30px' },
+                            margin: 2
+                        }}
+                    >
+                        {career.name}
+                    </Typography>
+                    <Box
+                        sx={{
+                            margin: 2
+                        }}
+                    >
+                        <Button
+                            size="small"
+                            variant="contained"
+                            sx={{
+                                fontSize: { xs: 8, sm: 12 },
+                                backgroundColor: '#b0b0ff',
+                                ":hover": {
+                                    backgroundColor: '#6d6e71',
+                                },
+                                marginRight: 1
+                            }}
+                        >Edit
+                        </Button>
+                        <Button
+                            size="small"
+                            variant="contained"
+                            sx={{
+                                fontSize: { xs: 8, sm: 12 },
+                                backgroundColor: '#b0b0ff',
+                                ":hover": {
+                                    backgroundColor: '#6d6e71',
+                                }
+                            }}
+                        >Delete
+                        </Button>
+                    </Box>
+
+                </Box>
                 <CardContent
                     sx={{
-                        height: { xs: '320px', sm: '465px', md: '510px' },
+                        height: { xs: '320px', sm: '465px', md: '470px' },
                         overflow: 'auto',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between'
                     }}
                 >
-                    <Typography
-                        sx={{
-                            mb: 1.5,
-                            fontSize: { xs: '12px', sm: '14px' }
-                        }}
-                        color="text.secondary">
-                        {career?.description}
-                    </Typography>
+                    <Box>
+                        <Typography sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            fontSize: { xs: '14px', sm: '16px' },
+                        }}>Description</Typography>
+                        <Box
+                            component='p'
+                            sx={{
+                                mb: 1.5,
+                                fontSize: { xs: '12px', sm: '14px' },
+                                display: 'flex',
+                                justifyContent: 'flex-start'
+                            }}
+                            color="text.secondary">
+                            {career?.description}
+                        </Box>
+                    </Box>
+
                     <Box>
                         <Typography
                             sx={{
-                                fontSize: { xs: '16px', sm: '20px' }
+                                fontSize: { xs: '14px', sm: '16px' },
+                                display: 'flex', justifyContent: 'flex-start',
                             }}
                         >
                             Requirements
                         </Typography>
-                        <List>
+                        <Box
+                            component='ul'
+                        >
                             {career?.requirements?.map((requirement) => (
-                                <ListItem disablePadding>
-                                    <ListItemIcon>
-                                        <LabelIcon sx={{ fontSize: { xs: '16px', sm: '20px' } }} />
-                                    </ListItemIcon>
-                                    <ListItemText primaryTypographyProps={{ fontSize: { xs: '12px', sm: '16px' } }} primary={requirement} />
-                                </ListItem>
+                                <Box
+                                    component='li'
+                                    sx={{
+                                        marginLeft: 2
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: {
+                                                xs: '12px', sm: '16px',
+                                                display: 'flex',
+                                                justifyContent: 'flex-start',
+                                            }
+                                        }}>{requirement}</Typography>
+                                </Box>
                             ))}
-                        </List>
+                        </Box>
                     </Box>
                     <Box>
                         <Typography
                             sx={{
-                                fontSize: { xs: '16px', sm: '20px' }
+                                fontSize: { xs: '14px', sm: '16px' },
+                                display: 'flex', justifyContent: 'flex-start'
                             }}
                         >
                             Responsibilities
                         </Typography>
-                        <List>
+                        <Box
+                            component='ul'
+                        >
                             {career?.responsibilities?.map((responsibility) => (
-                                <ListItem disablePadding>
-                                    <ListItemIcon>
-                                        <LabelIcon sx={{ fontSize: { xs: '16px', sm: '20px' } }} />
-                                    </ListItemIcon>
-                                    <ListItemText primaryTypographyProps={{ fontSize: { xs: '12px', sm: '16px' } }} primary={responsibility} />
-                                </ListItem>
+                                <Box
+                                    component='li'
+                                    sx={{
+                                        marginLeft: 2
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: {
+                                                xs: '12px', sm: '16px',
+                                                display: 'flex',
+                                                justifyContent: 'flex-start'
+                                            }
+                                        }}>{responsibility}</Typography>
+                                </Box>
                             ))}
-                        </List>
+                        </Box>
                     </Box>
                     <Box
                         sx={{
@@ -95,7 +176,7 @@ const Preview = (props) => {
                     >
                         <Typography
                             sx={{
-                                fontSize: { xs: '16px', sm: '20px' }
+                                fontSize: { xs: '14px', sm: '16px' },
                             }}
                         >
                             Technologies:
@@ -129,8 +210,8 @@ const Preview = (props) => {
                     >
                         <Typography
                             sx={{
-                                display: 'flex',
-                                fontSize: { xs: '16px', sm: '20px' }
+                                display: 'flex', justifyContent: 'flex-start',
+                                fontSize: { xs: '14px', sm: '16px' },
                             }}
                             variant="h5"
                         >
@@ -153,8 +234,8 @@ const Preview = (props) => {
                     >
                         <Typography
                             sx={{
-                                display: 'flex',
-                                fontSize: { xs: '16px', sm: '20px' }
+                                display: 'flex', justifyContent: 'flex-start',
+                                fontSize: { xs: '14px', sm: '16px' }
                             }}
                             variant="h5"
                         >
@@ -168,12 +249,8 @@ const Preview = (props) => {
                         </Typography>
                     </Box>
                 </CardContent>
-                <CardActions>
-                    <Button size="small" variant="contained">Edit</Button>
-                    <Button size="small" variant="contained">Delete</Button>
-                </CardActions>
             </Card>
-        </motion.div>
+        </motion.div >
     )
 }
 
