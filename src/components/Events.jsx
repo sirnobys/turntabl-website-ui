@@ -28,19 +28,12 @@ const Events = () => {
     }, [load])
 
     const sendEventData = (data) => {
-        console.log(data)
-        console.log(data.name)
-        console.log(data['name'])
         const formData = new FormData();
         formData.append('name', 'name');
         formData.append('description', data.description);
         formData.append('image', data.image);
         formData.append('link', JSON.stringify({ title: data.urlTitle, url: data.urlLink}));
         formData.append('status', data.status)
-
-        for (let entry of formData.entries()) {
-            console.log(entry[0], entry[1]);
-          }
 
         fetch(`${baseUrl}/api/v1/events`, {
             method: 'POST',
@@ -49,7 +42,6 @@ const Events = () => {
             .then(response => response.json())
             .then(data => {
                 // Handle the response from the backend
-                console.log(data)
                 setLoad(!load)
             })
             .catch(error => {
