@@ -76,12 +76,6 @@ const Careers = () => {
         setOpen(false);
     }
 
-
-    // let careers = [
-    //     { name: 'QA Engineer', department: 'Engineering', description: 'desc..', requirements: ['3 years experience', 'Knowledge in Git'], responsibilities: ['Write and run tests', 'Migrate surce code'], technologies: ['Python', 'React'], salary: 'free' },
-    //     { name: 'Front End Developer', department: 'Engineering', description: 'desc..', requirements: ['3 years experience hbsvs sdhsd sdhcsd sdhbcsdddddddbbdbdbdbdbdbdbdbdbdbdbd sdhbcsdddddddbbdbdbdbdbdbdbdbdbdbdbd sdhbcsdddddddbbdbdbdbdbdbdbdbdbdbdbd', 'Knowledge in Git'], responsibilities: ['Write and run tests', 'Migrate surce code'], technologies: ['Python', 'React'], salary: 'free' },
-    //     { name: 'Backend Developer', department: 'Engineering', description: 'desc..', requirements: ['3 years experience', 'Knowledge in Git'], responsibilities: ['Write and run tests', 'Migrate surce code'], technologies: ['Python', 'React'], salary: 'free' },
-    // ]
     return (
         <Box
             sx={{
@@ -101,23 +95,21 @@ const Careers = () => {
                 }}
             >
                 <Typography sx={{ pb: 5, fontSize: { xs: '35px', sm: '40px' } }}>Careers</Typography>
-                <div>
-                    <Button
-                        sx={{
-                            fontSize: { xs: 8, sm: 12 },
-                            color: '#b0b0ff',
-                            borderColor: '#b0b0ff',
-                            ":hover": {
-                                color: '#6d6e71',
-                                borderColor: '#6d6e71',
-                            }
-                        }}
-                        variant="outlined"
-                        onClick={handleClickOpen}
-                        endIcon={<AddIcon />}>
-                        New Career
-                    </Button>
-                </div>
+                <Button
+                    sx={{
+                        fontSize: { xs: 8, sm: 12 },
+                        color: '#b0b0ff',
+                        borderColor: '#b0b0ff',
+                        ":hover": {
+                            color: '#6d6e71',
+                            borderColor: '#6d6e71',
+                        }
+                    }}
+                    variant="outlined"
+                    onClick={handleClickOpen}
+                    endIcon={<AddIcon />}>
+                    New Career
+                </Button>
             </Box>
             <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} />
             <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
@@ -134,7 +126,7 @@ const Careers = () => {
                     >
                         <List
                             sx={{
-                                height: { xs: '200px', sm: '350px', md: '650px' },
+                                height: { xs: '200px', sm: '350px', md: '600px' },
                                 overflow: 'auto'
                             }}
                         >
