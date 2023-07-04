@@ -28,7 +28,12 @@ const Preview = (props) => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
-            <Card sx={{ flexGrow: 1, height: { xs: '455px', sm: '600px', md: '650px' } }}>
+            <Card
+                sx={{
+                    flexGrow: 1,
+                    height: { xs: '455px', sm: '600px', md: '650px' },
+                    border: '2px solid #6d6e71'
+                }}>
                 <CardHeader title={career.name} subheader={career.department} />
                 <CardContent
                     sx={{
@@ -168,9 +173,37 @@ const Preview = (props) => {
                         </Typography>
                     </Box>
                 </CardContent>
-                <CardActions>
-                    <Button size="small" variant="contained">Edit</Button>
-                    <Button size="small" variant="contained">Delete</Button>
+                <CardActions
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end'
+                }}
+                >
+                    <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                            fontSize: { xs: 8, sm: 12 },
+                            backgroundColor: '#b0b0ff',
+                            ":hover": {
+                                backgroundColor: '#6d6e71',
+                            }
+                        }}
+                    >Edit
+                    </Button>
+                    <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                            fontSize: { xs: 8, sm: 12 },
+                            backgroundColor: '#b0b0ff',
+                            ":hover": {
+                                backgroundColor: '#6d6e71',
+                            }
+                        }}
+                    >Delete
+                    </Button>
                 </CardActions>
             </Card>
         </motion.div>

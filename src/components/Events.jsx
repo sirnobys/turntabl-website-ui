@@ -29,7 +29,7 @@ const Events = () => {
 
     const sendEventData = (data) => {
         const formData = new FormData();
-        formData.append('name', 'name');
+        formData.append('name', data.name);
         formData.append('description', data.description);
         formData.append('image', data.image);
         formData.append('link', JSON.stringify({ title: data.urlTitle, url: data.urlLink}));
