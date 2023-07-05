@@ -13,9 +13,9 @@ export const Banner = ({ bgImage, image, page, intro }) => {
         }}>
             <Grid container spacing={0} alignItems={'center'} sx={{ paddingY: { xs: 15, sm: 10, } }}>
                 <Grid item xs={12} lg={12} align="center">
-                    <div className='text-clear-white' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingBottom: 2 }}>
+                    <div className='text-clear-white' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingBottom: 2,}}>
                         <Typography className='mondwest' sx={{ fontSize: { xs: '40px', sm: '70px', }}}>{page}</Typography>
-                        <Typography className='mondwest' sx={{ px: 0, pt: 0, fontSize: { xs: '16px', sm: '16px', } }}>
+                        <Typography className='mondwest' sx={{ borderRadius:10, px: 2, py: 1, fontSize: { xs: '16px', sm: '16px',background:"black"  } }}>
                            {intro}
                         </Typography>
                         <br />
