@@ -5,25 +5,57 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion"
-import { CareerApplicants } from "./table";
+import { PreviewTable } from "./table";
 
 
 const Preview = (props) => {
     const { career } = props;
     const [applicants, setApplicants] = useState([]);
-    console.log(career)
+    const headCells = [
+        {
+            id: 'id',
+            numeric: false,
+            disablePadding: true,
+            label: 'Id',
+        },
+        {
+            id: 'first_name',
+            numeric: false,
+            disablePadding: true,
+            label: 'First Name',
+        },
+        {
+            id: 'last_name',
+            numeric: false,
+            disablePadding: false,
+            label: 'Last Name',
+        },
+        {
+            id: 'email',
+            numeric: false,
+            disablePadding: false,
+            label: 'Email',
+        },
+        {
+            id: 'date_created',
+            numeric: false,
+            disablePadding: false,
+            label: 'Submission Date',
+        }
+    ];
     let baseUrl = 'http://localhost:5000';
 
     const getApplicants = () => {
         fetch(`${baseUrl}/api/v1/career-applicants/career/${career.id}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 let applicationList = []
                 data.result.map((item) => {
                     applicationList.push({
+                        id: item.id,
                         first_name: item.first_name,
                         last_name: item.last_name,
+                        email: item.email,
                         // cv: e.cv,
                         date_created: item.date_created
                     })
@@ -288,7 +320,7 @@ const Preview = (props) => {
             </Card>
             {
                 applicants.length > 0 ?
-                    <CareerApplicants applicants={applicants} />
+                    <PreviewTable data={applicants} headCells={headCells} tableName="Applicants"/>
                     : ''
             }
         </motion.div >
