@@ -11,8 +11,13 @@ import { PreviewTable } from "./table";
 const Preview = (props) => {
     const { career } = props;
     const [applicants, setApplicants] = useState([]);
-    console.log(career)
     const headCells = [
+        {
+            id: 'id',
+            numeric: false,
+            disablePadding: true,
+            label: 'Id',
+        },
         {
             id: 'first_name',
             numeric: false,
@@ -21,12 +26,18 @@ const Preview = (props) => {
         },
         {
             id: 'last_name',
-            numeric: true,
+            numeric: false,
             disablePadding: false,
             label: 'Last Name',
         },
         {
-            id: 'submission_date',
+            id: 'email',
+            numeric: false,
+            disablePadding: false,
+            label: 'Email',
+        },
+        {
+            id: 'date_created',
             numeric: false,
             disablePadding: false,
             label: 'Submission Date',
@@ -38,12 +49,13 @@ const Preview = (props) => {
         fetch(`${baseUrl}/api/v1/career-applicants/career/${career.id}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 let applicationList = []
                 data.result.map((item) => {
                     applicationList.push({
+                        id: item.id,
                         first_name: item.first_name,
                         last_name: item.last_name,
+                        email: item.email,
                         // cv: e.cv,
                         date_created: item.date_created
                     })

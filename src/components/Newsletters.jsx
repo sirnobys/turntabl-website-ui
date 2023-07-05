@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { motion } from "framer-motion"
 import { PreviewTable } from "./table";
 
@@ -22,6 +22,12 @@ const Newsletters = () => {
     }, [])
 
     const headCells = [
+        {
+            id: 'id',
+            numeric: false,
+            disablePadding: true,
+            label: 'Id',
+        },
         {
             id: 'email',
             numeric: false,

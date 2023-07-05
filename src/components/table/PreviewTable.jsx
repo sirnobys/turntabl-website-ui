@@ -51,7 +51,7 @@ function stableSort(array, comparator) {
 }
 
 function EnhancedTableHead(props) {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, headCells, tableName} =
+    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, headCells, tableName } =
         props;
     const createSortHandler =
         (property) => (event) => {
@@ -155,10 +155,10 @@ const PreviewTable = (props) => {
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    
+
     const { data, headCells, tableName } = props;
     const [rows, setRows] = useState(data);
-    console.log(data)
+    console.log(rows, headCells)
 
     const handleRequestSort = (
         event,
@@ -247,17 +247,17 @@ const PreviewTable = (props) => {
                         />
                         <TableBody>
                             {visibleRows.map((row, index) => {
-                                const isItemSelected = isSelected(row.first_name);
+                                const isItemSelected = isSelected(row.id);
                                 const labelId = `enhanced-table-checkbox-${index}`;
 
                                 return (
                                     <TableRow
                                         hover
-                                        onClick={(event) => handleClick(event, row.first_name)}
+                                        onClick={(event) => handleClick(event, row.id)}
                                         role="checkbox"
                                         aria-checked={isItemSelected}
                                         tabIndex={-1}
-                                        key={row.first_name}
+                                        key={row.id}
                                         selected={isItemSelected}
                                         sx={{ cursor: 'pointer' }}
                                     >
@@ -270,18 +270,16 @@ const PreviewTable = (props) => {
                                                 }}
                                             />
                                         </TableCell>
-                                        <TableCell
-                                            component="th"
-                                            id={labelId}
-                                            scope="row"
-                                            padding="none"
-                                        >
-                                            {row.first_name}
-                                        </TableCell>
-                                        <TableCell align="right">{row.last_name}</TableCell>
-                                        <TableCell align="right">{row.email}</TableCell>
-                                        {/* <TableCell align="right">{row.cv}</TableCell> */}
-                                        <TableCell align="right">{row.date_created}</TableCell>
+                                        {headCells.map((header) => (
+                                            <TableCell
+                                                component="th"
+                                                id={labelId}
+                                                scope="row"
+                                                padding="none"
+                                            >
+                                                {row[header.id]}
+                                            </TableCell>
+                                        ))}
                                     </TableRow>
                                 );
                             })}
