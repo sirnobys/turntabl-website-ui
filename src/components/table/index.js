@@ -1,1 +1,1 @@
-export { default as CareerApplicants } from './CareerApplicants';
+export { default as PreviewTable } from './PreviewTable';

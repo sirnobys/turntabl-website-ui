@@ -5,13 +5,33 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion"
-import { CareerApplicants } from "./table";
+import { PreviewTable } from "./table";
 
 
 const Preview = (props) => {
     const { career } = props;
     const [applicants, setApplicants] = useState([]);
     console.log(career)
+    const headCells = [
+        {
+            id: 'first_name',
+            numeric: false,
+            disablePadding: true,
+            label: 'First Name',
+        },
+        {
+            id: 'last_name',
+            numeric: true,
+            disablePadding: false,
+            label: 'Last Name',
+        },
+        {
+            id: 'submission_date',
+            numeric: true,
+            disablePadding: false,
+            label: 'Submission Date',
+        }
+    ];
     let baseUrl = 'http://localhost:5000';
 
     const getApplicants = () => {
@@ -288,7 +308,7 @@ const Preview = (props) => {
             </Card>
             {
                 applicants.length > 0 ?
-                    <CareerApplicants applicants={applicants} />
+                    <PreviewTable applicants={applicants} headCells={headCells} />
                     : ''
             }
         </motion.div >

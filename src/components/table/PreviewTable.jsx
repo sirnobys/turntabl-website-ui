@@ -21,46 +21,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
-// interface Data {
-//   calories: number;
-//   carbs: number;
-//   fat: number;
-//   name: string;
-//   protein: number;
-// }
-
-function createData(
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-) {
-    return {
-        name,
-        calories,
-        fat,
-        carbs,
-        protein,
-    };
-}
-
-// const rows_ = [
-//     createData('Cupcake', 305, 3.7, 67, 4.3),
-//     createData('Donut', 452, 25.0, 51, 4.9),
-//     createData('Eclair', 262, 16.0, 24, 6.0),
-//     createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//     createData('Gingerbread', 356, 16.0, 49, 3.9),
-//     createData('Honeycomb', 408, 3.2, 87, 6.5),
-//     createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//     createData('Jelly Bean', 375, 0.0, 94, 0.0),
-//     createData('KitKat', 518, 26.0, 65, 7.0),
-//     createData('Lollipop', 392, 0.2, 98, 0.0),
-//     createData('Marshmallow', 318, 0, 81, 2.0),
-//     createData('Nougat', 360, 19.0, 9, 37.0),
-//     createData('Oreo', 437, 18.0, 63, 4.0),
-// ];
-// console.log(rows_)
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -72,18 +32,12 @@ function descendingComparator(a, b, orderBy) {
     return 0;
 }
 
-// type  = 'asc' | 'desc';
-
 function getComparator(order, orderBy) {
     return order === 'desc'
         ? (a, b) => descendingComparator(a, b, orderBy)
         : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
-// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
-// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
-// with exampleArray.slice().sort(exampleComparator)
 function stableSort(array, comparator) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
@@ -96,51 +50,8 @@ function stableSort(array, comparator) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-// interface HeadCell {
-//     disablePadding: boolean;
-//     id: keyof Data;
-//     label: string;
-//     numeric: boolean;
-// }
-
-const headCells = [
-    {
-        id: 'first_name',
-        numeric: false,
-        disablePadding: true,
-        label: 'First Name',
-    },
-    {
-        id: 'last_name',
-        numeric: true,
-        disablePadding: false,
-        label: 'Last Name',
-    },
-    // {
-    //     id: 'cv',
-    //     numeric: true,
-    //     disablePadding: false,
-    //     label: 'CV',
-    // },
-    {
-        id: 'submission_date',
-        numeric: true,
-        disablePadding: false,
-        label: 'Submission Date',
-    }
-];
-
-// interface EnhancedTableProps {
-//     numSelected: number;
-//     onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-//     onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-//     order: Order;
-//     orderBy: string;
-//     rowCount: number;
-// }
-
 function EnhancedTableHead(props) {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, headCells} =
         props;
     const createSortHandler =
         (property) => (event) => {
@@ -186,10 +97,6 @@ function EnhancedTableHead(props) {
         </TableHead>
     );
 }
-
-// interface EnhancedTableToolbarProps {
-//     numSelected: number;
-// }
 
 function EnhancedTableToolbar(props) {
     const { numSelected } = props;
@@ -241,7 +148,7 @@ function EnhancedTableToolbar(props) {
     );
 }
 
-const CareerApplicants = (props) => {
+const PreviewTable = (props) => {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
     const [selected, setSelected] = useState([]);
@@ -249,7 +156,7 @@ const CareerApplicants = (props) => {
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     
-    const { applicants } = props;
+    const { applicants, headCells } = props;
     const [rows, setRows] = useState(applicants);
     console.log(applicants)
 
@@ -336,6 +243,7 @@ const CareerApplicants = (props) => {
                             onSelectAllClick={handleSelectAllClick}
                             onRequestSort={handleRequestSort}
                             rowCount={rows.length}
+                            headCells={headCells}
                         />
                         <TableBody>
                             {visibleRows.map((row, index) => {
@@ -407,4 +315,4 @@ const CareerApplicants = (props) => {
     );
 }
 
-export default CareerApplicants;
+export default PreviewTable;
