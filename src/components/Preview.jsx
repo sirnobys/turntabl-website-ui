@@ -27,7 +27,7 @@ const Preview = (props) => {
         },
         {
             id: 'submission_date',
-            numeric: true,
+            numeric: false,
             disablePadding: false,
             label: 'Submission Date',
         }
@@ -308,7 +308,7 @@ const Preview = (props) => {
             </Card>
             {
                 applicants.length > 0 ?
-                    <PreviewTable applicants={applicants} headCells={headCells} />
+                    <PreviewTable data={applicants} headCells={headCells} tableName="Applicants"/>
                     : ''
             }
         </motion.div >

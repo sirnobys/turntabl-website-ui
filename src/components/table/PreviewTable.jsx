@@ -51,7 +51,7 @@ function stableSort(array, comparator) {
 }
 
 function EnhancedTableHead(props) {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, headCells} =
+    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, headCells, tableName} =
         props;
     const createSortHandler =
         (property) => (event) => {
@@ -99,7 +99,7 @@ function EnhancedTableHead(props) {
 }
 
 function EnhancedTableToolbar(props) {
-    const { numSelected } = props;
+    const { numSelected, tableName } = props;
 
     return (
         <Toolbar
@@ -128,7 +128,7 @@ function EnhancedTableToolbar(props) {
                     id="tableTitle"
                     component="div"
                 >
-                    Nutrition
+                    {tableName}
                 </Typography>
             )}
             {numSelected > 0 ? (
@@ -156,9 +156,9 @@ const PreviewTable = (props) => {
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     
-    const { applicants, headCells } = props;
-    const [rows, setRows] = useState(applicants);
-    console.log(applicants)
+    const { data, headCells, tableName } = props;
+    const [rows, setRows] = useState(data);
+    console.log(data)
 
     const handleRequestSort = (
         event,
@@ -229,7 +229,7 @@ const PreviewTable = (props) => {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2 }}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length} tableName={tableName} />
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 750 }}
