@@ -11,6 +11,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/joy/IconButton';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ContactForm from '../components/forms/ContactForm';
@@ -34,6 +35,7 @@ export const Contact = () => {
                             display: "flex",
                             flexDirection: "row",
                             textAlign: "left",
+                            py: 7
                         }}>
                             <ChatIcon />
                             <div>
@@ -44,7 +46,7 @@ export const Contact = () => {
 
                         </Box>
 
-                        <Box sx={{
+                        {/* <Box sx={{
                             gap: 5,
                             display: "flex",
                             flexDirection: "row",
@@ -59,7 +61,7 @@ export const Contact = () => {
                                 <Typography className="mondwest">info@turntabl.io</Typography>
                             </div>
 
-                        </Box>
+                        </Box> */}
 
                         <Box sx={{
                             gap: 5,
@@ -80,17 +82,21 @@ export const Contact = () => {
                         <Box sx={{
                             gap: 1,
                             display: "flex",
-                            flexDirection: "row",
-                            textAlign: "left",
+                            flexDirection: "column",
+                            textAlign: "center",
                             pt: 5
                         }}>
-                            <IconButton size="sm" variant="plain" color="neutral">
-                                <TwitterIcon />
-                            </IconButton>
-                            <IconButton size="sm" variant="plain" color="neutral">
-                                <LinkedInIcon />
-                            </IconButton>
-
+                            <div>
+                                <IconButton size="sm" variant="plain" color="neutral">
+                                    <TwitterIcon />
+                                </IconButton>
+                                <IconButton size="sm" variant="plain" color="neutral">
+                                    <LinkedInIcon />
+                                </IconButton>
+                                <IconButton size="sm" variant="plain" color="neutral">
+                                    <YouTubeIcon />
+                                </IconButton>
+                            </div>
                         </Box>
                     </Grid>
                     <Grid item xs={12} lg={8}>
@@ -101,10 +107,10 @@ export const Contact = () => {
                             minHeight: '80vh',
                             display: "flex",
                             flexDirection: "column",
-                            textAlign: "center", 
+                            textAlign: "center",
                         }}>
-                           
-                        <ContactForm/>
+
+                            <ContactForm />
 
 
                         </Box>

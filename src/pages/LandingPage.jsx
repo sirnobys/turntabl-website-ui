@@ -16,13 +16,15 @@ export const LandingPage = (props) => {
         <div id='page-container'>
             <Nav />
             <div id="content-wrap">
-                <div style={{height:'100vh'}}>
+                <div style={{ height: '100vh' }}>
                     <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                         <Grid item xs={12} lg={6}>
                             <div className='section'>
                                 <div className='text'>
                                     <span className='leading'>Next level of Software Engineering</span>
-                                    <span className='end'>Picturesque of Ultimate excellence on show<img width={16} src={images.smile} /> </span>
+                                    <span className='end'>
+                                        We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
+                                        <img width={16} src={images.smile} /></span>
                                     <span>
                                         <Button className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                     </span>
@@ -69,7 +71,9 @@ export const LandingPage = (props) => {
                             <div className='text'>
                                 <span className='leading'>
                                     World class IT solutions delivered to a global client base</span>
-                                <span className='end'>We build the best product design & engineering teams <img width={16} src={images.smile} /> </span>
+                                <span className='end'>We’ve got a strong focus on technical excellence.<br />
+                                    Everyone on our annual graduate intake goes through an intensive two-month training program. When they’re done, we’re ready to work.
+                                    <img width={16} src={images.smile} /> </span>
                                 <span>
                                     <Button className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                 </span>
@@ -90,7 +94,7 @@ export const LandingPage = (props) => {
                 </Grid>
 
                 <div className='layout-y call-to-action'>
-                    <span className='text-grey'>Hire us for your next venture <img width={30} src={images.smile} /></span>
+                    <span className='text-grey'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
                     <Button className='btn button-insightful button-full-rounded' variant="contained">Say Hi</Button>
                 </div>
                 <div className='clients'>

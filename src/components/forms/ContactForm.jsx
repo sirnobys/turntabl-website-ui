@@ -12,41 +12,33 @@ import Textarea from '@mui/joy/Textarea';
 
 const ContactForm = (props) => {
     const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [urlTitle, setUrlTitle] = useState(null);
-    const [urlLink, setUrlLink] = useState(null);
+    const [message, setMessage] = useState('');
+    const [email, setEmail] = useState('');
 
-    const { sendBlogData, handleClose, open } = props;
 
-    const handleBlogSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         let data = {
             name: name,
-            description: description,
-            image: selectedImage,
-            urlTitle: urlTitle,
-            urlLink: urlLink
+            message: message,
+            email: email
         }
-        sendBlogData(data);
+
         setName('');
-        setDescription('');
-        setSelectedImage(null);
-        setUrlTitle('');
-        setUrlLink('');
+        setEmail('');
+        setMessage('');
     }
 
-    const handleBlogClose = () => {
-        handleClose();
-    }
+  
 
     return (
         <Box>
-            <div>
+            <form onSubmit={handleSubmit}>
                 <Box borderRadius={4}
                     sx={{
                         // px: { xs: 2, sm: 5 },
                         // py: { xs: 2, sm: 5 },
-                        minHeight: '70vh',
+                        minHeight: '50vh',
                         display: "flex",
                         flexDirection: "column",
                         textAlign: "center",
@@ -54,6 +46,11 @@ const ContactForm = (props) => {
                     <Typography>Heading</Typography>
                     <Typography>Sub heading</Typography>
                     <TextField
+                        sx={{
+                            background: 'white'
+                        }}
+                        required
+                        value={name}
                         autoFocus
                         margin="dense"
                         id="name"
@@ -65,30 +62,37 @@ const ContactForm = (props) => {
                     />
 
                     <TextField
-                        autoFocus
+                        sx={{
+                            background: 'white'
+                        }}
+                        required
+                        value={email}
+                        // autoFocus
                         margin="dense"
                         id="email"
                         label="Your email"
                         type="email"
                         fullWidth
                         variant="outlined"
-                        onChange={(e) => setUrlTitle(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <Textarea
                         sx={{
                             mt: 1,
-                            mb:3,
-                            pb:7
+                            mb: 3,
+                            pb: 4
                         }}
-                        placeholder="message"
+                        required
+                        value={message}
+                        placeholder="Tell us a little about you, your organisation or your project "
                         minRows={3}
                         variant="outlined"
                         size="md"
-                        onChange={(e) => setDescription(e.target.value)}
+                        onChange={(e) => setMessage(e.target.value)}
                     />
-                    <Button className='button-pixel-black' variant='contained'>Let's get started</Button>
+                    <Button  type="submit" className='button-pixel-black' variant='contained'>Let's get started</Button>
                 </Box>
-            </div>
+            </form>
         </Box>
     )
 }

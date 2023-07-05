@@ -246,6 +246,7 @@
 }
 
 .button-pixel-black {
+  text-transform: none !important;
   background-color: #000000 !important;
   color: #ffffff !important;
 }
