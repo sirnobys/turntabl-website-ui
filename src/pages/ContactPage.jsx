@@ -35,7 +35,7 @@ export const Contact = () => {
                             display: "flex",
                             flexDirection: "row",
                             textAlign: "left",
-                            py: 7
+                            py: {xs:2,sm:7}
                         }}>
                             <ChatIcon />
                             <div>

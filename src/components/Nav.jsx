@@ -21,7 +21,7 @@ const Nav = (props) => {
     const navigate = useNavigate();
     const path = window.location.pathname
     const [activeLink, setActiveLink] = useState(path)
-    const matches = useMediaQuery('(min-width:800px)');
+    const matches = useMediaQuery('(min-width:821px)');
     const [scrolled, setScrolled] = useState()
 
     useEffect(_ => {

@@ -14,6 +14,11 @@ import citi from '../assets/trusted/citi.png';
 import fidelity from '../assets/trusted/fidelity.jpg';
 import finos from '../assets/trusted/finos.jpg';
 import MS from '../assets/trusted/MS.jpg';
+import career_alt from '../assets/career-alt.jpg'
+import career from '../assets/career.jpeg'
+import event_alt from '../assets/event-alt.jpg'
+import event from '../assets/event.jpg'
+import service_header from '../assets/service-header.jpg'
 
 
 export default {
@@ -32,5 +37,10 @@ export default {
     citi,
     fidelity,
     finos,
-    MS
+    MS,
+    career,
+    career_alt,
+    event,
+    event_alt,
+    service_header
 };

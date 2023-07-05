@@ -41,11 +41,11 @@ export const LandingPage = (props) => {
                         <Grid item xs={12} lg={6}>
                             <motion.div
                                 animate={{
-                                    rotate: [20, -20, 20, 0],
+                                    rotate: [5, -5, 5, 0],
                                     // scale: 1.2
                                 }}
                                 whileHover={{ scale: 1.07 }}
-                                whileTap={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.7 }}
                             >
                                 <span ><img width="90%" src={images.geek} /></span>
                             </motion.div>
@@ -103,8 +103,8 @@ export const LandingPage = (props) => {
                     <span>Trusted By</span>
                     <span className='layout-x'>
                         <Grid container spacing={0} alignItems={'center'} mb={10}>
-                            {clients.map(e => (
-                                <Grid item xs={12} sm={6} md={3} paddingTop={4}>
+                            {clients.map((e,i) => (
+                                <Grid key={i} item xs={12} sm={6} md={3} paddingTop={4}>
                                     <div align="center">
                                         {Clients(e.name, e.image, e.location)}
                                     </div>

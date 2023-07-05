@@ -23,12 +23,12 @@ export const AboutUs = () => {
         { name: 'Sam Appiah', bio: "", role:"Engineer", image: "", twitter: "", linkedIn: "" },
         { name: 'Mike Annan', bio: "", role:"Engineer", image: "", twitter: "", linkedIn: "" },
     ]
-    const intro = "We Provide Innovative Software Engineering Solutions To Businesses All Over The World."
+    const intro =() => <span>  We Provide Innovative Software Engineering Solutions <br />To Businesses All Over The World.</span>
     return (
         <div id='page-container'>
             <Nav />
             <div id='content-wrap'>
-                <Banner bgImage={images.IMG_9005} image={images.pc} page={'About Us'} intro={intro} />
+                <Banner bgImage={images.IMG_9005} image={images.pc} page={'About Us'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
                     <Grid item xs={12} lg={12}>
                         <Box className='text-clear-white mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, background: 'black' }}>
