@@ -6,8 +6,15 @@ import { motion } from "framer-motion"
 
 import { Slider, slides, Testimonial, Nav, Footer } from '../components';
 import { images } from '../constants';
+import Clients from '../components/Clients';
 
 
+const clients = [
+    { name: 'Morgan Stanley', location: 'London, UK', image: images.MS },
+    { name: 'Citi Bank', location: 'London, UK', image: images.citi },
+    { name: 'Fidelity', location: 'Accra, Ghana', image: images.fidelity },
+    { name: 'Finos', location: 'London, UK', image: images.finos },
+]
 
 export const LandingPage = (props) => {
     const theme = useTheme();
@@ -26,7 +33,7 @@ export const LandingPage = (props) => {
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
                                         <img width={16} src={images.smile} /></span>
                                     <span>
-                                        <Button onClick={()=>navigate('/about-us')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
+                                        <Button onClick={() => navigate('/about-us')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                     </span>
                                 </div>
                             </div>
@@ -48,11 +55,6 @@ export const LandingPage = (props) => {
 
 
                 <div className='slider'>
-                    {/* <div className='layout-x'>
-        <span><Button className='btn button-welcoming button-partial-rounded' variant="text">Upcoming Events</Button></span>
-        <span><Button className='btn button-inspiration button-partial-rounded' variant="contained">Current Events</Button></span>
-        <span><Button className='btn button-insightful button-partial-rounded' variant="contained">Blogs</Button></span>
-    </div> */}
                     <div className='slider-content'>
                         <Slider slides={slides} />
                     </div>
@@ -100,55 +102,16 @@ export const LandingPage = (props) => {
                 <div className='clients'>
                     <span>Trusted By</span>
                     <span className='layout-x'>
-                        <div class="slider-logo">
-                            <div class="slide-track">
-                                <div class="slide">
-                                    <motion.div
-                                        animate={{
-                                            rotate: [20, -20, 20, -20, 20, -20, 0]
-                                        }}
-                                        whileHover={{ scale: 1.2 }}
-                                        whileTap={{ scale: 1.9 }}
-                                    >
-                                        <img src={images.citi} height="100" width="100" alt="" />
-                                    </motion.div>
-
-                                </div>
-                                <div class="slide">
-                                    <motion.div
-                                        animate={{
-                                            rotate: [20, -20, 20, -20, 20, -20, 0]
-                                        }}
-                                        whileHover={{ scale: 1.2, rotate: [20, -20, 20, -20, 20, -20, 0] }}
-                                        whileTap={{ scale: 1.9 }}
-                                    >
-                                        <img src={images.MS} height="100" width="100" alt="" />
-                                    </motion.div>
-                                </div>
-                                <div class="slide">
-                                    <motion.div
-                                        animate={{
-                                            rotate: [20, -200, 20, -200, 20, -20, 0]
-                                        }}
-                                        whileHover={{ scale: 1.9 }}
-                                        whileTap={{ rotate: [20, -200, 20, -200, 20, -20, 0], scale: 1.9 }}
-                                    >
-                                        <img src={images.fidelity} height="100" width="100" alt="" />
-                                    </motion.div>
-                                </div>
-                                <div class="slide">
-                                    <motion.div
-                                        animate={{
-                                            rotate: [20, -200, 20, -20, 20, -20, 0]
-                                        }}
-                                        whileHover={{ scale: 1.2, rotate: [20, -20, 20, -20, 20, -20, 0] }}
-                                        whileTap={{ scale: 1.9 }}
-                                    >
-                                        <img src={images.finos} height="100" width="100" alt="" />
-                                    </motion.div>
-                                </div>
-                            </div>
-                        </div>
+                        <Grid container spacing={0} alignItems={'center'} mb={10}>
+                            {clients.map(e => (
+                                <Grid item xs={12} sm={6} md={3} paddingTop={4}>
+                                    <div align="center">
+                                        {Clients(e.name, e.image, e.location)}
+                                    </div>
+                                </Grid>
+                            ))
+                            }
+                        </Grid>
                     </span>
                 </div>
                 <div className='testimony'>
