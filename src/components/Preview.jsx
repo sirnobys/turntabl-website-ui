@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion"
+import { CareerApplicants } from "./table";
 
 
 const Preview = (props) => {
     const { career } = props;
+    const [applicants, setApplicants] = useState([]);
     console.log(career)
+    let baseUrl = 'http://localhost:5000';
+
+    const getApplicants = () => {
+        fetch(`${baseUrl}/api/v1/career-applicants/career/${career.id}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                let applicationList = []
+                data.result.map((item) => {
+                    applicationList.push({
+                        first_name: item.first_name,
+                        last_name: item.last_name,
+                        // cv: e.cv,
+                        date_created: item.date_created
+                    })
+                })
+                setApplicants(applicationList)
+            })
+    }
+
     return (
         <motion.div
             className="box"
@@ -48,6 +70,20 @@ const Preview = (props) => {
                             margin: 2
                         }}
                     >
+                        <Button
+                            size="small"
+                            variant="contained"
+                            sx={{
+                                fontSize: { xs: 8, sm: 12 },
+                                backgroundColor: '#b0b0ff',
+                                ":hover": {
+                                    backgroundColor: '#6d6e71',
+                                },
+                                marginRight: 1
+                            }}
+                            onClick={getApplicants}
+                        >View Applicants
+                        </Button>
                         <Button
                             size="small"
                             variant="contained"
@@ -250,6 +286,11 @@ const Preview = (props) => {
                     </Box>
                 </CardContent>
             </Card>
+            {
+                applicants.length > 0 ?
+                    <CareerApplicants applicants={applicants} />
+                    : ''
+            }
         </motion.div >
     )
 }
