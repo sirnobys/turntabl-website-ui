@@ -103,8 +103,8 @@ export const Contact = () => {
                         <Box borderRadius={4} sx={{
                             px: { xs: 2, sm: 5 },
                             py: { xs: 2, sm: 5 },
-                            background: '#bdff00',
-                            minHeight: '80vh',
+                            background: '#b0b0ff',
+                            minHeight: '40vh',
                             display: "flex",
                             flexDirection: "column",
                             textAlign: "center",

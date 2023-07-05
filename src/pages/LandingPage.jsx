@@ -11,7 +11,7 @@ import { images } from '../constants';
 
 export const LandingPage = (props) => {
     const theme = useTheme();
-    console.log(theme.breakpoints.up('sm'));
+    const navigate = useNavigate()
     return (
         <div id='page-container'>
             <Nav />
@@ -26,7 +26,7 @@ export const LandingPage = (props) => {
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
                                         <img width={16} src={images.smile} /></span>
                                     <span>
-                                        <Button className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
+                                        <Button onClick={()=>navigate('/about-us')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                     </span>
                                 </div>
                             </div>

@@ -17,7 +17,8 @@
   /* font-family: "mondwest"; */
 }
 
-.logo {
+.logo :hover{
+  cursor: pointer;
   /* padding-left: 50px; */
 }
 

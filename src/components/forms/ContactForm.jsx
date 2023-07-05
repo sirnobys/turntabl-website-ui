@@ -29,7 +29,7 @@ const ContactForm = (props) => {
         setMessage('');
     }
 
-  
+
 
     return (
         <Box>
@@ -38,13 +38,13 @@ const ContactForm = (props) => {
                     sx={{
                         // px: { xs: 2, sm: 5 },
                         // py: { xs: 2, sm: 5 },
-                        minHeight: '50vh',
+                        minHeight: '40vh',
                         display: "flex",
                         flexDirection: "column",
                         textAlign: "center",
                     }}>
-                    <Typography>Heading</Typography>
-                    <Typography>Sub heading</Typography>
+                    <Typography>Got ideas? We've got the skills</Typography>
+                    <Typography>Let's team up!</Typography>
                     <TextField
                         sx={{
                             background: 'white'
@@ -90,7 +90,7 @@ const ContactForm = (props) => {
                         size="md"
                         onChange={(e) => setMessage(e.target.value)}
                     />
-                    <Button  type="submit" className='button-pixel-black' variant='contained'>Let's get started</Button>
+                    <Button type="submit" className='button-pixel-black' variant='contained'>Let's get started</Button>
                 </Box>
             </form>
         </Box>
