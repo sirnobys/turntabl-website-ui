@@ -235,6 +235,7 @@ const PreviewTable = (props) => {
                         sx={{ minWidth: 750 }}
                         aria-labelledby="tableTitle"
                         size={dense ? 'small' : 'medium'}
+                        stickyHeader='true'
                     >
                         <EnhancedTableHead
                             numSelected={selected.length}
