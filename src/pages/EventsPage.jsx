@@ -40,7 +40,7 @@ export const EventsPage = () => {
         <div id='page-container'>
             <Nav />
             <div id='content-wrap'>
-                <Banner bgImage={images.event_alt} image={images.pc} page={'Events'} intro={intro()} />
+                <Banner bgImage={images.event_alt_2} image={images.pc} page={'Events'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
                     {services.map((event) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>

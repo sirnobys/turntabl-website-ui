@@ -71,6 +71,9 @@ const Footer = () => {
                                 Mayor Road
                                 Ridge West, Accra
                             </div>
+                            <div>
+                                1st & 2nd floor, Sonnidom House Mile 7, Achimota
+                            </div>
                         </div>
                     </Grid>
                 </Grid>

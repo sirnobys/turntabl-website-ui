@@ -19,6 +19,9 @@ import career from '../assets/career.jpeg'
 import event_alt from '../assets/event-alt.jpg'
 import event from '../assets/event.jpg'
 import service_header from '../assets/service-header.jpg'
+import happy_faces from '../assets/happy_faces.jpg'
+import career_alt_2 from '../assets/career-alt-2.jpg'
+import event_alt_2 from '../assets/event-alt-2.jpg'
 
 
 export default {
@@ -42,5 +45,8 @@ export default {
     career_alt,
     event,
     event_alt,
-    service_header
+    service_header,
+    career_alt_2,
+    happy_faces,
+    event_alt_2
 };
