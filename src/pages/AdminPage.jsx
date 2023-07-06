@@ -94,7 +94,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const AdminPage = () => {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-    const [section, setSection] = useState('');
+    const [section, setSection] = useState('careers');
 
     const handleDrawerOpen = () => {
         setOpen(true);

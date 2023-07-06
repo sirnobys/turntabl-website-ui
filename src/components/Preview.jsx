@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import IconButton from '@mui/joy/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+
 import { PreviewTable } from "./table";
 
 
 const Preview = (props) => {
-    const { career } = props;
+    const { career, updateCareer, deleteCareer } = props;
     const [applicants, setApplicants] = useState([]);
     const headCells = [
         {
@@ -64,6 +69,14 @@ const Preview = (props) => {
             })
     }
 
+    const handleEdit = () => {
+        updateCareer(career)
+    }
+
+    const handleDelete = () => {
+        deleteCareer(career)
+    }
+
     return (
         <motion.div
             className="box"
@@ -102,45 +115,45 @@ const Preview = (props) => {
                             margin: 2
                         }}
                     >
-                        <Button
-                            size="small"
-                            variant="contained"
-                            sx={{
-                                fontSize: { xs: 8, sm: 12 },
-                                backgroundColor: '#b0b0ff',
-                                ":hover": {
-                                    backgroundColor: '#6d6e71',
-                                },
-                                marginRight: 1
-                            }}
-                            onClick={getApplicants}
-                        >View Applicants
-                        </Button>
-                        <Button
-                            size="small"
-                            variant="contained"
-                            sx={{
-                                fontSize: { xs: 8, sm: 12 },
-                                backgroundColor: '#b0b0ff',
-                                ":hover": {
-                                    backgroundColor: '#6d6e71',
-                                },
-                                marginRight: 1
-                            }}
-                        >Edit
-                        </Button>
-                        <Button
-                            size="small"
-                            variant="contained"
-                            sx={{
-                                fontSize: { xs: 8, sm: 12 },
-                                backgroundColor: '#b0b0ff',
-                                ":hover": {
-                                    backgroundColor: '#6d6e71',
-                                }
-                            }}
-                        >Delete
-                        </Button>
+                        <Tooltip title="View Applicants">
+                            <IconButton
+                                sx={{
+                                    fontSize: { xs: 8, sm: 12 },
+                                    color: '#b0b0ff',
+                                    ":hover": {
+                                        color: '#6d6e71',
+                                    }
+                                }}
+                                variant="plain"
+                                onClick={getApplicants}>
+                                <RemoveRedEyeIcon />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Edit Career">
+                            <IconButton
+                                sx={{
+                                    fontSize: { xs: 8, sm: 12 },
+                                    color: '#b0b0ff',
+                                    ":hover": {
+                                        color: '#6d6e71',
+                                    }
+                                }}
+                                variant="plain"
+                                onClick={() => handleEdit()}>
+                                <EditIcon />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Delete Career">
+                            <IconButton
+                                sx={{
+                                    fontSize: { xs: 8, sm: 12 },
+                                    color: '#FF0000'
+                                }}
+                                variant="plain"
+                                onClick={() => handleDelete()}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </Tooltip>
                     </Box>
 
                 </Box>
@@ -320,7 +333,7 @@ const Preview = (props) => {
             </Card>
             {
                 applicants.length > 0 ?
-                    <PreviewTable data={applicants} headCells={headCells} tableName="Applicants"/>
+                    <PreviewTable data={applicants} headCells={headCells} tableName="Applicants" />
                     : ''
             }
         </motion.div >

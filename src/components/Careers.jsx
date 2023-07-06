@@ -76,6 +76,43 @@ const Careers = () => {
         setOpen(false);
     }
 
+    const updateCareer = (career) => {
+        console.log(career)
+        setOpen(true)
+        // fetch(`${baseUrl}/api/v1/careers/${career.id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(career),
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // Handle the response from the backend
+        //         setLoad(!load)
+        //     })
+        //     .catch(error => {
+        //         // Handle any errors
+        //     });
+
+    }
+
+    const deleteCareer = (career) => {
+        console.log(career)
+        fetch(`${baseUrl}/api/v1/careers/${career.id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                // Handle the response from the backend
+                setLoad(!load)
+            })
+            .catch(error => {
+                // Handle any errors
+            });
+    }
+
     return (
         <Box
             sx={{
@@ -146,7 +183,7 @@ const Careers = () => {
                     </motion.div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={9}>
-                    <Preview career={selectedCareer} />
+                    <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer} />
                 </Grid>
             </Grid>
         </Box>
