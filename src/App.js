@@ -8,6 +8,7 @@ import { Contact } from "./pages/ContactPage";
 import { Services } from "./pages/ServicesPage";
 import { EventsPage } from "./pages/EventsPage";
 import { BlogPage } from "./pages/BlogPage";
+import { CareersPage } from "./pages/CareersPage";
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/admin" element={<AdminPage />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/events" element={<EventsPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/services" element={<Services />} />
         </Routes>
       </Router>
     </div>

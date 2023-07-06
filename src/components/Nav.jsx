@@ -56,9 +56,9 @@ const Nav = (props) => {
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
-                    // onMouseEnter={handleClick}
-                >
-                    <Button variant="text" className={activeLink === "/services" || activeLink === "/about-us" || activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} startIcon={<PeopleIcon />} endIcon={<ArrowDropDown />}  > <Link className={activeLink === "/services" || activeLink === "/about-us" || activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} underline='none'>About Us</Link></Button>
+                    variant="text" className={activeLink === "/services" || activeLink === "/about-us" || activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} startIcon={<PeopleIcon />} endIcon={<ArrowDropDown />}  >
+                    <Link className={activeLink === "/services" || activeLink === "/about-us" || activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} underline='none'>About Us</Link>
+                    {/* <Button variant="text" className={activeLink === "/services" || activeLink === "/about-us" || activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} startIcon={<PeopleIcon />} endIcon={<ArrowDropDown />}  > <Link className={activeLink === "/services" || activeLink === "/about-us" || activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} underline='none'>About Us</Link></Button> */}
                 </Button>
                 <Menu
                     id="basic-menu"
@@ -132,7 +132,7 @@ const Nav = (props) => {
     if (!matches) {
         return (
             <div className={scrolled ? 'header' : 'nav'}>
-                <div className='logo' onClick={()=>navigate('/')}><img width={150} src={images.logo} /></div>
+                <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} /></div>
                 <BasicMenu />
             </div>
         )
