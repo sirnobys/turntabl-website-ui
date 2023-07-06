@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
-import HomeIcon from '@mui/icons-material/Home';
+// import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
 import HailIcon from '@mui/icons-material/Hail';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
@@ -132,7 +132,7 @@ const Nav = (props) => {
     if (!matches) {
         return (
             <div className={scrolled ? 'header' : 'nav'}>
-                <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} /></div>
+                <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} alt='logo'/></div>
                 <BasicMenu />
             </div>
         )
@@ -141,7 +141,7 @@ const Nav = (props) => {
         return (
             <div>
                 <div className={scrolled ? 'header' : 'nav'}>
-                    <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} /></div>
+                    <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} alt=''/></div>
                     <div className='nav-link'>
                         {/* <Button variant="text" className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/about-us'), setActiveLink('/about-us')]} startIcon={<PeopleIcon />}> <Link className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} underline='none'>About Us</Link></Button> */}
                         <AboutDropdown />
