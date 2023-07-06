@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Divider, Grid, Typography } from "@mui/material"
+import { Box, Button,Grid, Typography } from "@mui/material"
 import { useNavigate } from 'react-router'
 
 export const Banner = ({ bgImage, image, page, intro }) => {

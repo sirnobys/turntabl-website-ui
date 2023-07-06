@@ -36,7 +36,7 @@ export const AboutUs = () => {
                                 <Typography className='mondwest text-insightful' sx={{ fontSize: { xs: '60px', sm: '70px', } }}>
                                     Mission
                                 </Typography>
-                                <img width="70px" src={images.thumb} />
+                                <img width="70px" src={images.thumb} alt='thumb'/>
                             </div>
                             <Typography className='mondwest' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
                                 Our mission is to make a difference in the world of digital technology and more

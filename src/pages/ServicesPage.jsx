@@ -52,7 +52,7 @@ export const Services = () => {
                     ))}
 
                     <Grid item xs={12} lg={12} pt={6}>
-                        <img width="200px" src={images.thumb} />
+                        <img width="200px" src={images.thumb} alt='thumb'/>
                     </Grid>
                     <Grid item xs={12} lg={12}>
                         <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>

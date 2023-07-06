@@ -22,8 +22,6 @@ import finos from "../images/trusted/finos.jpg"
 // )
 
 export const LandingPage = (props) => {
-    const theme = useTheme();
-    console.log(theme.breakpoints.up('sm'));
     return (
         <div>
 
