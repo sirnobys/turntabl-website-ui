@@ -41,29 +41,60 @@ const Careers = () => {
         setSelectedCareer(career);
     }
 
-    const sendCareerData = (data) => {
-        const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('department', data.department);
-        formData.append('description', data.description);
-        formData.append('requirements', JSON.stringify(data.requirements));
-        formData.append('responsibilities', JSON.stringify(data.responsibilities));
-        formData.append('technologies', JSON.stringify(data.technologies));
-        formData.append('salary', data.salary);
-        formData.append('description', data.description);
+    const sendCareerData = (data, id=null) => {
+        if (id) {
+            console.log(id)
+            let careerUpdate = {
+                id: data.id,
+                name: data.name,
+                department: data.department,
+                description: data.description,
+                requirements: data.requirements,
+                responsibilities: data.responsibilities,
+                technologies: data.technologies,
+                salary: data.salary
+            }
 
-        fetch(`${baseUrl}/api/v1/careers`, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the response from the backend
-                setLoad(!load)
+            fetch(`${baseUrl}/api/v1/careers/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(careerUpdate),
             })
-            .catch(error => {
-                // Handle any errors
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    // Handle the response from the backend
+                    setLoad(!load)
+                })
+                .catch(error => {
+                    // Handle any errors
+                });
+        }
+        else {
+            const formData = new FormData();
+            formData.append('name', data.name);
+            formData.append('department', data.department);
+            formData.append('description', data.description);
+            formData.append('requirements', JSON.stringify(data.requirements));
+            formData.append('responsibilities', JSON.stringify(data.responsibilities));
+            formData.append('technologies', JSON.stringify(data.technologies));
+            formData.append('salary', data.salary);
+
+            fetch(`${baseUrl}/api/v1/careers`, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the backend
+                    setLoad(!load)
+                })
+                .catch(error => {
+                    // Handle any errors
+                });
+        }
 
         setOpen(false)
     }
@@ -76,25 +107,8 @@ const Careers = () => {
         setOpen(false);
     }
 
-    const updateCareer = (career) => {
-        console.log(career)
+    const updateCareer = () => {
         setOpen(true)
-        // fetch(`${baseUrl}/api/v1/careers/${career.id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(career),
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         // Handle the response from the backend
-        //         setLoad(!load)
-        //     })
-        //     .catch(error => {
-        //         // Handle any errors
-        //     });
-
     }
 
     const deleteCareer = (career) => {
@@ -148,7 +162,7 @@ const Careers = () => {
                     New Career
                 </Button>
             </Box>
-            <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} />
+            <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} data={selectedCareer} />
             <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 <Grid item xs={12} sm={12} md={3}>
                     <motion.div

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Typography } from "@mui/material";
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -22,7 +22,33 @@ const CareerForm = (props) => {
     const [technologies, setTechnologies] = useState([{ technology: "" }]);
     const [salary, setSalary] = useState('');
 
-    const { sendCareerData, handleClose, open } = props;
+    const { sendCareerData, handleClose, data, open } = props;
+
+    useEffect(() => {
+        const updateFormFields = () => {
+            console.log(data)
+            setName(data?.name)
+            setDepartment(data?.department)
+            setDescription(data?.description)
+            let requirementsData = []
+            data?.requirements?.map((e) => {
+                requirementsData.push({ requirement: e })
+            })
+            setRequirements(requirementsData)
+            let responsibilitiesData = []
+            data?.responsibilities?.map((e) => {
+                responsibilitiesData.push({ responsibility: e })
+            })
+            setResponsibilities(responsibilitiesData)
+            let technologiesData = []
+            data?.technologies?.map((e) => {
+                technologiesData.push({ technology: e })
+            })
+            setTechnologies(technologiesData)
+            setSalary(data?.salary)
+        }
+        updateFormFields()
+    }, [data])
 
     let handleReqChange = (i, e) => {
         let newFormValues = [...requirements];
@@ -86,7 +112,7 @@ const CareerForm = (props) => {
         technologies.map((v) => {
             tech.push(v.technology)
         })
-        let data = {
+        let careerDetails = {
             name: name,
             department: department,
             description: description,
@@ -95,8 +121,14 @@ const CareerForm = (props) => {
             technologies: tech,
             salary: salary
         }
-        console.log(data)
-        sendCareerData(data);
+        console.log(careerDetails)
+
+        if (data) {
+            sendCareerData(careerDetails, data?.id);
+        }
+        else {
+            sendCareerData(careerDetails);
+        }
         setName('');
         setDepartment('');
         setDescription('');
@@ -144,6 +176,7 @@ const CareerForm = (props) => {
                                 id="name"
                                 label="Career Name"
                                 type="text"
+                                value={name}
                                 fullWidth
                                 variant="outlined"
                                 onChange={(e) => setName(e.target.value)}
@@ -154,6 +187,7 @@ const CareerForm = (props) => {
                                 id="department"
                                 label="Department"
                                 type="text"
+                                value={department}
                                 onChange={(e) => setDepartment(e.target.value)}
                                 fullWidth
                                 variant="outlined"
@@ -169,7 +203,7 @@ const CareerForm = (props) => {
                                         overflow: 'auto'
                                     }}
                                 >
-                                    {requirements.map((element, index) => (
+                                    {requirements?.map((element, index) => (
                                         <Box
                                             key={index}
                                             sx={{
@@ -216,7 +250,7 @@ const CareerForm = (props) => {
                                         overflow: 'auto'
                                     }}
                                 >
-                                    {responsibilities.map((element, index) => (
+                                    {responsibilities?.map((element, index) => (
                                         <Box
                                             key={index}
                                             sx={{
@@ -263,7 +297,7 @@ const CareerForm = (props) => {
                                         overflow: 'auto'
                                     }}
                                 >
-                                    {technologies.map((element, index) => (
+                                    {technologies?.map((element, index) => (
                                         <Box
                                             key={index}
                                             sx={{
@@ -305,6 +339,7 @@ const CareerForm = (props) => {
                                 id="salary"
                                 label="Salary"
                                 type="text"
+                                value={salary}
                                 onChange={(e) => setSalary(e.target.value)}
                                 fullWidth
                                 variant="outlined"
@@ -316,6 +351,7 @@ const CareerForm = (props) => {
                                 placeholder="Event Description..."
                                 minRows={3}
                                 variant="outlined"
+                                value={description}
                                 size="md"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
@@ -323,7 +359,7 @@ const CareerForm = (props) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCareerClose}>Cancel</Button>
-                        <Button onClick={handleCareerSubmit}>Submit</Button>
+                        <Button onClick={handleCareerSubmit}>{data ? 'Update' : 'Submit'}</Button>
                     </DialogActions>
                 </Dialog>
             </div>
