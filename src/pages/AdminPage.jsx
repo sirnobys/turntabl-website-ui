@@ -19,8 +19,9 @@ import EventIcon from '@mui/icons-material/Event';
 import WorkIcon from '@mui/icons-material/Work';
 import FeedIcon from '@mui/icons-material/Feed';
 import ArticleIcon from '@mui/icons-material/Article';
+import CallIcon from '@mui/icons-material/Call';
 
-import { Events, Blogs, Careers, Newsletters } from '../components';
+import { Events, Blogs, Careers, Newsletters, Contact } from '../components';
 import { images } from '../constants';
 
 const drawerWidth = 240;
@@ -218,6 +219,27 @@ const AdminPage = () => {
                             <ListItemText primary={'Newsletters'} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
+                    <ListItem key={'contact'} disablePadding sx={{ display: 'block' }}>
+                        <ListItemButton
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                            }}
+                            onClick={() => setSection('contact')}
+                        >
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <CallIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Contact'} sx={{ opacity: open ? 1 : 0 }} />
+                        </ListItemButton>
+                    </ListItem>
                 </List>
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, pt: { xs: 2, sm: 3 }, pl: { xs: 9, sm: 11 }, pr: { xs: 2, sm: 3 } }}>
@@ -229,7 +251,9 @@ const AdminPage = () => {
                     <Blogs />
                     : section === 'careers' ?
                     <Careers />
-                    : <Newsletters />
+                    : section === 'newsletters' ?
+                    <Newsletters />
+                    : <Contact />
                 }
             </Box>
         </Box>

@@ -14,7 +14,6 @@ const Newsletters = () => {
             fetch(`${baseUrl}/api/v1/newsletters/subscribers`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     setSubscribers(data.result)
                 })
         }
