@@ -66,8 +66,8 @@ export const AboutUs = () => {
                         <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Core Values</Typography>
                     </Grid>
                     {
-                        coreValues.map((e) => (
-                            <Grid item xs={12} sm={6} md={3} paddingTop={4}>
+                        coreValues.map((e,idx) => (
+                            <Grid key={idx} item xs={12} sm={6} md={3} paddingTop={4}>
                                 <div align="center">
                                     <CoreValues value={e.value} icon={e.icon} />
                                 </div>
@@ -78,8 +78,8 @@ export const AboutUs = () => {
                         <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Meet Our Team</Typography>
                     </Grid>
                     {
-                        team.map((e) => (
-                            <Grid item xs={12} sm={6} md={3} paddingTop={4}>
+                        team.map((e,idx) => (
+                            <Grid key={idx} item xs={12} sm={6} md={3} paddingTop={4}>
                                 <div align="center">
                                     <Team name={e.name} image={e.image} role={e.role} bio={e.bio} linkedIn={e.linkedIn} twitter={e.twitter}/>
                                 </div>

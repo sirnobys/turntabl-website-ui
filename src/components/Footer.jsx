@@ -1,9 +1,11 @@
 import { Button, Divider, Grid, TextField } from '@mui/material';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Twitter, YouTube, LinkedIn } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
 
 import { images } from '../constants';
+import { links } from '../constants';
+import { IconButton } from '@mui/joy';
 
 
 const Footer = () => {
@@ -12,11 +14,11 @@ const Footer = () => {
             <div className="footer-ceil">
                 <Grid container spacing={2} >
                     <Grid item xs={12} md={4} lg={4}>
-                        <span><img width="50%" src={images.logo} /></span>
+                        <span><img width="50%" src={images.logo} alt='turntabl logo'/></span>
                         <div className='news-letter'>
                             <span className='layout-x'>
                                 <TextField placeholder='enter email' size='small' label="Subscribe to news letter" />
-                                <Button className='btn button-disruption text-clear-white' variant='contained' endIcon={<SendIcon />}>Subscribe</Button>
+                                <Button className='btn button-pixel-black' variant='contained' endIcon={<SendIcon />}>Subscribe</Button>
                             </span>
                         </div>
 
@@ -35,16 +37,22 @@ const Footer = () => {
                         <div className='social-media'>
                             <div className="layout-y">
                                 <span className='layout-x'>
-                                    <YouTube className='icons' />
-                                    <span>Youtube</span>
+                                    <IconButton onClick={()=> window.open(links.YOUTUBE,'_blank')} size="xs" variant="plain" color="neutral">
+                                        <YouTube className='icons' />&nbsp;
+                                        <span>Youtube</span>
+                                    </IconButton>
                                 </span>
                                 <span className='layout-x'>
-                                    <Twitter className='icons' />
-                                    <span>Twitter</span>
+                                    <IconButton onClick={()=> window.open(links.TWITTER,'_blank')} size="xs" variant="plain" color="neutral">
+                                        <Twitter className='icons' />&nbsp;
+                                        <span>Twitter</span>
+                                    </IconButton>
                                 </span>
                                 <span className='layout-x'>
-                                    <LinkedIn className='icons' />
-                                    <span>LinkedIn</span>
+                                    <IconButton onClick={()=> window.open(links.LINKEDIN,'_blank')} size="xs" variant="plain" color="neutral">
+                                        <LinkedIn className='icons' />&nbsp;
+                                        <span>LinkedIn</span>
+                                    </IconButton>
                                 </span>
                             </div>
                         </div>
@@ -63,7 +71,7 @@ const Footer = () => {
             </div>
             <div className="footer-floor">
                 <Grid container spacing={1} alignItems={''}>
-            <Divider sx={{padding:'10px', width:'100%'}}/>
+                    <Divider sx={{ padding: '10px', width: '100%' }} />
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <span className="layout-x">
                             <span>Home</span>

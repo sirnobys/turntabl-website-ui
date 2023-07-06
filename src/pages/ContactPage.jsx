@@ -1,15 +1,8 @@
 import React from 'react';
 import { Footer, Nav } from '../components';
-import { Banner } from '../components/Banner';
-import { images } from '../constants';
 import { Box, Grid, Typography } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import PlaceIcon from '@mui/icons-material/Place';
-import CallIcon from '@mui/icons-material/Call';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import HandshakeIcon from '@mui/icons-material/Handshake';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/joy/IconButton';
@@ -18,7 +11,6 @@ import ContactForm from '../components/forms/ContactForm';
 
 export const Contact = () => {
 
-    const intro = "We Provide Innovative Software Engineering Solutions To Businesses All Over The World."
     return (
         <div id='page-container'>
             <Nav />

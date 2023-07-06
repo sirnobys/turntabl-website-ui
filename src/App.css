@@ -373,7 +373,7 @@
 }
 
 #content-wrap {
-  padding-bottom: 40rem;
+  padding-bottom: 30rem;
   /* Footer height */
 }
 
@@ -473,6 +473,10 @@
 
   .header {
     padding: 8px 20px 10px 20px;
+  }
+  #content-wrap {
+    padding-bottom: 40rem;
+    /* Footer height */
   }
 
   body {

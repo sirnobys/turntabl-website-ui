@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -17,7 +17,6 @@ const clients = [
 ]
 
 export const LandingPage = (props) => {
-    const theme = useTheme();
     const navigate = useNavigate()
     return (
         <div id='page-container'>
@@ -77,7 +76,7 @@ export const LandingPage = (props) => {
                                     Everyone on our annual graduate intake goes through an intensive two-month training program. When they’re done, we’re ready to work.
                                     <img width={16} src={images.smile} /> </span>
                                 <span>
-                                    <Button className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
+                                    <Button onClick={() => navigate('/services')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                 </span>
                             </div>
                         </div>
@@ -97,17 +96,25 @@ export const LandingPage = (props) => {
 
                 <div className='layout-y call-to-action'>
                     <span className='text-grey'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
-                    <Button className='btn button-insightful button-full-rounded' variant="contained">Say Hi</Button>
+                    <Button className='btn button-welcoming button-full-rounded' variant="contained">Say Hi</Button>
                 </div>
                 <div className='clients'>
                     <span>Trusted By</span>
                     <span className='layout-x'>
                         <Grid container spacing={0} alignItems={'center'} mb={10}>
-                            {clients.map((e,i) => (
+                            {clients.map((e, i) => (
                                 <Grid key={i} item xs={12} sm={6} md={3} paddingTop={4}>
-                                    <div align="center">
-                                        {Clients(e.name, e.image, e.location)}
-                                    </div>
+                                    <motion.div
+                                        animate={{
+                                            rotate: [5, -2, 0]
+                                        }}
+                                        whileHover={{ scale: 1.1, rotate: [0, -1, -2] }}
+                                        whileTap={{ scale: 1.3 }}
+                                    >
+                                        <div align="center">
+                                            {Clients(e.name, e.image, e.location)}
+                                        </div>
+                                    </motion.div>
                                 </Grid>
                             ))
                             }

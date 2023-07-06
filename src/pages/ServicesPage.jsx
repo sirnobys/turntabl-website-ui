@@ -2,13 +2,11 @@ import React from 'react';
 import { Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
-import { Box, Grid, Typography } from '@mui/material';
-import CoreValues from '../components/CoreValues';
+import { Grid, Typography } from '@mui/material';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
-import Team from '../components/Team';
 import ServicesCard from '../components/ServicesCard';
 
 export const Services = () => {
@@ -45,9 +43,9 @@ export const Services = () => {
             <div id='content-wrap'>
                 <Banner bgImage={images.event} image={images.pc} page={'Services'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
-                    {services.map((e) => (
+                    {services.map((e,idx) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>
-                            <div align="center">
+                            <div key={idx} align="center">
                                 <ServicesCard title={e.title} description={e.description} icon={e.icon} />
                             </div>
                         </Grid>
