@@ -104,6 +104,14 @@ const AdminPage = () => {
         setOpen(false);
     };
 
+    const sectIcons = {
+        events: <EventIcon />,
+        blogs: <ArticleIcon />,
+        careers: <WorkIcon />,
+        newsletters: <FeedIcon />,
+        contact: <CallIcon />
+    }
+
     return (
         <Box>
             <CssBaseline />
@@ -121,10 +129,7 @@ const AdminPage = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box><img width={150} src={images.logo} /></Box>
-                    {/* <Typography variant="h6" noWrap component="div" sx={{ color: 'black', flex: 1, textAlign: 'center'}}>
-                        Content Management
-                    </Typography> */}
+                    <Box><img width={150} src={images.logo} alt="logo" /></Box>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -135,125 +140,52 @@ const AdminPage = () => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <ListItem key={'events'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
+                    {['events', 'blogs', 'careers', 'newsletters', 'contact'].map((sect) => (
+                        <ListItem
+                            key={sect}
+                            disablePadding
                             sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
+                                display: 'block',
+                                backgroundColor: section === sect ? '#b0b0ff': '',
+                                color: section === sect ? '#fff': ''
                             }}
-                            onClick={() => setSection('events')}
                         >
-                            <ListItemIcon
+                            <ListItemButton
                                 sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
                                 }}
+                                onClick={() => setSection(sect)}
                             >
-                                <EventIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Events'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'blogs'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => setSection('blogs')}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                <ArticleIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Blogs'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'careers'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => setSection('careers')}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                <WorkIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Careers'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'newsletters'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => setSection('newsletters')}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                <FeedIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Newsletters'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'contact'} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                            onClick={() => setSection('contact')}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                <CallIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Contact'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
+                                <ListItemIcon
+                                    sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                        color: section === sect ? '#fff': ''
+                                    }}
+                                >
+                                    {sectIcons[sect]}
+                                </ListItemIcon>
+                                <ListItemText primary={sect} sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
                 </List>
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, pt: { xs: 2, sm: 3 }, pl: { xs: 9, sm: 11 }, pr: { xs: 2, sm: 3 } }}>
                 <DrawerHeader />
                 {
                     section === 'events' ?
-                    <Events />
-                    : section === 'blogs' ?
-                    <Blogs />
-                    : section === 'careers' ?
-                    <Careers />
-                    : section === 'newsletters' ?
-                    <Newsletters />
-                    : <Contact />
+                        <Events />
+                        : section === 'blogs' ?
+                            <Blogs />
+                            : section === 'careers' ?
+                                <Careers />
+                                : section === 'newsletters' ?
+                                    <Newsletters />
+                                    : <Contact />
                 }
             </Box>
         </Box>
