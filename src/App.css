@@ -400,6 +400,10 @@
   }
 }
 
+.preview-role:hover{
+  background-color: #6d6e7111;
+}
+
 
 /* xs: 0,
   sm: 600,

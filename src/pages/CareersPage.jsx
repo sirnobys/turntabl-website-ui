@@ -11,6 +11,8 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import SearchIcon from '@mui/icons-material/Search';
 import BusinessIcon from '@mui/icons-material/Business';
 import { useNavigate } from 'react-router';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import WorkIcon from '@mui/icons-material/Work';
 
 export const CareersPage = () => {
     const currentUrlParams = new URLSearchParams(window.location.search);
@@ -43,13 +45,13 @@ export const CareersPage = () => {
                     paddingX: 0,
                     py: 1
                 }}>
-                    <Box boxShadow={2} padding={1.2} py={2}>
+                    <Box boxShadow={2} padding={1.2} py={2} sx={{cursor:'pointer'}} className="preview-role">
                         <Grid item xs={12} lg={12}>
                             <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>title of job goes here</Typography>
                         </Grid>
                         <Grid item xs={12} lg={12}>
-                            <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'8 days ago'} />
-                            <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
+                            <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'8 days ago'} />
+                            <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
                             <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'Department'} />
                         </Grid>
                     </Box>
@@ -64,8 +66,8 @@ export const CareersPage = () => {
                     <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>title of job goes here</Typography>
                 </Grid>
                 <Grid item xs={12} lg={12} py={1}>
-                    <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'8 days ago'} />
-                    <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
+                    <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'8 days ago'} />
+                    <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
                     <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'Department'} />
                 </Grid>
                 <Grid item xs={12} lg={12}>
