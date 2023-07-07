@@ -29,7 +29,6 @@ const Careers = () => {
             fetch(`${baseUrl}/api/v1/careers`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     setCareers(data.result)
                 })
         }
@@ -37,13 +36,11 @@ const Careers = () => {
     }, [load])
 
     const handleCareerSelection = (career) => {
-        console.log(career)
         setSelectedCareer(career);
     }
 
     const sendCareerData = (data, id=null) => {
         if (id) {
-            console.log(id)
             let careerUpdate = {
                 id: data.id,
                 name: data.name,
@@ -55,6 +52,8 @@ const Careers = () => {
                 salary: data.salary
             }
 
+            console.log(careerUpdate)
+
             fetch(`${baseUrl}/api/v1/careers/${id}`, {
                 method: 'PUT',
                 headers: {
@@ -64,7 +63,6 @@ const Careers = () => {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     // Handle the response from the backend
                     setLoad(!load)
                 })
@@ -112,13 +110,11 @@ const Careers = () => {
     }
 
     const deleteCareer = (career) => {
-        console.log(career)
         fetch(`${baseUrl}/api/v1/careers/${career.id}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 // Handle the response from the backend
                 setLoad(!load)
             })
