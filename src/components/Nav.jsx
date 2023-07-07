@@ -70,13 +70,13 @@ const Nav = (props) => {
                     }}
                 >
                     <MenuItem>
-                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/about-us'), setActiveLink('/about-us')]} startIcon={<PeopleIcon />}> <Link className="text-grey" underline='none'>Who We Are</Link></Button>
+                        <Button variant="text" className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/about-us'), setActiveLink('/about-us')]} startIcon={<PeopleIcon />}> <Link className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} underline='none'>Who We Are</Link></Button>
                     </MenuItem>
                     <MenuItem>
-                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/services'), setActiveLink('/services')]} startIcon={<MiscellaneousServicesIcon />}> <Link className="text-grey" underline='none'>Services</Link></Button>
+                        <Button variant="text" className={activeLink === "/services" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/services'), setActiveLink('/services')]} startIcon={<MiscellaneousServicesIcon />}> <Link className={activeLink === "/services" ? 'text-inspiration' : 'text-grey'} underline='none'>Services</Link></Button>
                     </MenuItem>
                     <MenuItem>
-                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/careers'), setActiveLink('/careers')]} startIcon={<HailIcon />}> <Link className="text-grey" underline='none'>careers</Link></Button>
+                        <Button variant="text" className={activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/careers'), setActiveLink('/careers')]} startIcon={<HailIcon />}> <Link className={activeLink === "/careers" ? 'text-inspiration' : 'text-grey'} underline='none'>Careers</Link></Button>
                     </MenuItem>
                 </Menu>
             </div>
@@ -116,7 +116,7 @@ const Nav = (props) => {
 
                     <AboutDropdown />
                     <MenuItem>
-                        <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/contact'), setActiveLink('/contact')]} startIcon={<ContactMailIcon />}> <Link className="text-grey" underline='none'>Contact</Link></Button>
+                        <Button variant="text" className={activeLink === "/contact" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/contact'), setActiveLink('/contact')]} startIcon={<ContactMailIcon />}> <Link className="text-grey" underline='none'>Contact</Link></Button>
                     </MenuItem>
                     <MenuItem>
                         <Button variant="text" className={activeLink === "/events" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/events'), setActiveLink('/events')]} startIcon={<ContactMailIcon />}> <Link className={activeLink === "/events" ? 'text-inspiration' : 'text-grey'} underline='none'>Events</Link></Button>

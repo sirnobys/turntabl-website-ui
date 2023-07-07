@@ -254,7 +254,7 @@
 
 .button-pixel-black:hover {
   background-color: #000000 !important;
-  color: #ffffff !important;
+  /* color: #ffffff !important; */
 }
 
 .button-partial-rounded {
@@ -267,7 +267,7 @@
 
 .text-inspiration {
   text-transform: none !important;
-  color: #b0b0ff;
+  color: #b0b0ff !important;
 }
 
 .text-insightful {
