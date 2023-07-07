@@ -58,7 +58,6 @@ export const CareersPage = () => {
     }
 
     const RoleDetails = () => {
-        console.log('here');
         return (
             <Grid item xs={7} lg={6}>
                 <Grid item xs={12} lg={12} py={1}>
