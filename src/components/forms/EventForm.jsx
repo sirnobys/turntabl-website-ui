@@ -150,8 +150,21 @@ const EventForm = (props) => {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleEventClose}>Cancel</Button>
-                        <Button onClick={handleEventSubmit}>Submit</Button>
+                        <Button
+                            sx={{
+                                color: '#b0b0ff',
+                                ":hover": {
+                                    color: '#6d6e71',
+                                }
+                            }}
+                            onClick={handleEventClose}>Cancel</Button>
+                        <Button
+                            sx={{
+                                color: '#b0b0ff',
+                                ":hover": {
+                                    color: '#6d6e71',
+                                }
+                            }} onClick={handleEventSubmit}>Submit</Button>
                     </DialogActions>
                 </Dialog>
             </div>

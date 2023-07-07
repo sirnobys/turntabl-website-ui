@@ -26,7 +26,6 @@ const CareerForm = (props) => {
 
     useEffect(() => {
         const updateFormFields = () => {
-            console.log(data)
             setName(data?.name)
             setDepartment(data?.department)
             setDescription(data?.description)
@@ -121,7 +120,6 @@ const CareerForm = (props) => {
             technologies: tech,
             salary: salary
         }
-        console.log(careerDetails)
 
         if (data) {
             sendCareerData(careerDetails, data?.id);
