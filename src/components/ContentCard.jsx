@@ -12,17 +12,16 @@ const ContentCard = (props) => {
     const { id, name, description, image, status, link } = props;
     let imageUrl = null;
 
-    // if (!image.endsWith('.jpg')) {
     const base64Image = btoa(image);
 
     imageUrl = `data:image/jpeg;base64,${base64Image}`;
-    // }
 
     return (
         <motion.div
             className="box"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: [null, 1.1, 1.1] }}
             transition={{
                 duration: 0.8,
                 delay: 0.5,
@@ -64,12 +63,12 @@ const ContentCard = (props) => {
                             variant="contained"
                             size="small"
                             sx={{
-                                backgroundColor: '#6d6e71',
+                                backgroundColor: '#b0b0ff',
                                 ":hover": {
-                                    backgroundColor: '#b0b0ff',
+                                    backgroundColor: '#6d6e71',
                                 }
                             }}>
-                            <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url}>{link?.title}</a>
+                            <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url} target="_blank" rel="noreferrer">{link?.title}</a>
                         </Button> : ''}
                     {status ?
                         <Typography

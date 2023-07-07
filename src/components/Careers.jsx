@@ -177,8 +177,8 @@ const Careers = () => {
                                 overflow: 'auto'
                             }}
                         >
-                            {careers.map((career) => (
-                                <ListItem disablePadding>
+                            {careers.map((career, idx) => (
+                                <ListItem disablePadding key={idx}>
                                     <ListItemButton
                                         onClick={() => handleCareerSelection(career)}
                                     >
