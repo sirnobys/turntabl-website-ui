@@ -113,6 +113,7 @@ const Events = () => {
                             description={event.description}
                             status={event.status}
                             link={event.link}
+                            date={event.date_created}
                             deleteEvent={deleteEvent}
                         />
                     </Grid>

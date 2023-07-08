@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion"
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import { Chip } from "@mui/material";
+import { Box, Chip } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/joy/IconButton';
 import Tooltip from '@mui/material/Tooltip';
@@ -46,6 +46,9 @@ const ContentCard = (props) => {
                     image={imageUrl}
                 />
                 <CardContent>
+                    <Box>
+                        Posted: <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={date?.split(" ")[0]} />
+                    </Box>
                     <Typography gutterBottom variant="h5" component="div">
                         {name}
                     </Typography>
@@ -86,37 +89,38 @@ const ContentCard = (props) => {
 
                             }}>{status}</Typography> : ''
                     }
-                    <span>
-                        Posted: <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={date?.split(" ")[0]} />
-                    </span>
-                    <Tooltip title="Edit Content">
-                        <IconButton
-                            sx={{
-                                fontSize: { xs: 8, sm: 12 },
-                                color: '#b0b0ff',
-                                ":hover": {
-                                    color: '#6d6e71',
-                                }
-                            }}
-                            variant="plain"
-                        >
-                            <EditIcon />
-                        </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Delete Item">
-                        <IconButton
-                            sx={{
-                                fontSize: { xs: 8, sm: 12 },
-                                color: '#FF0000',
-                                ":hover": {
-                                    color: '#6d6e71',
-                                }
-                            }}
-                            variant="plain"
-                            onClick={() => handleDelete()}>
-                            <DeleteIcon />
-                        </IconButton>
-                    </Tooltip>
+                    <Box>
+                        <Tooltip title="Edit Content">
+                            <IconButton
+                                sx={{
+                                    fontSize: { xs: 8, sm: 12 },
+                                    color: '#b0b0ff',
+                                    ":hover": {
+                                        color: '#6d6e71',
+                                    }
+                                }}
+                                variant="plain"
+                            >
+                                <EditIcon />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Delete Item">
+                            <IconButton
+                                sx={{
+                                    fontSize: { xs: 8, sm: 12 },
+                                    color: '#FF0000',
+                                    ":hover": {
+                                        color: '#6d6e71',
+                                    }
+                                }}
+                                variant="plain"
+                                onClick={() => handleDelete()}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+
+
                 </CardActions>
             </Card>
         </motion.div >

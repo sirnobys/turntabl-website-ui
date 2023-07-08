@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContentCard, Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
-import { images } from '../constants';
+import { images, links } from '../constants';
 import { Grid, Typography } from '@mui/material';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
@@ -9,6 +9,26 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 
 export const EventsPage = () => {
+    const [events, setEvents] = useState([]);
+    const [load, setLoad] = useState(true)
+
+    let baseUrl = links.BASE_URL
+
+    useEffect(() => {
+
+        const fetchBlogs = () => {
+            fetch(`${baseUrl}/api/v1/events`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setLoad(!load)
+                    setEvents(data.result)
+                }).catch((e)=>{
+                    setLoad(!load)
+                })
+        }
+        fetchBlogs();
+    }, [])
     const services = [
         {
             title: 'Development',
@@ -42,7 +62,7 @@ export const EventsPage = () => {
             <div id='content-wrap'>
                 <Banner bgImage={images.event_alt_2} image={images.pc} page={'Events'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
-                    {services.map((event) => (
+                    {events.map((event) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
@@ -53,13 +73,14 @@ export const EventsPage = () => {
                                     description={event.description}
                                     status={event.status}
                                     link={event.link}
+                                    date={event.date_created}
                                 />
                             </div>
                         </Grid>
                     ))}
 
                     <Grid item xs={12} lg={12} pt={6}>
-                        <img width="200px" src={images.thumb} alt='thumb'/>
+                        <img width="200px" src={images.thumb} alt='thumb' />
                     </Grid>
                     <Grid item xs={12} lg={12}>
                         <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
