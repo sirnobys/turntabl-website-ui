@@ -98,8 +98,8 @@ const ContentCard = (props) => {
                                     color: '#6d6e71',
                                 }
                             }}
-                        >
                             variant="plain"
+                        >
                             <EditIcon />
                         </IconButton>
                     </Tooltip>

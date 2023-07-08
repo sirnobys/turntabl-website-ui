@@ -59,7 +59,6 @@ const Events = () => {
         setOpen(false);
     }
     const deleteEvent = (id) => {
-        console.log(id)
         fetch(`${baseUrl}/api/v1/events/${id}`, {
             method: 'DELETE'
         })
