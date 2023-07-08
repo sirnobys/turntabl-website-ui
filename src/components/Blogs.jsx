@@ -85,9 +85,10 @@ const Blogs = () => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                    margin: 2
                 }}
             >
-                <Typography sx={{ pb: 5, fontSize: { xs: '35px', sm: '40px' } }}>Blogs</Typography>
+                <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Blogs</Typography>
                 <div>
                     <Button
                         sx={{

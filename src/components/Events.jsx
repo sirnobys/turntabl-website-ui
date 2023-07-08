@@ -29,7 +29,7 @@ const Events = () => {
 
     const sendEventData = (data) => {
         const formData = new FormData();
-        formData.append('name', 'name');
+        formData.append('name', data.name);
         formData.append('description', data.description);
         formData.append('image', data.image);
         formData.append('link', JSON.stringify({ title: data.urlTitle, url: data.urlLink }));
@@ -80,26 +80,25 @@ const Events = () => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                    margin: 2
                 }}
             >
-                <Typography sx={{ pb: 5, fontSize: { xs: '35px', sm: '40px' } }}>Events</Typography>
-                <div>
-                    <Button
-                        sx={{
-                            fontSize: { xs: 8, sm: 12 },
-                            color: '#b0b0ff',
-                            borderColor: '#b0b0ff',
-                            ":hover": {
-                                color: '#6d6e71',
-                                borderColor: '#6d6e71',
-                            }
-                        }}
-                        variant="outlined"
-                        onClick={handleClickOpen}
-                        endIcon={<AddIcon />}>
-                        New Event
-                    </Button>
-                </div>
+                <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Events</Typography>
+                <Button
+                    sx={{
+                        fontSize: { xs: 8, sm: 12 },
+                        color: '#b0b0ff',
+                        borderColor: '#b0b0ff',
+                        ":hover": {
+                            color: '#6d6e71',
+                            borderColor: '#6d6e71',
+                        }
+                    }}
+                    variant="outlined"
+                    onClick={handleClickOpen}
+                    endIcon={<AddIcon />}>
+                    New Event
+                </Button>
             </Box>
             <EventForm open={open} sendEventData={sendEventData} handleClose={handleClose} />
             <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
