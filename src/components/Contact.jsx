@@ -40,13 +40,6 @@ const Contact = () => {
         { field: 'date_created', headerName: 'Date', width: 130 }
     ];
 
-    const rows = [
-        { id: 1, name: 'Snow', company: 'company name', email: 'Jon@gmail.com', description: "desc...", date_created: 'date' },
-        { id: 2, name: 'Snow', company: 'company name', email: 'Jon@gmail.com', description: "desc...", date_created: 'date' },
-        { id: 3, name: 'Snow', company: 'company name', email: 'Jon@gmail.com', description: "desc...", date_created: 'date' },
-        { id: 4, name: 'Snow', company: 'company name', email: 'Jon@gmail.com', description: "desc...", date_created: 'date' },
-    ]
-
     return (
         <motion.div
             className="box"
@@ -58,7 +51,7 @@ const Contact = () => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
-            <Typography>Contact</Typography>
+            <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Contact</Typography>
             <Box>
                 <DataGrid
                     rows={contactList}

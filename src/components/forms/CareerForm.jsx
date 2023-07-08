@@ -25,7 +25,7 @@ const CareerForm = (props) => {
     const [salary, setSalary] = useState('');
     const [hidden, setHidden] = useState(true);
 
-    const { sendCareerData, handleClose, data, open} = props;
+    const { sendCareerData, handleClose, data, open } = props;
 
     useEffect(() => {
         const updateFormFields = () => {
@@ -51,6 +51,14 @@ const CareerForm = (props) => {
         }
         if (Object.values(data).length > 0) {
             updateFormFields()
+        } else {
+            setName('');
+            setDepartment('');
+            setDescription('');
+            setRequirements([{ requirement: "" }]);
+            setResponsibilities([{ responsibility: "" }]);
+            setTechnologies([{ technology: "" }]);
+            setSalary('');
         }
     }, [data])
 
@@ -126,7 +134,7 @@ const CareerForm = (props) => {
             salary: salary,
             hidden: hidden
         }
-        console.log(careerDetails)
+
         if (data) {
             sendCareerData(careerDetails, data?.id);
         }
@@ -136,14 +144,14 @@ const CareerForm = (props) => {
         setName('');
         setDepartment('');
         setDescription('');
-        setRequirements([]);
-        setResponsibilities([]);
-        setTechnologies([]);
+        setRequirements([{ requirement: "" }]);
+        setResponsibilities([{ responsibility: "" }]);
+        setTechnologies([{ technology: "" }]);
         setSalary('');
+        setHidden(false);
     }
 
     const handleCareerClose = () => {
-        console.log('close')
         handleClose();
         setName('');
         setDepartment('');
@@ -152,6 +160,7 @@ const CareerForm = (props) => {
         setResponsibilities([{ responsibility: "" }]);
         setTechnologies([{ technology: "" }]);
         setSalary('');
+        handleClose()
     }
 
     return (
@@ -164,7 +173,7 @@ const CareerForm = (props) => {
             }}
         >
             <div>
-                <Dialog open={open} onClose={handleClose}>
+                <Dialog open={open} onClose={handleCareerClose}>
                     <DialogTitle>Add New Career</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
@@ -360,7 +369,7 @@ const CareerForm = (props) => {
                                 size="md"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
-                             <FormControlLabel control={<Switch defaultChecked  value={hidden}/>} onChange={() => setHidden(!hidden)} label="Hide" />
+                            <FormControlLabel control={<Switch defaultChecked value={hidden} />} onChange={() => setHidden(!hidden)} label="Hide" />
                         </Box>
                     </DialogContent>
                     <DialogActions>

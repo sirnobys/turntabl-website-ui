@@ -76,7 +76,7 @@ const Preview = (props) => {
     const handleDelete = () => {
         deleteCareer(career)
     }
-
+    console.log(career)
     return (
         <motion.div
             className="box"
@@ -94,272 +94,283 @@ const Preview = (props) => {
                     height: { xs: '455px', sm: '600px', md: '600px' },
                     border: '2px solid #6d6e71'
                 }}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center'
-                    }}
-                >
-                    <Typography
-                        sx={{
-                            fontSize: { xs: '16px', sm: '30px' },
-                            margin: 2
-                        }}
-                    >
-                        {career?.name}
-                    </Typography>
-                    <Box
-                        sx={{
-                            margin: 2
-                        }}
-                    >
-                        <Tooltip title="View Applicants">
-                            <IconButton
-                                sx={{
-                                    fontSize: { xs: 8, sm: 12 },
-                                    color: '#b0b0ff',
-                                    ":hover": {
-                                        color: '#6d6e71',
-                                    }
-                                }}
-                                variant="plain"
-                                onClick={getApplicants}>
-                                <RemoveRedEyeIcon />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="Edit Career">
-                            <IconButton
-                                sx={{
-                                    fontSize: { xs: 8, sm: 12 },
-                                    color: '#b0b0ff',
-                                    ":hover": {
-                                        color: '#6d6e71',
-                                    }
-                                }}
-                                variant="plain"
-                                onClick={() => handleEdit()}>
-                                <EditIcon />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="Delete Career">
-                            <IconButton
-                                sx={{
-                                    fontSize: { xs: 8, sm: 12 },
-                                    color: '#FF0000',
-                                    ":hover": {
-                                        color: '#6d6e71',
-                                    }
-                                }}
-                                variant="plain"
-                                onClick={() => handleDelete()}>
-                                <DeleteIcon />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-
-                </Box>
-                <CardContent
-                    sx={{
-                        height: { xs: '320px', sm: '465px', md: '470px' },
-                        overflow: 'auto',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between'
-                    }}
-                >
-                    <Box>
-                        <Typography sx={{
-                            display: 'flex',
-                            justifyContent: 'flex-start',
-                            fontSize: { xs: '14px', sm: '16px' },
-                        }}>Description</Typography>
-                        <Box
-                            component='p'
-                            sx={{
-                                mb: 1.5,
-                                fontSize: { xs: '12px', sm: '14px' },
-                                display: 'flex',
-                                justifyContent: 'flex-start'
-                            }}
-                            color="text.secondary">
-                            {career?.description}
-                        </Box>
-                    </Box>
-
-                    <Box>
-                        <Typography
-                            sx={{
-                                fontSize: { xs: '14px', sm: '16px' },
-                                display: 'flex', justifyContent: 'flex-start',
-                            }}
-                        >
-                            Requirements
-                        </Typography>
-                        <Box
-                            component='ul'
-                        >
-                            {career?.requirements?.map((requirement, idx) => (
-                                <Box
-                                    component='li'
-                                    sx={{
-                                        marginLeft: 2
-                                    }}
-                                    key={idx}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: {
-                                                xs: '12px', sm: '16px',
-                                                display: 'flex',
-                                                justifyContent: 'flex-start',
-                                            }
-                                        }}>{requirement}</Typography>
-                                </Box>
-                            ))}
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Typography
-                            sx={{
-                                fontSize: { xs: '14px', sm: '16px' },
-                                display: 'flex', justifyContent: 'flex-start'
-                            }}
-                        >
-                            Responsibilities
-                        </Typography>
-                        <Box
-                            component='ul'
-                        >
-                            {career?.responsibilities?.map((responsibility, idx) => (
-                                <Box
-                                    component='li'
-                                    sx={{
-                                        marginLeft: 2
-                                    }}
-                                    key={idx}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: {
-                                                xs: '12px', sm: '16px',
-                                                display: 'flex',
-                                                justifyContent: 'flex-start'
-                                            }
-                                        }}>{responsibility}</Typography>
-                                </Box>
-                            ))}
-                        </Box>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: '5px'
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: { xs: '14px', sm: '16px' },
-                            }}
-                        >
-                            Technologies:
-                        </Typography>
+                {Object.values(career).length > 0 ?
+                    <>
                         <Box
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'row',
-                                alignItems: 'center',
-                                gap: '5px'
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
                             }}
                         >
-                            {career?.technologies?.map((technology, idx) => (
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: '16px', sm: '30px' },
+                                    margin: 2
+                                }}
+                            >
+                                {career?.name}
+                            </Typography>
+                            <Box
+                                sx={{
+                                    margin: 2
+                                }}
+                            >
+                                <Tooltip title="View Applicants">
+                                    <IconButton
+                                        sx={{
+                                            fontSize: { xs: 8, sm: 12 },
+                                            color: '#b0b0ff',
+                                            ":hover": {
+                                                color: '#6d6e71',
+                                            }
+                                        }}
+                                        variant="plain"
+                                        onClick={getApplicants}>
+                                        <RemoveRedEyeIcon />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Edit Career">
+                                    <IconButton
+                                        sx={{
+                                            fontSize: { xs: 8, sm: 12 },
+                                            color: '#b0b0ff',
+                                            ":hover": {
+                                                color: '#6d6e71',
+                                            }
+                                        }}
+                                        variant="plain"
+                                        onClick={() => handleEdit()}>
+                                        <EditIcon />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Delete Career">
+                                    <IconButton
+                                        sx={{
+                                            fontSize: { xs: 8, sm: 12 },
+                                            color: '#FF0000',
+                                            ":hover": {
+                                                color: '#6d6e71',
+                                            }
+                                        }}
+                                        variant="plain"
+                                        onClick={() => handleDelete()}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </Tooltip>
+                            </Box>
+
+                        </Box>
+                        <CardContent
+                            sx={{
+                                height: { xs: '320px', sm: '465px', md: '470px' },
+                                overflow: 'auto',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between'
+                            }}
+                        >
+                            <Box>
+                                <Typography sx={{
+                                    display: 'flex',
+                                    justifyContent: 'flex-start',
+                                    fontSize: { xs: '14px', sm: '16px' },
+                                }}>Description</Typography>
+                                <Box
+                                    component='p'
+                                    sx={{
+                                        mb: 1.5,
+                                        fontSize: { xs: '12px', sm: '14px' },
+                                        display: 'flex',
+                                        justifyContent: 'flex-start'
+                                    }}
+                                    color="text.secondary">
+                                    {career?.description}
+                                </Box>
+                            </Box>
+
+                            <Box>
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: '14px', sm: '16px' },
+                                        display: 'flex', justifyContent: 'flex-start',
+                                    }}
+                                >
+                                    Requirements
+                                </Typography>
+                                <Box
+                                    component='ul'
+                                >
+                                    {career?.requirements?.map((requirement, idx) => (
+                                        <Box
+                                            component='li'
+                                            sx={{
+                                                marginLeft: 2
+                                            }}
+                                            key={idx}
+                                        >
+                                            <Typography
+                                                sx={{
+                                                    fontSize: {
+                                                        xs: '12px', sm: '16px',
+                                                        display: 'flex',
+                                                        justifyContent: 'flex-start',
+                                                    }
+                                                }}>{requirement}</Typography>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Box>
+                            <Box>
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: '14px', sm: '16px' },
+                                        display: 'flex', justifyContent: 'flex-start'
+                                    }}
+                                >
+                                    Responsibilities
+                                </Typography>
+                                <Box
+                                    component='ul'
+                                >
+                                    {career?.responsibilities?.map((responsibility, idx) => (
+                                        <Box
+                                            component='li'
+                                            sx={{
+                                                marginLeft: 2
+                                            }}
+                                            key={idx}
+                                        >
+                                            <Typography
+                                                sx={{
+                                                    fontSize: {
+                                                        xs: '12px', sm: '16px',
+                                                        display: 'flex',
+                                                        justifyContent: 'flex-start'
+                                                    }
+                                                }}>{responsibility}</Typography>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    gap: '5px'
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: '14px', sm: '16px' },
+                                    }}
+                                >
+                                    Technologies:
+                                </Typography>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        gap: '5px'
+                                    }}
+                                >
+                                    {career?.technologies?.map((technology, idx) => (
+                                        <Typography
+                                            sx={{
+                                                fontSize: { xs: '12px', sm: '16px' }
+                                            }}
+                                            key={idx}
+                                        >
+                                            {technology}
+                                        </Typography>
+                                    ))}
+                                </Box>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    gap: '5px',
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        display: 'flex', justifyContent: 'flex-start',
+                                        fontSize: { xs: '14px', sm: '16px' },
+                                    }}
+                                    variant="h5"
+                                >
+                                    Compensation:
+                                </Typography>
                                 <Typography
                                     sx={{
                                         fontSize: { xs: '12px', sm: '16px' }
                                     }}
-                                    key={idx}
-                                >
-                                    {technology}
+                                >{career?.salary}
                                 </Typography>
-                            ))}
-                        </Box>
-                    </Box>
-                    <Box
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    gap: '5px',
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        display: 'flex', justifyContent: 'flex-start',
+                                        fontSize: { xs: '14px', sm: '16px' }
+                                    }}
+                                    variant="h5"
+                                >
+                                    Date Created:
+                                </Typography>
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: '12px', sm: '16px' }
+                                    }}
+                                >{career?.date_created}
+                                </Typography>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    gap: '5px',
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        display: 'flex', justifyContent: 'flex-start',
+                                        fontSize: { xs: '14px', sm: '16px' }
+                                    }}
+                                    variant="h5"
+                                >
+                                    Status:
+                                </Typography>
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: '12px', sm: '16px' }
+                                    }}
+                                >{career ? career?.hidden ? 'Hidden' : 'Shown' : ''}
+                                </Typography>
+                            </Box>
+                        </CardContent>
+                    </>
+                    : <Typography
                         sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: '5px',
+                            fontSize: { xs: '12px', sm: '16px' },
+                            textAlign: 'center'
                         }}
                     >
-                        <Typography
-                            sx={{
-                                display: 'flex', justifyContent: 'flex-start',
-                                fontSize: { xs: '14px', sm: '16px' },
-                            }}
-                            variant="h5"
-                        >
-                            Compensation:
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontSize: { xs: '12px', sm: '16px' }
-                            }}
-                        >{career?.salary}
-                        </Typography>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: '5px',
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                display: 'flex', justifyContent: 'flex-start',
-                                fontSize: { xs: '14px', sm: '16px' }
-                            }}
-                            variant="h5"
-                        >
-                            Date Created:
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontSize: { xs: '12px', sm: '16px' }
-                            }}
-                        >{career?.date_created}
-                        </Typography>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: '5px',
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                display: 'flex', justifyContent: 'flex-start',
-                                fontSize: { xs: '14px', sm: '16px' }
-                            }}
-                            variant="h5"
-                        >
-                            Status:
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontSize: { xs: '12px', sm: '16px' }
-                            }}
-                        >{career? career?.hidden ? 'Hidden' : 'Shown' : ''}
-                        </Typography>
-                    </Box>
-                </CardContent>
+                        Select To View
+                    </Typography>}
             </Card>
             {
                 applicants.length > 0 ?

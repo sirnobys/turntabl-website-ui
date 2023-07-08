@@ -9,3 +9,4 @@ export { default as Newsletters } from './Newsletters';
 export { default as ContentCard } from './ContentCard';
 export { default as Preview } from './Preview';
 export { default as Contact } from './Contact';
+export { default as Roles } from './Roles';

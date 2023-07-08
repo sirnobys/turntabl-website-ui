@@ -20,6 +20,7 @@ const Careers = () => {
     const [selectedCareer, setSelectedCareer] = useState({});
     const [open, setOpen] = useState(false);
     const [load, setLoad] = useState(true);
+    const [updateData, setUpdateData] = useState({})
 
     let baseUrl = 'http://localhost:5000';
 
@@ -53,8 +54,6 @@ const Careers = () => {
                 salary: data.salary,
                 hidden: data.hidden
             }
-
-            console.log(careerUpdate)
 
             fetch(`${baseUrl}/api/v1/careers/${id}`, {
                 method: 'PUT',
@@ -109,6 +108,7 @@ const Careers = () => {
     }
 
     const updateCareer = () => {
+        setUpdateData(selectedCareer)
         setOpen(true)
     }
 
@@ -141,10 +141,11 @@ const Careers = () => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    width: '100%'
+                    width: '100%',
+                    margin: 2
                 }}
             >
-                <Typography sx={{ pb: 5, fontSize: { xs: '35px', sm: '40px' } }}>Careers</Typography>
+                <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Careers</Typography>
                 <Button
                     sx={{
                         fontSize: { xs: 8, sm: 12 },
@@ -161,7 +162,7 @@ const Careers = () => {
                     New Career
                 </Button>
             </Box>
-            <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} data={selectedCareer} />
+            <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} data={updateData} />
             <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 <Grid item xs={12} sm={12} md={3}>
                     <motion.div

@@ -20,8 +20,9 @@ import WorkIcon from '@mui/icons-material/Work';
 import FeedIcon from '@mui/icons-material/Feed';
 import ArticleIcon from '@mui/icons-material/Article';
 import CallIcon from '@mui/icons-material/Call';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 
-import { Events, Blogs, Careers, Newsletters, Contact } from '../components';
+import { Events, Blogs, Careers, Newsletters, Contact, Roles } from '../components';
 import { images } from '../constants';
 
 const drawerWidth = 240;
@@ -109,7 +110,8 @@ const AdminPage = () => {
         blogs: <ArticleIcon />,
         careers: <WorkIcon />,
         newsletters: <FeedIcon />,
-        contact: <CallIcon />
+        contact: <CallIcon />,
+        roles: <SupervisorAccountIcon />
     }
 
     return (
@@ -140,14 +142,14 @@ const AdminPage = () => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['events', 'blogs', 'careers', 'newsletters', 'contact'].map((sect) => (
+                    {['events', 'blogs', 'careers', 'newsletters', 'contact', 'roles'].map((sect) => (
                         <ListItem
                             key={sect}
                             disablePadding
                             sx={{
                                 display: 'block',
-                                backgroundColor: section === sect ? '#b0b0ff': '',
-                                color: section === sect ? '#fff': ''
+                                backgroundColor: section === sect ? '#b0b0ff' : '',
+                                color: section === sect ? '#fff' : ''
                             }}
                         >
                             <ListItemButton
@@ -163,7 +165,7 @@ const AdminPage = () => {
                                         minWidth: 0,
                                         mr: open ? 3 : 'auto',
                                         justifyContent: 'center',
-                                        color: section === sect ? '#fff': ''
+                                        color: section === sect ? '#fff' : ''
                                     }}
                                 >
                                     {sectIcons[sect]}
@@ -185,7 +187,10 @@ const AdminPage = () => {
                                 <Careers />
                                 : section === 'newsletters' ?
                                     <Newsletters />
-                                    : <Contact />
+                                    :section === 'contact' ?
+                                        <Contact />
+                                        : 
+                                        <Roles />
                 }
             </Box>
         </Box>
