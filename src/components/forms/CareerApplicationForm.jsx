@@ -8,6 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Textarea from '@mui/joy/Textarea';
+import { ArrowOutwardOutlined } from '@mui/icons-material';
 
 
 const CareerApplicationForm = (props) => {
@@ -109,7 +110,7 @@ const CareerApplicationForm = (props) => {
                         fullWidth
                         variant="outlined"
                     />
-                    <Button type="submit" className='button-pixel-black' variant='contained'>Let's get started</Button>
+                    <Button type="submit" className='btn button-disruption' variant='contained' endIcon={<ArrowOutwardOutlined/>}>Apply</Button>
                 </Box>
             </form>
         </Box>

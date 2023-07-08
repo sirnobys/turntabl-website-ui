@@ -7,7 +7,6 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import SearchIcon from '@mui/icons-material/Search';
 import BusinessIcon from '@mui/icons-material/Business';
 import { useNavigate } from 'react-router';
