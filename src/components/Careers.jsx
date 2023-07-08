@@ -30,7 +30,7 @@ const Careers = () => {
                 .then(response => response.json())
                 .then(data => {
                     setCareers(data.result)
-                    setSelectedCareer(careers[0])
+                    setSelectedCareer(data.result[0])
                 })
         }
         fetchCareers();
@@ -194,7 +194,7 @@ const Careers = () => {
                     </motion.div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={9}>
-                    <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer} />
+                    <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer}/>
                 </Grid>
             </Grid>
         </Box>

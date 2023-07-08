@@ -22,7 +22,7 @@ const CareerForm = (props) => {
     const [technologies, setTechnologies] = useState([{ technology: "" }]);
     const [salary, setSalary] = useState('');
 
-    const { sendCareerData, handleClose, data, open } = props;
+    const { sendCareerData, handleClose, data, open} = props;
 
     useEffect(() => {
         const updateFormFields = () => {
@@ -46,7 +46,9 @@ const CareerForm = (props) => {
             setTechnologies(technologiesData)
             setSalary(data?.salary)
         }
-        updateFormFields()
+        if (Object.values(data).length > 0) {
+            updateFormFields()
+        }
     }, [data])
 
     let handleReqChange = (i, e) => {
@@ -137,13 +139,14 @@ const CareerForm = (props) => {
     }
 
     const handleCareerClose = () => {
+        console.log('close')
         handleClose();
         setName('');
         setDepartment('');
         setDescription('');
-        setRequirements([]);
-        setResponsibilities([]);
-        setTechnologies([]);
+        setRequirements([{ requirement: "" }]);
+        setResponsibilities([{ responsibility: "" }]);
+        setTechnologies([{ technology: "" }]);
         setSalary('');
     }
 

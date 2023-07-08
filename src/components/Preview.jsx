@@ -16,7 +16,6 @@ import { PreviewTable } from "./table";
 const Preview = (props) => {
     const { career, updateCareer, deleteCareer } = props;
     const [applicants, setApplicants] = useState([]);
-    console.log(career)
     const headCells = [
         {
             id: 'id',
@@ -109,7 +108,7 @@ const Preview = (props) => {
                             margin: 2
                         }}
                     >
-                        {career.name}
+                        {career?.name}
                     </Typography>
                     <Box
                         sx={{
@@ -201,12 +200,13 @@ const Preview = (props) => {
                         <Box
                             component='ul'
                         >
-                            {career?.requirements?.map((requirement) => (
+                            {career?.requirements?.map((requirement, idx) => (
                                 <Box
                                     component='li'
                                     sx={{
                                         marginLeft: 2
                                     }}
+                                    key={idx}
                                 >
                                     <Typography
                                         sx={{
@@ -232,12 +232,13 @@ const Preview = (props) => {
                         <Box
                             component='ul'
                         >
-                            {career?.responsibilities?.map((responsibility) => (
+                            {career?.responsibilities?.map((responsibility, idx) => (
                                 <Box
                                     component='li'
                                     sx={{
                                         marginLeft: 2
                                     }}
+                                    key={idx}
                                 >
                                     <Typography
                                         sx={{
@@ -274,11 +275,12 @@ const Preview = (props) => {
                                 gap: '5px'
                             }}
                         >
-                            {career?.technologies?.map((technology) => (
+                            {career?.technologies?.map((technology, idx) => (
                                 <Typography
                                     sx={{
                                         fontSize: { xs: '12px', sm: '16px' }
                                     }}
+                                    key={idx}
                                 >
                                     {technology}
                                 </Typography>
