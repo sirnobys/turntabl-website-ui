@@ -39,9 +39,9 @@ export const BlogPage = () => {
             <div id='content-wrap'>
                 <Banner bgImage={images.career_alt} image={images.pc} page={'Blog'} intro={intro()} />
                 {blogs.length==0 && load && <LoadingProgress/>}
-                <Grid container spacing={0} alignItems={'center'}>
+                <Grid container spacing={0} alignItems={'left'}>
                     {blogs.map((blog) => (
-                        <Grid item xs={12} sm={6} md={6} paddingTop={4}>
+                        <Grid item xs={12} sm={6} md={4} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
                                     key={blog.id}

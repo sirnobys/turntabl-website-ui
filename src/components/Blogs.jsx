@@ -5,11 +5,13 @@ import { Button, Grid } from '@mui/material';
 
 import BlogForm from "./forms/BlogForm";
 import ContentCard from "./ContentCard";
+import SnackbarNotification from "./SnackbarNotification";
 
 const Blogs = () => {
     const [open, setOpen] = useState(false);
     const [blogs, setBlogs] = useState([]);
     const [load, setLoad] = useState(true)
+    const [message, setMessage] = useState({text:'',type:''})
 
     let baseUrl = 'http://localhost:5000';
 
@@ -19,13 +21,14 @@ const Blogs = () => {
             fetch(`${baseUrl}/api/v1/blogs`)
                 .then(response => response.json())
                 .then(data => {
+                    setMessage({text:'loaded sucessfully',type:'success'})
                     console.log(data)
                     setBlogs(data.result)
                 })
         }
         fetchBlogs();
     }, [load])
-
+    
     const sendBlogData = (data) => {
         console.log(data)
         const formData = new FormData();
@@ -51,34 +54,35 @@ const Blogs = () => {
             .catch(error => {
                 // Handle any errors
             });
-
+            
         setOpen(false)
     }
 
     const handleClickOpen = () => {
         setOpen(true);
     };
-
+    
     const handleClose = () => {
         setOpen(false);
     }
-
+    
     const deleteBlog = (id) => {
         fetch(`${baseUrl}/api/v1/blogs/${id}`, {
             method: 'DELETE'
         })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the response from the backend
-                setLoad(!load)
-            })
-            .catch(error => {
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from the backend
+            setLoad(!load)
+        })
+        .catch(error => {
                 // Handle any errors
             });
     }
 
     return (
         <Box>
+            {message?.text!==""?<SnackbarNotification message={message}/>:''}
             <Box
                 sx={{
                     display: 'flex',
