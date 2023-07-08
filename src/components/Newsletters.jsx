@@ -53,7 +53,7 @@ const Newsletters = () => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
-            <Typography>Newsletters</Typography>
+            <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Newsletters</Typography>
             {
                 subscribers.length > 0 ?
                     <PreviewTable data={subscribers} headCells={headCells} tableName="Subscribers"/>

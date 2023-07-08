@@ -51,7 +51,7 @@ const Contact = () => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
-            <Typography>Contact</Typography>
+            <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Contact</Typography>
             <Box>
                 <DataGrid
                     rows={contactList}
