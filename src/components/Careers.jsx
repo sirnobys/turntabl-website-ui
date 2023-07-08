@@ -30,6 +30,7 @@ const Careers = () => {
                 .then(response => response.json())
                 .then(data => {
                     setCareers(data.result)
+                    setSelectedCareer(careers[0])
                 })
         }
         fetchCareers();

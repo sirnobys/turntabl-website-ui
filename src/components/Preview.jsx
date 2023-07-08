@@ -16,6 +16,7 @@ import { PreviewTable } from "./table";
 const Preview = (props) => {
     const { career, updateCareer, deleteCareer } = props;
     const [applicants, setApplicants] = useState([]);
+    console.log(career)
     const headCells = [
         {
             id: 'id',
@@ -147,7 +148,10 @@ const Preview = (props) => {
                             <IconButton
                                 sx={{
                                     fontSize: { xs: 8, sm: 12 },
-                                    color: '#FF0000'
+                                    color: '#FF0000',
+                                    ":hover": {
+                                        color: '#6d6e71',
+                                    }
                                 }}
                                 variant="plain"
                                 onClick={() => handleDelete()}>

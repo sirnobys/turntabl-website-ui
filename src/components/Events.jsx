@@ -32,7 +32,7 @@ const Events = () => {
         formData.append('name', 'name');
         formData.append('description', data.description);
         formData.append('image', data.image);
-        formData.append('link', JSON.stringify({ title: data.urlTitle, url: data.urlLink}));
+        formData.append('link', JSON.stringify({ title: data.urlTitle, url: data.urlLink }));
         formData.append('status', data.status)
 
         fetch(`${baseUrl}/api/v1/events`, {
@@ -57,6 +57,19 @@ const Events = () => {
 
     const handleClose = () => {
         setOpen(false);
+    }
+    const deleteEvent = (id) => {
+        fetch(`${baseUrl}/api/v1/events/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the backend
+                setLoad(!load)
+            })
+            .catch(error => {
+                // Handle any errors
+            });
     }
 
     return (
@@ -88,7 +101,7 @@ const Events = () => {
                     </Button>
                 </div>
             </Box>
-            <EventForm open={open} sendEventData={sendEventData} handleClose={handleClose}/>
+            <EventForm open={open} sendEventData={sendEventData} handleClose={handleClose} />
             <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 {events.map((event, idx) => (
                     <Grid item xs={12} sm={6} md={3} key={idx}>
@@ -101,6 +114,7 @@ const Events = () => {
                             status={event.status}
                             link={event.link}
                             date={event.date_created}
+                            deleteEvent={deleteEvent}
                         />
                     </Grid>
                 ))}

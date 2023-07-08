@@ -63,6 +63,20 @@ const Blogs = () => {
         setOpen(false);
     }
 
+    const deleteBlog = (id) => {
+        fetch(`${baseUrl}/api/v1/blogs/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the backend
+                setLoad(!load)
+            })
+            .catch(error => {
+                // Handle any errors
+            });
+    }
+
     return (
         <Box>
             <Box
@@ -103,6 +117,7 @@ const Blogs = () => {
                             image={event.image}
                             description={event.description}
                             link={event.link}
+                            deleteEvent={deleteBlog}
                         />
                     </Grid>
                 ))}

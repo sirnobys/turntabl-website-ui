@@ -13,6 +13,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { validateImage } from '../../shared_logic/Validators';
+
 
 const EventForm = (props) => {
     const [name, setName] = useState('');
@@ -44,6 +46,13 @@ const EventForm = (props) => {
 
     const handleEventClose = () => {
         handleClose();
+    }
+
+    const handleImage = (e) => {
+        // validate image first
+        let {status, message} = validateImage(e.target.files[0]);
+        console.log(status, message)
+        setSelectedImage(e.target.files[0])
     }
 
     return (
@@ -86,7 +95,7 @@ const EventForm = (props) => {
                                 id="image"
                                 // label="Add Image"
                                 type="file"
-                                onChange={(e) => setSelectedImage(e.target.files[0])}
+                                onChange={handleImage}
                                 fullWidth
                                 variant="outlined"
                             />
