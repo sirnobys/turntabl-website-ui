@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContentCard, Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
@@ -9,9 +9,25 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import Team from '../components/Team';
-import ServicesCard from '../components/ServicesCard';
 
 export const BlogPage = () => {
+    const [blogs, setBlogs] = useState([]);
+    const [load, setLoad] = useState(true)
+
+    let baseUrl = 'http://localhost:5000';
+
+    useEffect(() => {
+
+        const fetchBlogs = () => {
+            fetch(`${baseUrl}/api/v1/blogs`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setBlogs(data.result)
+                })
+        }
+        fetchBlogs();
+    }, [load])
     const services = [
         {
             title: 'Development',
@@ -45,7 +61,7 @@ export const BlogPage = () => {
             <div id='content-wrap'>
                 <Banner bgImage={images.career_alt} image={images.pc} page={'Blog'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
-                    {services.map((event) => (
+                    {blogs.map((event) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
@@ -56,6 +72,7 @@ export const BlogPage = () => {
                                     description={event.description}
                                     status={event.status}
                                     link={event.link}
+                                    date={event.date_created}
                                 />
                             </div>
                         </Grid>

@@ -6,10 +6,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion"
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import { Chip } from "@mui/material";
 
 
 const ContentCard = (props) => {
-    const { id, name, description, image, status, link } = props;
+    const { id, name, description, image, status, link, date } = props;
     let imageUrl = null;
 
     const base64Image = btoa(image);
@@ -46,8 +48,7 @@ const ContentCard = (props) => {
                         }}
                         variant="body2"
                         color="text.secondary">
-                        {description} Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
+                        {description}
                     </Typography>
                 </CardContent>
                 <CardActions
@@ -77,6 +78,10 @@ const ContentCard = (props) => {
 
                             }}>{status}</Typography> : ''
                     }
+                    <span>
+                       Posted: <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={date?.split(" ")[0]} />
+                    </span>
+
                 </CardActions>
             </Card>
         </motion.div>

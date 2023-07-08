@@ -7,12 +7,12 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import SearchIcon from '@mui/icons-material/Search';
 import BusinessIcon from '@mui/icons-material/Business';
 import { useNavigate } from 'react-router';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import WorkIcon from '@mui/icons-material/Work';
+import CareerApplicationForm from '../components/forms/CareerApplicationForm';
 
 export const CareersPage = () => {
     const currentUrlParams = new URLSearchParams(window.location.search);
@@ -45,7 +45,7 @@ export const CareersPage = () => {
                     paddingX: 0,
                     py: 1
                 }}>
-                    <Box boxShadow={2} padding={1.2} py={2} sx={{cursor:'pointer'}} className="preview-role">
+                    <Box boxShadow={2} padding={1.2} py={2} sx={{ cursor: 'pointer' }} className="preview-role">
                         <Grid item xs={12} lg={12}>
                             <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>title of job goes here</Typography>
                         </Grid>
@@ -79,6 +79,9 @@ export const CareersPage = () => {
                         quidem iure praesentium eos.
                     </Typography>
                 </Grid>
+                <Grid item xs={12} lg={12}>
+                    <CareerApplicationForm />
+                </Grid>
             </Grid>
         )
     }
@@ -93,7 +96,7 @@ export const CareersPage = () => {
                     </IconButton>
                 </Box>
                 <Divider sx={{ borderBottomWidth: 0.3, mb: 1, bgcolor: 'black' }} />
-                <Grid container height={'100vh'} spacing={1} alignItems={'left'} textAlign={'left'}>
+                <Grid container height={'100vh'} spacing={1} alignItems={'left'} textAlign={'center'}>
                     <RolePreview />
                     <RoleDetails />
                 </Grid>
@@ -113,7 +116,7 @@ export const CareersPage = () => {
             <Nav />
             <div id='content-wrap'>
                 <Banner bgImage={images.IMG_9005} image={images.pc} page={'Careers'} intro={intro()} />
-                <Box paddingY={{ xs: 5, sm: 10 }} paddingX={{ xs: 5, sm: 10 }}>
+                <Box paddingY={{ xs: 5, sm: 5 }} paddingX={{ xs: 5, sm: 10 }}>
                     <Filters />
                     <Roles title={''} description={''} resp={''} department={''} />
                 </Box>
