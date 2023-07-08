@@ -9,6 +9,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import Team from '../components/Team';
+import LoadingProgress from '../components/LoadingProgress';
 
 export const BlogPage = () => {
     const [blogs, setBlogs] = useState([]);
@@ -22,6 +23,7 @@ export const BlogPage = () => {
             fetch(`${baseUrl}/api/v1/blogs`)
                 .then(response => response.json())
                 .then(data => {
+                    setLoad(!load)
                     console.log(data)
                     setBlogs(data.result)
                 })
@@ -36,6 +38,7 @@ export const BlogPage = () => {
             <Nav />
             <div id='content-wrap'>
                 <Banner bgImage={images.career_alt} image={images.pc} page={'Blog'} intro={intro()} />
+                {blogs.length==0 && load && <LoadingProgress/>}
                 <Grid container spacing={0} alignItems={'center'}>
                     {blogs.map((blog) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>
