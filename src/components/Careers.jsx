@@ -30,7 +30,7 @@ const Careers = () => {
                 .then(response => response.json())
                 .then(data => {
                     setCareers(data.result)
-                    setSelectedCareer(data.result[0])
+                    // setSelectedCareer(data.result[0])
                 })
         }
         fetchCareers();
@@ -50,7 +50,8 @@ const Careers = () => {
                 requirements: data.requirements,
                 responsibilities: data.responsibilities,
                 technologies: data.technologies,
-                salary: data.salary
+                salary: data.salary,
+                hidden: data.hidden
             }
 
             console.log(careerUpdate)
@@ -80,6 +81,7 @@ const Careers = () => {
             formData.append('responsibilities', JSON.stringify(data.responsibilities));
             formData.append('technologies', JSON.stringify(data.technologies));
             formData.append('salary', data.salary);
+            formData.append('hidden', data.hidden);
 
             fetch(`${baseUrl}/api/v1/careers`, {
                 method: 'POST',

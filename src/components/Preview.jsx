@@ -335,6 +335,30 @@ const Preview = (props) => {
                         >{career?.date_created}
                         </Typography>
                     </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: '5px',
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                display: 'flex', justifyContent: 'flex-start',
+                                fontSize: { xs: '14px', sm: '16px' }
+                            }}
+                            variant="h5"
+                        >
+                            Status:
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontSize: { xs: '12px', sm: '16px' }
+                            }}
+                        >{career? career?.hidden ? 'Hidden' : 'Shown' : ''}
+                        </Typography>
+                    </Box>
                 </CardContent>
             </Card>
             {

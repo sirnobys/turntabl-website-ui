@@ -11,6 +11,8 @@ import Textarea from '@mui/joy/Textarea';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/joy/IconButton';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 const CareerForm = (props) => {
@@ -21,6 +23,7 @@ const CareerForm = (props) => {
     const [responsibilities, setResponsibilities] = useState([{ responsibility: "" }]);
     const [technologies, setTechnologies] = useState([{ technology: "" }]);
     const [salary, setSalary] = useState('');
+    const [hidden, setHidden] = useState(true);
 
     const { sendCareerData, handleClose, data, open} = props;
 
@@ -120,9 +123,10 @@ const CareerForm = (props) => {
             requirements: req,
             responsibilities: resp,
             technologies: tech,
-            salary: salary
+            salary: salary,
+            hidden: hidden
         }
-
+        console.log(careerDetails)
         if (data) {
             sendCareerData(careerDetails, data?.id);
         }
@@ -356,6 +360,7 @@ const CareerForm = (props) => {
                                 size="md"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
+                             <FormControlLabel control={<Switch defaultChecked  value={hidden}/>} onChange={() => setHidden(!hidden)} label="Hide" />
                         </Box>
                     </DialogContent>
                     <DialogActions>
