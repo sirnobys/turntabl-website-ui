@@ -9,13 +9,14 @@ export const Banner = ({ bgImage, image, page, intro }) => {
             background: `url(${bgImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            boxShadow: "inset 0 0 0 2000px rgba(0,0,0, 0.5)"
+            boxShadow: "inset 0 0 0 2000px rgba(0,0,0, 0.5)",
+            height:'80vh'
         }}>
-            <Grid container spacing={0} alignItems={'center'} sx={{ paddingY: { xs: 15, sm: 10, } }}>
+            <Grid container spacing={0} alignItems={'center'} sx={{ paddingY: { xs: 15, sm: 15, } }}>
                 <Grid item xs={12} lg={12} align="center">
                     <div className='text-clear-white' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingBottom: 2,}}>
-                        <Typography className='mondwest' sx={{ fontSize: { xs: '40px', sm: '70px', }}}>{page}</Typography>
-                        <Typography className='mondwest' sx={{ borderRadius:10, px: 2, py: 1, fontSize: { xs: '16px', sm: '16px',background:"black"  } }}>
+                        <Typography className='header-font' sx={{ fontSize: { xs: '40px', sm: '80px', }}}>{page}</Typography>
+                        <Typography className='body-font' sx={{ borderRadius:10, px: 2, py: 1,background:"black"  }}>
                            {intro}
                         </Typography>
                         <br />

@@ -33,12 +33,12 @@ export const AboutUs = () => {
                     <Grid item xs={12} lg={12}>
                         <Box className='text-clear-white mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, background: 'black' }}>
                             <div className='layout-x'>
-                                <Typography className='mondwest text-insightful' sx={{ fontSize: { xs: '60px', sm: '70px', } }}>
+                                <Typography className='alt-header-font text-insightful'>
                                     Mission
                                 </Typography>
                                 <img width="70px" src={images.thumb} alt='thumb'/>
                             </div>
-                            <Typography className='mondwest' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
+                            <Typography className='body-font' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
                                 Our mission is to make a difference in the world of digital technology and more
                                 specifically, in Ghana and the emerging skills of a digitally enabled workforce, and the
                                 world. <br />We are building an organisation that gives people high-quality learning, applied skills and
@@ -50,12 +50,12 @@ export const AboutUs = () => {
                         <Box className='mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, }}>
 
                             <div className='layout-x'>
-                                <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>We Are Ghana's
+                                <Typography className='alt-header-font' >We Are Ghana's
                                     Technology Leaders
                                 </Typography>
                                 {/* <img width="60px" src={images.thumb} /> */}
                             </div>
-                            <Typography className='mondwest' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
+                            <Typography className='body-font' >
                                 We provide your company with the best engineering services.
                                 Here, the most talented and creative experts work with the world's leading organizations on initiatives that promote social change.
                                 We thrive on advancing global collaboration, developing software, and overcoming obstacles.
@@ -63,7 +63,7 @@ export const AboutUs = () => {
                         </Box>
                     </Grid>
                     <Grid item xs={12} lg={12} paddingTop={3}>
-                        <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Core Values</Typography>
+                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Core Values</Typography>
                     </Grid>
                     {
                         coreValues.map((e,idx) => (
@@ -75,7 +75,7 @@ export const AboutUs = () => {
                         ))
                     }
                     <Grid item xs={12} lg={12} paddingTop={15}>
-                        <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Meet Our Team</Typography>
+                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Meet Our Team</Typography>
                     </Grid>
                     {
                         team.map((e,idx) => (

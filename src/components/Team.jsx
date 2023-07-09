@@ -26,6 +26,7 @@ const Team = ({ name, bio, role, image, twitter, linkedIn }) => {
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
                 <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
                 <Chip
+                    className="body-font"
                     size="sm"
                     variant="soft"
                     color="primary"
@@ -33,10 +34,10 @@ const Team = ({ name, bio, role, image, twitter, linkedIn }) => {
                 >
                     {role}
                 </Chip>
-                <Typography fontSize="lg" fontWeight="lg" sx={{ mt: 1, mb: 0.5 }}>
+                <Typography className="body-font" fontSize="lg" fontWeight="lg" sx={{ mt: 1, mb: 0.5 }}>
                     {name}
                 </Typography>
-                <Typography level="body2" sx={{ maxWidth: '24ch' }}>
+                <Typography className="body-font" level="body2" sx={{ maxWidth: '24ch' }}>
                     {bio}
                 </Typography>
 
@@ -52,16 +53,16 @@ const Team = ({ name, bio, role, image, twitter, linkedIn }) => {
                             display: 'flex',
                             gap: 2,
                             mt: 0,
-                            alignItems:"center",
-                            justifyContent:"center",
+                            alignItems: "center",
+                            justifyContent: "center",
                             '& > button': { borderRadius: '2rem' },
                         }}
                     >
                         <IconButton size="sm" variant="plain" color="neutral">
-                           <TwitterIcon/>
+                            <TwitterIcon />
                         </IconButton>
                         <IconButton size="sm" variant="plain" color="neutral">
-                            <LinkedInIcon/>
+                            <LinkedInIcon />
                         </IconButton>
                         {/* <IconButton size="sm" variant="plain" color="neutral">
                            <FacebookIcon/>
