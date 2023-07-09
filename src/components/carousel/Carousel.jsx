@@ -4,8 +4,10 @@ import classNames from 'classnames';
 import './Carousel.scss'
 import { images } from '../../constants';
 import { Button } from '@mui/material';
+import { Link, Navigate  } from 'react-router-dom';
 
 export class Slider extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -53,16 +55,17 @@ export class Slider extends React.Component {
           {this.props.slides?.map((slide, index) => (
             <div
               className={classNames('slider__slide', { 's--active': activeSlide === index, 's--prev': prevSlide === index })}
-              key={slide.city}
+              key={slide.description}
             >
               <div className="slider__slide-content">
                 <h1 className="slider__slide-heading alt-header-font" > {slide.title.split(',').map((l, index) => <span className=' captions' key={index}>{l}</span>)}</h1>
-                <h3 className="slider__slide-subheading text-disruption captions body-font">{slide.country || slide.city}</h3>
+                <h3 className="slider__slide-subheading text-disruption captions body-font">{slide.country || slide.description}</h3>
                 <h2 className="slider__slide-subheading">
-                  {/* {slide.city.split('').map((l, index) => <span key={index}>{l}</span>)} */}
+                  {/* {slide.description.split('').map((l, index) => <span key={index}>{l}</span>)} */}
                 </h2>
                 <p className="slider__slide-readmore text-pixel-black" >
-                  <Button className='btn button-software-grey button-full-rounded'>Read More </Button>
+                <Navigate to="/" />
+                <Link to={slide.link} ><Button size='small' className='btn button-software-grey button-full-rounded'>Check it out!</Button></Link> 
                 </p>
               </div>
               <div className="slider__slide-parts">
@@ -84,20 +87,23 @@ export class Slider extends React.Component {
 
 export const slides = [
   {
-    title: 'Coming Events',
-    city: 'Presenting occasions this fall',
+    title: 'Upoming Events',
+    description: 'Presenting occasions this fall',
     // country: 'France',
     img: images.IMG_9308,
+    link:'/events?status=upcoming'
   },
   {
     title: 'Current Events',
-    city: 'Ongoing seasons of events',
+    description: 'Ongoing seasons of events',
     img: images.home,
+    link:'/events?status=current'
+
   },
   {
     title: 'Blog',
-    city: 'Articles by our very own hands',
-    // country: 'Czech Republic',
+    description: 'Articles by our very own hands',
     img: images.people,
+    link:'/blog'
   },
 ];

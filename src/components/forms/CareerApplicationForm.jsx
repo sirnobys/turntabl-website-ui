@@ -14,9 +14,9 @@ const CareerApplicationForm = ({careerId}) => {
     const [cv, setCv] = useState(null)
     const [error, setError] = useState('')
     const [load, setLoad] = useState(false)
-    const cvRef = useRef();
 
     const handleCv = (file) => {
+        setCv(file)
         const { status, message } = validatePdf(file)
         if (!status) {
             setError(message)
@@ -27,7 +27,7 @@ const CareerApplicationForm = ({careerId}) => {
     }
 
     const submitApplication = (formData) => {
-        fetch(`${links.BASE_URL}/api/v1/career-applicants/career`+careerId, {
+        fetch(`${links.BASE_URL}/api/v1/career-applicants/`, {
             method: 'POST',
             body: formData
         })
@@ -48,9 +48,10 @@ const CareerApplicationForm = ({careerId}) => {
         e.preventDefault();
         setLoad(true)
         const formData = new FormData();
-        formData.append('firstName', firstName);
-        formData.append('lastName', lastName);
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
         formData.append('cv', cv);
+        formData.append('career_id', careerId);
         formData.append('email', email);
 
         submitApplication(formData)
@@ -58,8 +59,7 @@ const CareerApplicationForm = ({careerId}) => {
         setFirstName('');
         setLastName('');
         setEmail('');
-        cvRef.current.value = ""
-        setCv(null);
+        // setCv(null);
     }
 
 
@@ -129,14 +129,12 @@ const CareerApplicationForm = ({careerId}) => {
                     Upload CV
                     <TextField
                         // autoFocus
-                        defaultValue={cv}
                         required
                         error={error}
                         helperText={error}
                         margin="dense"
                         size='small'
                         id="image"
-                        ref={cvRef}
                         // label="Add Image"
                         placeholder='cv'
                         type="file"
