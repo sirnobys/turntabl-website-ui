@@ -37,13 +37,17 @@ export const CareersPage = () => {
     const handleSearch = (careers = null) => {
         let filter = []
         if (careers) {
-            filter = careers.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()))
+            filter = careers.filter(e =>
+                [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()) &&
+                [e.department.toLocaleLowerCase()].toLocaleString().includes(department.toLocaleLowerCase().replace('all',''))
+            )
             setCareers(filter)
         }
         else {
             filter = careers_.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()))
             setCareers(filter)
         }
+
         currentUrlParams.set('filter', search)
         navigate('?' + currentUrlParams.toString())
         // setSelectedCareer(filter[0])
@@ -51,7 +55,7 @@ export const CareersPage = () => {
     }
 
     const setSelectedFromUrl = (careers) => {
-       const filter = careers.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(view?.toLocaleLowerCase()))
+        const filter = careers.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(view?.toLocaleLowerCase()))
         setSelectedCareer(filter[0])
     }
 
@@ -67,18 +71,32 @@ export const CareersPage = () => {
                 })
         }
         fetchCareers();
-    }, [department])
+    }, [])
 
     const handleSelectedCareer = (career) => {
         currentUrlParams.set('view', career.name)
         setSelectedCareer(career)
         navigate('?' + currentUrlParams.toString())
     }
+
+    const handleDepartmentSelection=(dep)=>{
+        const filter = careers_.filter(e =>
+            [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()) &&
+            [e.department.toLocaleLowerCase()].toLocaleString().includes(dep.toLocaleLowerCase().replace('all',''))
+        )
+        currentUrlParams.set('department', dep.toLocaleLowerCase());
+        navigate('?' + currentUrlParams.toString()) 
+        setDepartment(dep.toLocaleLowerCase());
+        setCareers(filter)
+    }
     const Filters = () => {
         return (
             <Grid container spacing={0} textAlign={'center'}>
                 {departmentData.map((dep, idx) => (<Grid key={idx} item xs={4} sm={2}>
-                    <Chip icon={<BusinessIcon />} variant={dep.name.toLocaleLowerCase() === department.toLocaleLowerCase() ? 'filled' : 'outlined'} label={dep.name} onClick={() => { setDepartment(dep.name.toLocaleLowerCase()); navigate('?department=' + dep.name.toLocaleLowerCase()) }} />
+                    <Chip icon={<BusinessIcon />} 
+                    variant={dep.name.toLocaleLowerCase() === department.toLocaleLowerCase() ? 'filled' : 'outlined'} 
+                    label={dep.name} 
+                    onClick={() => { handleDepartmentSelection(dep.name); }} />
                 </Grid>))}
             </Grid>
         )
@@ -93,7 +111,7 @@ export const CareersPage = () => {
                     paddingX: 0,
                     py: 1
                 }}>
-                    {careers?.map((career, idx) => (
+                    {careers?.length !== 0 ? careers?.map((career, idx) => (
                         <Button key={idx} className={selectedCareer?.id == career.id ? 'btn button-software-grey' : 'btn'} onClick={() => handleSelectedCareer(career)}>
                             <Box boxShadow={2} padding={1.2} py={2} >
                                 <Grid item xs={12} lg={12}>
@@ -106,7 +124,7 @@ export const CareersPage = () => {
                                 </Grid>
                             </Box>
                         </Button>
-                    ))
+                    )) : 'No data to display'
 
                     }
                 </Box>
@@ -299,7 +317,7 @@ export const CareersPage = () => {
                 <Box paddingY={{ xs: 5, sm: 5 }} paddingX={{ xs: 5, sm: 10 }}>
                     <Filters />
                     <Box display={'flex'} flexDirection={'row'} gap={1} py={2}>
-                        <TextField defaultValue={search} onChange={(e) => {setSearch(e.target.value)}} placeholder='enter role' size='small' label="search roles" />
+                        <TextField defaultValue={search} onChange={(e) => { setSearch(e.target.value) }} placeholder='enter role' size='small' label="search roles" />
                         <IconButton className='button-software-grey' onClick={() => { handleSearch() }} size="xs" variant="plain" color="neutral">
                             <SearchIcon />
                         </IconButton>
