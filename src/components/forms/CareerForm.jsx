@@ -362,7 +362,7 @@ const CareerForm = (props) => {
                                 sx={{
                                     mt: 1
                                 }}
-                                placeholder="Event Description..."
+                                placeholder="Description..."
                                 minRows={3}
                                 variant="outlined"
                                 value={description}

@@ -122,6 +122,7 @@ const Blogs = () => {
                             image={event.image}
                             description={event.description}
                             link={event.link}
+                            date={event.date_created}
                             deleteEvent={deleteBlog}
                         />
                     </Grid>

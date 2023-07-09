@@ -283,7 +283,7 @@ export const CareersPage = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} lg={12}>
-                    <CareerApplicationForm />
+                    <CareerApplicationForm careerId={selectedCareer.id}/>
                 </Grid>
             </Grid>
         )

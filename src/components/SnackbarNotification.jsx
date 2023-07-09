@@ -30,7 +30,10 @@ export default function SnackbarNotification({message}) {
       {/* <Button variant="outlined" onClick={handleClick}>
         Open success snackbar
       </Button> */}
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={open} 
+      autoHideDuration={6000} 
+      anchorOrigin={{ vertical:'bottom', horizontal:'center' }}
+      onClose={handleClose}>
         <Alert onClose={handleClose}  sx={{ width: '100%' }}>
           {message?.text}
         </Alert>

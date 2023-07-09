@@ -2,22 +2,18 @@ import React, { useRef, useState } from 'react';
 import { Box, Typography } from "@mui/material";
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Textarea from '@mui/joy/Textarea';
 import { ArrowOutwardOutlined } from '@mui/icons-material';
 import { validatePdf } from '../../shared_logic/Validators';
+import { links } from '../../constants';
 
 
-const CareerApplicationForm = (props) => {
+const CareerApplicationForm = ({careerId}) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [cv, setCv] = useState(null)
     const [error, setError] = useState('')
+    const [load, setLoad] = useState(false)
     const cvRef = useRef();
 
     const handleCv = (file) => {
@@ -30,16 +26,34 @@ const CareerApplicationForm = (props) => {
         }
     }
 
+    const submitApplication = (formData) => {
+        fetch(`${links.BASE_URL}/api/v1/career-applicants/career`+careerId, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the backend
+                console.log(data)
+                setLoad(!load)
+            })
+            .catch(error => {
+                setLoad(!load)
+                // Handle any errors
+            });
+    }
+
+
     const handleSubmit = (e) => {
-        e.preventDefault()
-        let data = {
-            firstName: firstName,
-            lastName: lastName,
-            cv: cv,
-            email: email
-        }
+        e.preventDefault();
+        setLoad(true)
+        const formData = new FormData();
+        formData.append('firstName', firstName);
+        formData.append('lastName', lastName);
+        formData.append('cv', cv);
+        formData.append('email', email);
 
-
+        submitApplication(formData)
 
         setFirstName('');
         setLastName('');

@@ -8,13 +8,36 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Textarea from '@mui/joy/Textarea';
+import { links } from '../../constants';
+import SnackbarNotification from '../SnackbarNotification';
 
 
 const ContactForm = (props) => {
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
     const [email, setEmail] = useState('');
+    const [company, setCompany] = useState('');
+    const [load, setLoad] = useState(false);
+    const [notificationMessage, setNotificationMessage] = useState({text:'',type:''});
 
+
+    const submitContactInfo = (formData) => {
+        fetch(`${links.BASE_URL}/api/v1/contact/`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the backend
+                console.log(data)
+                setNotificationMessage({text:'details submitted successfully',type:'success'})
+                setLoad(!load)
+            })
+            .catch(error => {
+                setLoad(!load)
+                // Handle any errors
+            });
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -23,7 +46,12 @@ const ContactForm = (props) => {
             message: message,
             email: email
         }
-
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('company', company);
+        formData.append('description', message);
+        submitContactInfo(formData)
         setName('');
         setEmail('');
         setMessage('');
@@ -34,6 +62,7 @@ const ContactForm = (props) => {
     return (
         <Box>
             <form onSubmit={handleSubmit}>
+            {notificationMessage?.text!==""?<SnackbarNotification message={notificationMessage}/>:''}
                 <Box borderRadius={4}
                     sx={{
                         // px: { xs: 2, sm: 5 },
@@ -54,7 +83,7 @@ const ContactForm = (props) => {
                         autoFocus
                         margin="dense"
                         id="name"
-                        label="Your Name"
+                        label="Your name"
                         type="text"
                         fullWidth
                         variant="outlined"
@@ -90,7 +119,9 @@ const ContactForm = (props) => {
                         size="md"
                         onChange={(e) => setMessage(e.target.value)}
                     />
-                    <Button type="submit" className='button-pixel-black' variant='contained'>Let's get started</Button>
+                    {/* <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={<ArrowOutwardOutlined />}>Apply</Button> */}
+
+                    <Button type="submit" className={!(name && message && email) ? 'btn' : 'btn button-pixel-black'} disabled={!(name && message && email)}  variant='contained'>Let's get started</Button>
                 </Box>
             </form>
         </Box>
