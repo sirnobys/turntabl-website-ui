@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
@@ -16,8 +16,12 @@ import CareerApplicationForm from '../components/forms/CareerApplicationForm';
 
 export const CareersPage = () => {
     const currentUrlParams = new URLSearchParams(window.location.search);
-    const page = currentUrlParams.get("department")
-    const navigate = useNavigate()
+    const dep = currentUrlParams.get("department")
+    const name = currentUrlParams.get("name")
+    const [careers, setCareers] = useState([]);
+    const [selectedCareer, setSelectedCareer] = useState(null);
+    const [search, setSearch] = useState(name);
+    const navigate = useNavigate(currentUrlParams)
     const departmentData = [
         { name: 'All' },
         { name: 'Engineering' },
@@ -25,7 +29,26 @@ export const CareersPage = () => {
         { name: 'Operations' },
         { name: 'Operations Admin' },
     ]
-    const [department, setDepartment] = useState(page ?? "All")
+    let baseUrl = 'http://localhost:5000';
+
+    useEffect(() => {
+        const fetchCareers = () => {
+            fetch(`${baseUrl}/api/v1/careers`)
+                .then(response => response.json())
+                .then(data => {
+                    setCareers(data.result)
+                    // setSelectedCareer(data.result[0])
+                })
+        }
+        fetchCareers();
+    }, [])
+
+    const [department, setDepartment] = useState(dep ?? "All")
+    const handleSelectedCareer = (career) => {
+        currentUrlParams.set('name', career.name)
+        setSelectedCareer(career)
+        navigate('?' + currentUrlParams.toString())
+    }
     const Filters = () => {
         return (
             <Grid container spacing={0} textAlign={'center'}>
@@ -45,39 +68,176 @@ export const CareersPage = () => {
                     paddingX: 0,
                     py: 1
                 }}>
-                    <Box boxShadow={2} padding={1.2} py={2} sx={{ cursor: 'pointer' }} className="preview-role">
-                        <Grid item xs={12} lg={12}>
-                            <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>title of job goes here</Typography>
-                        </Grid>
-                        <Grid item xs={12} lg={12}>
-                            <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'8 days ago'} />
-                            <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
-                            <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'Department'} />
-                        </Grid>
-                    </Box>
+                    {careers?.map((career, idx) => (
+                        <Button key={idx} className={selectedCareer?.id==career.id?'btn button-software-grey':'btn'} onClick={() => handleSelectedCareer(career)}>
+                            <Box boxShadow={2} padding={1.2} py={2} >
+                                <Grid item xs={12} lg={12}>
+                                    <Typography className="mondwest text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
+                                </Grid>
+                                <Grid item xs={12} lg={12}>
+                                    <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.date_created.split(' ')[0]} />
+                                    <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
+                                    <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.department} />
+                                </Grid>
+                            </Box>
+                        </Button>
+                    ))
+
+                    }
                 </Box>
             </Grid>)
     }
 
     const RoleDetails = () => {
+        if (!selectedCareer) {
+            return (
+                <Grid item xs={7} lg={8}>
+                    Select role to view details
+                </Grid>
+            )
+        }
         return (
-            <Grid item xs={7} lg={6}>
+            <Grid item xs={7} textAlign={'center'} lg={8} height={'60vh'} px={4} sx={{ overflowY: 'scroll' }}>
                 <Grid item xs={12} lg={12} py={1}>
-                    <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>title of job goes here</Typography>
+                    <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
                 </Grid>
                 <Grid item xs={12} lg={12} py={1}>
-                    <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'8 days ago'} />
+                    <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.date_created.split(' ')[0]} />
                     <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
-                    <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'Department'} />
+                    <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.department} />
                 </Grid>
                 <Grid item xs={12} lg={12}>
                     <Typography className="mondwest" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Enim, consectetur dicta? Molestiae asperiores,
-                        odio voluptate minus obcaecati maiores accusantium ipsa
-                        inventore tempore autem accusamus repellat perferendis
-                        quidem iure praesentium eos.
+                        {selectedCareer.description}
                     </Typography>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                    <Typography className="mondwest" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
+                        {selectedCareer.description}
+                    </Typography>
+                    <Box pt={4}>
+                        <Typography
+                            sx={{
+                                fontSize: { xs: '14px', sm: '16px' },
+                                display: 'flex', justifyContent: 'flex-start',
+                            }}
+                        >
+                            Requirements
+                        </Typography>
+                        <Box
+                            component='ul'
+                        >
+                            {selectedCareer?.requirements?.map((requirement, idx) => (
+                                <Box
+                                    component='li'
+                                    sx={{
+                                        marginLeft: 2
+                                    }}
+                                    key={idx}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: {
+                                                xs: '12px', sm: '16px',
+                                                display: 'flex',
+                                                justifyContent: 'flex-start',
+                                            }
+                                        }}>{requirement}</Typography>
+                                </Box>
+                            ))}
+                        </Box>
+                        <Box pt={2}>
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: '14px', sm: '16px' },
+                                    display: 'flex', justifyContent: 'flex-start'
+                                }}
+                            >
+                                Responsibilities
+                            </Typography>
+                            <Box
+                                component='ul'
+                            >
+                                {selectedCareer?.responsibilities?.map((responsibility, idx) => (
+                                    <Box
+                                        component='li'
+                                        sx={{
+                                            marginLeft: 2
+                                        }}
+                                        key={idx}
+                                    >
+                                        <Typography
+                                            sx={{
+                                                fontSize: {
+                                                    xs: '12px', sm: '16px',
+                                                    display: 'flex',
+                                                    justifyContent: 'flex-start'
+                                                }
+                                            }}>{responsibility}</Typography>
+                                    </Box>
+                                ))}
+                            </Box>
+                        </Box>
+                        <Box pt={2}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                gap: '5px'
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: '14px', sm: '16px' },
+                                }}
+                            >
+                                Technologies:
+                            </Typography>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    gap: '5px'
+                                }}
+                            >
+                                {selectedCareer?.technologies?.map((technology, idx) => (
+                                    <Typography
+                                        sx={{
+                                            fontSize: { xs: '12px', sm: '16px' }
+                                        }}
+                                        key={idx}
+                                    >
+                                        {technology}
+                                    </Typography>
+                                ))}
+                            </Box>
+                        </Box>
+                        <Box pt={2}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                gap: '5px',
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    display: 'flex', justifyContent: 'flex-start',
+                                    fontSize: { xs: '14px', sm: '16px' },
+                                }}
+                                variant="h5"
+                            >
+                                Compensation:
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: '12px', sm: '16px' }
+                                }}
+                            >{selectedCareer?.salary}
+                            </Typography>
+                        </Box>           
+                    </Box>
                 </Grid>
                 <Grid item xs={12} lg={12}>
                     <CareerApplicationForm />
@@ -86,11 +246,11 @@ export const CareersPage = () => {
         )
     }
 
-    const Roles = ({ title, description, department, resp }) => {
+    const Roles = () => {
         return (
             <div>
                 <Box display={'flex'} flexDirection={'row'} gap={1} py={2}>
-                    <TextField placeholder='enter role' size='small' label="search roles" />
+                    <TextField defaultValue={search} placeholder='enter role' size='small' label="search roles" />
                     <IconButton className='button-software-grey' onClick={() => { }} size="xs" variant="plain" color="neutral">
                         <SearchIcon />
                     </IconButton>
