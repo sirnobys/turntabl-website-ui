@@ -15,7 +15,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 
 const ContentCard = (props) => {
-    const { id, name, description, image, status, link, date, deleteEvent } = props;
+    const { id, name, description, image, status, link, date, deleteEvent,userView } = props;
     let imageUrl = null;
 
     const base64Image = btoa(image);
@@ -89,7 +89,7 @@ const ContentCard = (props) => {
 
                             }}>{status}</Typography> : ''
                     }
-                    <Box>
+                    <Box hidden={userView}>
                         <Tooltip title="Edit Content">
                             <IconButton
                                 sx={{

@@ -2,67 +2,84 @@ import React, { useEffect, useState } from 'react';
 import { ContentCard, Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images, links } from '../constants';
-import { Grid, Typography } from '@mui/material';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import HandshakeIcon from '@mui/icons-material/Handshake';
+import { Box, Chip, Grid, Typography } from '@mui/material';
+import EventIcon from '@mui/icons-material/Event';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import { useNavigate } from 'react-router-dom';
+import LoadingProgress from '../components/LoadingProgress';
 
 export const EventsPage = () => {
+    const [events_, setEvents_] = useState([]);
     const [events, setEvents] = useState([]);
     const [load, setLoad] = useState(true)
+    const currentUrlParams = new URLSearchParams(window.location.search);
+    const [eventStatus, setEventStatus] = useState(currentUrlParams.get("status") ?? "current")
+    const navigate = useNavigate()
 
     let baseUrl = links.BASE_URL
 
     useEffect(() => {
 
-        const fetchBlogs = () => {
+        const fetchEvents = () => {
+            setLoad(true)
             fetch(`${baseUrl}/api/v1/events`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    setLoad(!load)
+                    setLoad(false)
                     setEvents(data.result)
-                }).catch((e)=>{
-                    setLoad(!load)
+                    setEvents_(data.result)
+                    setSelectedFromUrl(data.result)
+                }).catch((e) => {
+                    setLoad(false)
                 })
         }
-        fetchBlogs();
-    }, [])
-    const services = [
-        {
-            title: 'Development',
-            description: `We can assist you in growing your group. Our personnel are adaptable and resourceful. We chew through JIRAs just as easily as we develop your UX or next generation microservice layer.escriptio`,
-            icon: <LocalLibraryIcon sx={{ fontSize: 70, color: '#b0b0ff' }} />
-        },
-        {
-            title: 'Project Management', description: `We cooperate with you throughout the project
-        lifecycle in small, committed teams.
-        From inception and definition to delivery,
-        production and maintenance - our style is clean lines, efficient code, empowered users.`, icon: <HandshakeIcon sx={{ fontSize: 70, color: '#b0b0ff' }} />
-        },
-        {
-            title: 'Partnerships',
-            description: `Partner with turntabl today and design low-cost, high-quality technology ethically and sustainably.`,
-            icon: <LightbulbIcon sx={{ fontSize: 70, color: '#b0b0ff' }} />
-        },
-        {
-            title: 'Software Consulancy', description: `We listen to your issues first.
-        After that, you get industry-leading services
-        from a professional solutions team.`,
-            icon: <CheckCircleOutlineIcon sx={{ fontSize: 70, color: '#b0b0ff' }} />
-        }
+        fetchEvents();
+    }, [eventStatus])
 
+    const eventTypes = [
+        { name: 'Current Events', status: 'current', icon: <EventAvailableIcon /> },
+        { name: 'Upcoming Events', status: 'upcoming', icon: <EventIcon /> },
     ]
 
-    const intro = () => <span>Whatever software your business requires,<br /> we are able to design and develop a bespoke solution tailored specifically to your needs.</span>
+    const handleEventStatus = (event) => {
+        setEventStatus(event.status)
+        currentUrlParams.set('status', event.status)
+        navigate('?' + currentUrlParams.toString())
+        const filter = events_.filter(e => (e.status == event.status))
+        setEvents(filter)
+    }
+
+    const setSelectedFromUrl = (events) => {
+        const filter = events.filter(e => (e.status == eventStatus))
+        setEvents(filter)
+    }
+
+
+    const intro = () => <span>Get up to speed with our blasts!<br /> Discover what we are celebrating, our benevolence and contributions</span>
     return (
         <div id='page-container'>
             <Nav />
             <div id='content-wrap'>
                 <Banner bgImage={images.event_alt_2} image={images.pc} page={'Events'} intro={intro()} />
-                <Grid container spacing={0} alignItems={'center'}>
-                    {events.map((event) => (
+                <Box sx={{
+                    mt: 5,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    textAlign: 'center',
+                    gap: 3
+                }}>
+                    {eventTypes.map((event, idx) => (
+                        <Chip icon={event.icon}
+                            variant={event.status.toLocaleLowerCase() === eventStatus.toLocaleLowerCase() ? 'filled' : 'outlined'}
+                            label={event.name}
+                            onClick={() => { handleEventStatus(event) }} />
+                    ))}
+                </Box>
+                <Grid container textAlign={'center'}>
+
+                    {!load && events?.length !== 0 ? events.map((event) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
@@ -74,10 +91,18 @@ export const EventsPage = () => {
                                     status={event.status}
                                     link={event.link}
                                     date={event.date_created}
+                                    userView={true}
                                 />
                             </div>
                         </Grid>
-                    ))}
+                    )) : load ?
+                        <Grid item xs={12} sm={12} md={12} paddingTop={4}>
+                            <LoadingProgress />
+                        </Grid> :
+                        <Grid item xs={12} sm={12} md={12} paddingTop={4}>
+                            {!load && eventStatus } events
+                        </Grid>
+                    }
 
                     <Grid item xs={12} lg={12} pt={6}>
                         <img width="200px" src={images.thumb} alt='thumb' />
