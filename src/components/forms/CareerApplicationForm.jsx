@@ -9,6 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Textarea from '@mui/joy/Textarea';
 import { ArrowOutwardOutlined } from '@mui/icons-material';
+import { validatePdf } from '../../shared_logic/Validators';
 
 
 const CareerApplicationForm = (props) => {
@@ -16,7 +17,17 @@ const CareerApplicationForm = (props) => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [cv, setCv] = useState(null)
-
+    const [error, setError] = useState('')
+    
+    const handleCv=(file)=>{
+        const {status,message} = validatePdf(file)
+        if(!status){
+            setError(message)
+        }
+        else{
+            setError("")
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -26,6 +37,8 @@ const CareerApplicationForm = (props) => {
             cv: cv,
             email: email
         }
+        
+
 
         setFirstName('');
         setLastName('');
@@ -69,7 +82,7 @@ const CareerApplicationForm = (props) => {
                             background: 'white'
                         }}
                         required
-                        value={firstName}
+                        value={lastName}
                         // autoFocus
                         size='small'
                         margin="dense"
@@ -100,17 +113,20 @@ const CareerApplicationForm = (props) => {
                     Upload CV
                     <TextField
                         // autoFocus
+                        required
+                        error ={error}
+                        helperText={error}
                         margin="dense"
                         size='small'
                         id="image"
                         // label="Add Image"
                         placeholder='cv'
                         type="file"
-                        onChange={(e) => setCv(e.target.files[0])}
+                        onChange={(e) => handleCv(e.target.files[0])}
                         fullWidth
                         variant="outlined"
                     />
-                    <Button type="submit" className='btn button-disruption' variant='contained' endIcon={<ArrowOutwardOutlined/>}>Apply</Button>
+                    <Button disabled={error} type="submit" className={error?'btn':'btn button-welcoming'} variant='contained' endIcon={<ArrowOutwardOutlined/>}>Apply</Button>
                 </Box>
             </form>
         </Box>
