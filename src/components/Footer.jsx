@@ -19,7 +19,7 @@ const Footer = () => {
                         <span className='logo' onClick={() => navigate('/')}><img width="50%" src={images.logo} alt='turntabl logo' /></span>
                         <div className='news-letter'>
                             <span className='layout-x'>
-                                <TextField placeholder='enter email' size='small' label="Subscribe to news letter" />
+                                <TextField className='body-font' placeholder='enter email' size='small' label="Subscribe to news letter" />
                                 <Button className='btn button-pixel-black' variant='contained' endIcon={<SendIcon />}>Subscribe</Button>
                             </span>
                         </div>
@@ -29,12 +29,12 @@ const Footer = () => {
                         <span className='text-grey'>Company</span>
                         <div className="layout-y">
                             <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/')]} > <Link className="text-grey" underline='none'>Home</Link></Button>
-                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/about-us')]} > <Link className="text-grey" underline='none'>About Us</Link></Button>
-                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/services')]} > <Link className="text-grey" underline='none'>Services</Link></Button>
-                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/careers')]} > <Link className="text-grey" underline='none'>Careers</Link></Button>
-                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/events')]} > <Link className="text-grey" underline='none'>Events</Link></Button>
-                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/blog')]} > <Link className="text-grey" underline='none'>Blog</Link></Button>
+                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/')]} > <Link className="text-pixel-black body-font" underline='none'>Home</Link></Button>
+                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/about-us')]} > <Link className="text-pixel-black body-font" underline='none'>About Us</Link></Button>
+                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/services')]} > <Link className="text-pixel-black body-font" underline='none'>Services</Link></Button>
+                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/careers')]} > <Link className="text-pixel-black body-font" underline='none'>Careers</Link></Button>
+                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/events')]} > <Link className="text-pixel-black body-font" underline='none'>Events</Link></Button>
+                                <Button variant="text" className="text-pixel-black" onClick={() => [navigate('/blog')]} > <Link className="text-pixel-black body-font" underline='none'>Blog</Link></Button>
                             </Grid>
                         </div>
                     </Grid>
@@ -45,19 +45,19 @@ const Footer = () => {
                                 <span className='layout-x'>
                                     <IconButton onClick={() => window.open(links.YOUTUBE, '_blank')} size="xs" variant="plain" color="neutral">
                                         <YouTube className='icons' />&nbsp;
-                                        <span>Youtube</span>
+                                        <span className='body-font'>Youtube</span>
                                     </IconButton>
                                 </span>
                                 <span className='layout-x'>
                                     <IconButton onClick={() => window.open(links.TWITTER, '_blank')} size="xs" variant="plain" color="neutral">
                                         <Twitter className='icons' />&nbsp;
-                                        <span>Twitter</span>
+                                        <span className='body-font'>Twitter</span>
                                     </IconButton>
                                 </span>
                                 <span className='layout-x'>
                                     <IconButton onClick={() => window.open(links.LINKEDIN, '_blank')} size="xs" variant="plain" color="neutral">
                                         <LinkedIn className='icons' />&nbsp;
-                                        <span>LinkedIn</span>
+                                        <span className='body-font'>LinkedIn</span>
                                     </IconButton>
                                 </span>
                             </div>
@@ -72,7 +72,7 @@ const Footer = () => {
                                 Ridge West, Accra
                             </div>
                             <div>
-                                1st & 2nd floor, Sonnidom House Mile 7, Achimota
+                                2nd floor, Sonnidom House Mile 7, Achimota
                             </div>
                         </div>
                     </Grid>

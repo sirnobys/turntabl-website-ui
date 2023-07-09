@@ -374,7 +374,7 @@ body {
   /* background-color: #6d6e71; */
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.6);
   border-radius: 50px 50px 0px 0px;
-  min-height: 320px;
+  /* min-height: 200px; */
 
   .layout-y {
     padding: 10px !important;
@@ -382,11 +382,11 @@ body {
 }
 
 .footer-ceil {
-  padding: 60px 0px 0px;
+  padding: 30px 0px 0px;
 }
 
 .footer-floor {
-  padding: 70px 60px 0px;
+  padding: 10px 0px 10px ;
 
   .layout-x {
     justify-content: center;
