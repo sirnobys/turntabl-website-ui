@@ -8,7 +8,7 @@ export const Banner = ({ bgImage, image, page, intro }) => {
         <Box className="banner" sx={{
             background: `url(${bgImage})`,
             backgroundSize: 'cover',
-            backgroundPosition: '0px 800px',
+            backgroundPosition: 'center',
             boxShadow: "inset 0 0 0 2000px rgba(0,0,0, 0.5)"
         }}>
             <Grid container spacing={0} alignItems={'center'} sx={{ paddingY: { xs: 15, sm: 10, } }}>

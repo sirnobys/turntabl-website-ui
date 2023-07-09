@@ -5,7 +5,7 @@
 }
 
 body {
-  // font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: 'worksans';
   // background: #000;
 }
 
@@ -179,6 +179,7 @@ $letterStagger: 0.1s;
         top: -3px;
         width: calc(100% + 4px);
         height: calc(100% + 6px);
+        border-radius: 50px;
         background: rgba(255,255,255,0.4);
         transform: scaleX(0.3);
         transform-origin: 0 50%;

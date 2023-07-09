@@ -27,7 +27,7 @@ export const LandingPage = (props) => {
                         <Grid item xs={12} lg={6}>
                             <div className='section'>
                                 <div className='text'>
-                                    <span className='leading'>Next level of Software Engineering</span>
+                                    <span className='leading alt-header-font'>Next level of Software Engineering</span>
                                     <span className='end'>
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
                                         <img width={16} src={images.smile} /></span>
@@ -59,8 +59,8 @@ export const LandingPage = (props) => {
                     </div>
                 </div>
 
-                <div className='text-clear-white mission' style={{ fontSize: '30px', padding: '80px', background: 'black' }}>
-                    <div className='layout-x'><span className="text-insightful" style={{ fontSize: "40px" }}>MISSION</span><img width="70px" src={images.thumb} /></div>
+                <div className='text-clear-white mission' style={{  padding: '80px', background: 'black' }}>
+                    <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>MISSION</span><img width="70px" src={images.thumb} /></div>
                     Our mission is to make a difference in the world of digital technology and more
                     specifically, in Ghana and the emerging skills of a digitally enabled workforce, and the
                     world.
@@ -70,7 +70,7 @@ export const LandingPage = (props) => {
                     <Grid item xs={12} lg={6}>
                         <div className='section'>
                             <div className='text'>
-                                <span className='leading'>
+                                <span className='leading alt-header-font'>
                                     World class IT solutions delivered to a global client base</span>
                                 <span className='end'>We’ve got a strong focus on technical excellence.<br />
                                     Everyone on our annual graduate intake goes through an intensive two-month training program. When they’re done, we’re ready to work.
@@ -95,11 +95,11 @@ export const LandingPage = (props) => {
                 </Grid>
 
                 <div className='layout-y call-to-action'>
-                    <span className='text-grey'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
-                    <Button className='btn button-welcoming button-full-rounded' variant="contained">Say Hi</Button>
+                    <span className='text-grey alt-header-font'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
+                    <Button onClick={()=>navigate('/contact')} className='btn button-welcoming button-full-rounded' variant="contained">Say hi</Button>
                 </div>
                 <div className='clients'>
-                    <span>Trusted By</span>
+                    <span className='alt-header-font'>Trusted By</span>
                     <span className='layout-x'>
                         <Grid container spacing={0} alignItems={'center'} mb={10}>
                             {clients.map((e, i) => (
@@ -122,7 +122,7 @@ export const LandingPage = (props) => {
                     </span>
                 </div>
                 <div className='testimony'>
-                    <div className='intro text-grey'>What Do Our Clients Say About Us?</div>
+                    <div className='intro text-grey alt-header-font'>What Do Our Clients Say About Us?</div>
                     <span className=''>
                         <Testimonial />
                     </span>

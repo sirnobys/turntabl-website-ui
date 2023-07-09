@@ -26,17 +26,18 @@ function TestimonialCard(name, role, message) {
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
                 <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
                 <Chip
+                    className='body-font'
                     size="sm"
                     variant="soft"
                     color="primary"
                     sx={{ mt: -1, border: '3px solid', borderColor: 'background.surface' }}
                 >
-                   {role}
+                    {role}
                 </Chip>
-                <Typography fontSize="lg" fontWeight="lg" sx={{ mt: 1, mb: 0.5 }}>
+                <Typography className='body-font' fontSize="lg" fontWeight="lg" sx={{ mt: 1, mb: 0.5 }}>
                     {name}
                 </Typography>
-                <Typography level="body2" sx={{}}>
+                <Typography className='body-font' level="body2" sx={{}}>
                     {message}
                 </Typography>
                 <Box

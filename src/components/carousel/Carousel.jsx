@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import './Carousel.scss'
 import { images } from '../../constants';
+import { Button } from '@mui/material';
 
 export class Slider extends React.Component {
   constructor(props) {
@@ -55,12 +56,14 @@ export class Slider extends React.Component {
               key={slide.city}
             >
               <div className="slider__slide-content">
-              <h1 className="slider__slide-heading" > {slide.title.split(',').map((l, index) => <span className=' captions' key={index}>{l}</span>)}</h1>
-                <h3 className="slider__slide-subheading text-disruption captions">{slide.country || slide.city}</h3>
+                <h1 className="slider__slide-heading alt-header-font" > {slide.title.split(',').map((l, index) => <span className=' captions' key={index}>{l}</span>)}</h1>
+                <h3 className="slider__slide-subheading text-disruption captions body-font">{slide.country || slide.city}</h3>
                 <h2 className="slider__slide-subheading">
                   {/* {slide.city.split('').map((l, index) => <span key={index}>{l}</span>)} */}
                 </h2>
-                <p className="slider__slide-readmore text-pixel-black" style={{background:'white',padding:5, fontWeight:'bold'}}>read more</p>
+                <p className="slider__slide-readmore text-pixel-black" >
+                  <Button className='btn button-software-grey button-full-rounded'>Read More </Button>
+                </p>
               </div>
               <div className="slider__slide-parts">
                 {[...Array(this.IMAGE_PARTS).fill()].map((x, i) => (

@@ -1,6 +1,6 @@
 @font-face {
   font-family: neuebit;
-  src: url('../public/fonts/Neuebit-Full/PPNeueBit-Regular.woff');
+  src: url('../public/fonts/Neuebit-Full/PPNeueBit-Bold.ttf');
 }
 
 @font-face {
@@ -8,8 +8,30 @@
   src: url('../public/fonts/Mondwest-Full/PPMondwest-Regular.ttf');
 }
 
-.mondwest{
+@font-face {
+  font-family: worksans;
+  src: url('../public/fonts/Work-Sans/WorkSans-Medium.ttf');
+}
+
+body {
+  font-family: worksans;
+}
+
+/* .mondwest{
   font-family: mondwest !important;
+} */
+
+.header-font {
+  font-family: mondwest !important;
+}
+
+.alt-header-font {
+  font-family: neuebit !important;
+  font-size: 60px !important;
+}
+
+.body-font {
+  font-family: worksans !important;
 }
 
 .App {
@@ -17,7 +39,7 @@
   /* font-family: "mondwest"; */
 }
 
-.logo :hover{
+.logo :hover {
   cursor: pointer;
   /* padding-left: 50px; */
 }
@@ -58,7 +80,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 80px 10px ;
+  padding: 8px 80px 10px;
 }
 
 .header {
@@ -208,6 +230,7 @@
 .btn {
   text-transform: none !important;
   min-width: 100px !important;
+  font-family: 'worksans' !important;
 }
 
 .button-inspiration {
@@ -400,9 +423,11 @@
   }
 }
 
-.preview-role:hover{
+.preview-role:hover {
   background-color: #6d6e7111;
 }
+
+
 
 
 /* xs: 0,
@@ -447,7 +472,7 @@
   position: relative;
   width: 95px;
   height: 95px;
-  margin: 90px auto;  
+  margin: 90px auto;
   animation: spin 2s ease-in-out infinite;
 }
 
@@ -467,7 +492,8 @@
   background-color: #000;
 }
 
-.bubble-1, .bubble-2 {
+.bubble-1,
+.bubble-2 {
   animation: bounce 1.5s ease-in-out infinite;
 }
 
@@ -477,17 +503,19 @@
 
 @keyframes spin {
   100% {
-    transform: rotate( 360deg );
+    transform: rotate(360deg);
   }
 }
 
-@keyframes bounce  {
-  0%, 100% {
-    transform: scale( 0.0 );
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: scale(0.0);
   }
-  
+
   50% {
-    transform: scale( 1.0 );
+    transform: scale(1.0);
   }
 }
 
@@ -517,6 +545,7 @@
   .header {
     padding: 8px 20px 10px 20px;
   }
+
   #content-wrap {
     padding-bottom: 40rem;
     /* Footer height */
