@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import WorkIcon from '@mui/icons-material/Work';
 import CareerApplicationForm from '../components/forms/CareerApplicationForm';
+import { motion } from "framer-motion"
+import LoadingProgress from '../components/LoadingProgress';
 
 export const CareersPage = () => {
     const currentUrlParams = new URLSearchParams(window.location.search);
@@ -23,6 +25,7 @@ export const CareersPage = () => {
     const [careers, setCareers] = useState([]);
     const [selectedCareer, setSelectedCareer] = useState(null);
     const [search, setSearch] = useState(filter);
+    const [load, setLoad] = useState(false)
     const navigate = useNavigate(currentUrlParams)
     const departmentData = [
         { name: 'All' },
@@ -39,7 +42,7 @@ export const CareersPage = () => {
         if (careers) {
             filter = careers.filter(e =>
                 [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()) &&
-                [e.department.toLocaleLowerCase()].toLocaleString().includes(department.toLocaleLowerCase().replace('all',''))
+                [e.department.toLocaleLowerCase()].toLocaleString().includes(department.toLocaleLowerCase().replace('all', ''))
             )
             setCareers(filter)
         }
@@ -61,6 +64,7 @@ export const CareersPage = () => {
 
     useEffect(() => {
         const fetchCareers = () => {
+            setLoad(true)
             fetch(`${baseUrl}/api/v1/careers/`)
                 .then(response => response.json())
                 .then(data => {
@@ -68,6 +72,7 @@ export const CareersPage = () => {
                     setCareers_(data.result)
                     handleSearch(data.result)
                     setSelectedFromUrl(data.result)
+                    setLoad(false)
                 })
         }
         fetchCareers();
@@ -79,25 +84,35 @@ export const CareersPage = () => {
         navigate('?' + currentUrlParams.toString())
     }
 
-    const handleDepartmentSelection=(dep)=>{
+    const handleDepartmentSelection = (dep) => {
         const filter = careers_.filter(e =>
             [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()) &&
-            [e.department.toLocaleLowerCase()].toLocaleString().includes(dep.toLocaleLowerCase().replace('all',''))
+            [e.department.toLocaleLowerCase()].toLocaleString().includes(dep.toLocaleLowerCase().replace('all', ''))
         )
         currentUrlParams.set('department', dep.toLocaleLowerCase());
-        navigate('?' + currentUrlParams.toString()) 
+        navigate('?' + currentUrlParams.toString())
         setDepartment(dep.toLocaleLowerCase());
         setCareers(filter)
     }
     const Filters = () => {
         return (
             <Grid container spacing={0} textAlign={'center'}>
-                {departmentData.map((dep, idx) => (<Grid key={idx} item xs={4} sm={2}>
-                    <Chip icon={<BusinessIcon />} 
-                    variant={dep.name.toLocaleLowerCase() === department.toLocaleLowerCase() ? 'filled' : 'outlined'} 
-                    label={dep.name} 
-                    onClick={() => { handleDepartmentSelection(dep.name); }} />
-                </Grid>))}
+                {departmentData.map((dep, idx) => (
+                    <Grid key={idx} item xs={4} sm={2}>
+                        <motion.div
+                            whileHover={{ scale: 1.07 }}
+                            whileTap={{ scale: 0.7 }}
+                        >
+                            <Chip icon={<BusinessIcon className='text-pixel-black' />}
+                                sx={{
+                                    backgroundColor: dep.name.toLocaleLowerCase() === department.toLocaleLowerCase() ? "#b0b0ff" : '#fff',
+                                    color: "black",
+                                    border: dep.name.toLocaleLowerCase() === department.toLocaleLowerCase() ? "1px solid #b0b0ff" : "1px solid #b0b0ff"
+                                }}
+                                label={dep.name}
+                                onClick={() => { handleDepartmentSelection(dep.name); }} />
+                        </motion.div>
+                    </Grid>))}
             </Grid>
         )
     }
@@ -112,8 +127,12 @@ export const CareersPage = () => {
                     py: 1
                 }}>
                     {careers?.length !== 0 ? careers?.map((career, idx) => (
-                        <Button key={idx} className={selectedCareer?.id == career.id ? 'btn button-software-grey' : 'btn'} onClick={() => handleSelectedCareer(career)}>
-                            <Box boxShadow={2} padding={1.2} py={2} >
+                        <Button key={idx}
+                            sx={{
+                                border: selectedCareer?.id == career.id ? '1px solid #b0b0ff' : ''
+                            }}
+                            onClick={() => handleSelectedCareer(career)}>
+                            <Box boxShadow={0} padding={1.2} py={2} >
                                 <Grid item xs={12} lg={12}>
                                     <Typography className="mondwest text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
                                 </Grid>
@@ -163,6 +182,7 @@ export const CareersPage = () => {
                             sx={{
                                 fontSize: { xs: '14px', sm: '16px' },
                                 display: 'flex', justifyContent: 'flex-start',
+                                fontWeight: 'bold'
                             }}
                         >
                             Requirements
@@ -193,7 +213,9 @@ export const CareersPage = () => {
                             <Typography
                                 sx={{
                                     fontSize: { xs: '14px', sm: '16px' },
-                                    display: 'flex', justifyContent: 'flex-start'
+                                    display: 'flex', justifyContent: 'flex-start',
+                                    fontWeight: 'bold'
+
                                 }}
                             >
                                 Responsibilities
@@ -232,6 +254,8 @@ export const CareersPage = () => {
                             <Typography
                                 sx={{
                                     fontSize: { xs: '14px', sm: '16px' },
+                                    fontWeight: 'bold'
+
                                 }}
                             >
                                 Technologies:
@@ -268,6 +292,8 @@ export const CareersPage = () => {
                                 sx={{
                                     display: 'flex', justifyContent: 'flex-start',
                                     fontSize: { xs: '14px', sm: '16px' },
+                                    fontWeight: 'bold'
+
                                 }}
                                 variant="h5"
                             >
@@ -283,7 +309,7 @@ export const CareersPage = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} lg={12}>
-                    <CareerApplicationForm careerId={selectedCareer.id}/>
+                    <CareerApplicationForm careerId={selectedCareer.id} />
                 </Grid>
             </Grid>
         )
@@ -294,19 +320,15 @@ export const CareersPage = () => {
             <div>
 
                 <Divider sx={{ borderBottomWidth: 0.3, mb: 1, bgcolor: 'black' }} />
-                <Grid container height={'100vh'} spacing={1} alignItems={'left'} textAlign={'center'}>
-                    <RolePreview />
-                    <RoleDetails />
-                </Grid>
+
+                {!load ? careers_?.length !== 0 ?
+                    <Grid container height={'100vh'} spacing={1} alignItems={'left'} textAlign={'center'}>
+                        <RolePreview />
+                        <RoleDetails />
+                    </Grid> : 'No data' : <LoadingProgress />}
             </div>
         )
     }
-    const coreValues = [
-        { value: 'Teaching & Learning', icon: <LocalLibraryIcon sx={{ color: '#bdff00' }} /> },
-        { value: 'Technical Excellence', icon: <LightbulbIcon sx={{ color: '#bdff00' }} /> },
-        { value: 'Delivery for Client', icon: <CheckCircleOutlineIcon sx={{ color: '#bdff00' }} /> },
-        { value: 'Accountability', icon: <HandshakeIcon sx={{ color: '#bdff00' }} /> }
-    ]
 
     const intro = () => <span>  Be part of our Mission! <br />We are looking for passionate people to join us on our mission</span>
     return (
@@ -318,7 +340,7 @@ export const CareersPage = () => {
                     <Filters />
                     <Box display={'flex'} flexDirection={'row'} gap={1} py={2}>
                         <TextField defaultValue={search} onChange={(e) => { setSearch(e.target.value) }} placeholder='enter role' size='small' label="search roles" />
-                        <IconButton className='button-software-grey' onClick={() => { handleSearch() }} size="xs" variant="plain" color="neutral">
+                        <IconButton className='text-inspiration' onClick={() => { handleSearch() }} size="xs" variant="plain" color="neutral">
                             <SearchIcon />
                         </IconButton>
                     </Box>

@@ -71,8 +71,13 @@ export const EventsPage = () => {
                     gap: 3
                 }}>
                     {eventTypes.map((event, idx) => (
-                        <Chip icon={event.icon}
-                            variant={event.status.toLocaleLowerCase() === eventStatus.toLocaleLowerCase() ? 'filled' : 'outlined'}
+                        <Chip
+                            sx={{
+                                backgroundColor: event.status.toLocaleLowerCase() === eventStatus.toLocaleLowerCase() ? "#b0b0ff" : '#fff',
+                                color: "black",
+                                border: event.status.toLocaleLowerCase() === eventStatus.toLocaleLowerCase() ? "1px solid #b0b0ff" : "1px solid #b0b0ff"
+                            }}
+                            icon={event.icon}
                             label={event.name}
                             onClick={() => { handleEventStatus(event) }} />
                     ))}
@@ -100,7 +105,7 @@ export const EventsPage = () => {
                             <LoadingProgress />
                         </Grid> :
                         <Grid item xs={12} sm={12} md={12} paddingTop={4}>
-                            {!load && eventStatus } events
+                            {!load && eventStatus} events
                         </Grid>
                     }
 

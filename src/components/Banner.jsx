@@ -10,7 +10,7 @@ export const Banner = ({ bgImage, image, page, intro }) => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             boxShadow: "inset 0 0 0 2000px rgba(0,0,0, 0.5)",
-            height:'80vh'
+            // height:'80vh'
         }}>
             <Grid container spacing={0} alignItems={'center'} sx={{ paddingY: { xs: 15, sm: 15, } }}>
                 <Grid item xs={12} lg={12} align="center">
