@@ -16,11 +16,13 @@ import CareerApplicationForm from '../components/forms/CareerApplicationForm';
 
 export const CareersPage = () => {
     const currentUrlParams = new URLSearchParams(window.location.search);
-    const dep = currentUrlParams.get("department")
-    const name = currentUrlParams.get("name")
+    const dep = currentUrlParams.get("department") ?? ""
+    const view = currentUrlParams.get("view") ?? ""
+    const filter = currentUrlParams.get("filter") ?? ""
+    const [careers_, setCareers_] = useState([]);
     const [careers, setCareers] = useState([]);
     const [selectedCareer, setSelectedCareer] = useState(null);
-    const [search, setSearch] = useState(name);
+    const [search, setSearch] = useState(filter);
     const navigate = useNavigate(currentUrlParams)
     const departmentData = [
         { name: 'All' },
@@ -30,22 +32,45 @@ export const CareersPage = () => {
         { name: 'Operations Admin' },
     ]
     let baseUrl = 'http://localhost:5000';
+    const [department, setDepartment] = useState(dep ?? "All")
+
+    const handleSearch = (careers = null) => {
+        let filter = []
+        if (careers) {
+            filter = careers.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()))
+            setCareers(filter)
+        }
+        else {
+            filter = careers_.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(search.toLocaleLowerCase()))
+            setCareers(filter)
+        }
+        currentUrlParams.set('filter', search)
+        navigate('?' + currentUrlParams.toString())
+        // setSelectedCareer(filter[0])
+
+    }
+
+    const setSelectedFromUrl = (careers) => {
+       const filter = careers.filter(e => [e.name.toLocaleLowerCase()].toLocaleString().includes(view?.toLocaleLowerCase()))
+        setSelectedCareer(filter[0])
+    }
 
     useEffect(() => {
         const fetchCareers = () => {
-            fetch(`${baseUrl}/api/v1/careers`)
+            fetch(`${baseUrl}/api/v1/careers/`)
                 .then(response => response.json())
                 .then(data => {
                     setCareers(data.result)
-                    // setSelectedCareer(data.result[0])
+                    setCareers_(data.result)
+                    handleSearch(data.result)
+                    setSelectedFromUrl(data.result)
                 })
         }
         fetchCareers();
-    }, [])
+    }, [department])
 
-    const [department, setDepartment] = useState(dep ?? "All")
     const handleSelectedCareer = (career) => {
-        currentUrlParams.set('name', career.name)
+        currentUrlParams.set('view', career.name)
         setSelectedCareer(career)
         navigate('?' + currentUrlParams.toString())
     }
@@ -69,7 +94,7 @@ export const CareersPage = () => {
                     py: 1
                 }}>
                     {careers?.map((career, idx) => (
-                        <Button key={idx} className={selectedCareer?.id==career.id?'btn button-software-grey':'btn'} onClick={() => handleSelectedCareer(career)}>
+                        <Button key={idx} className={selectedCareer?.id == career.id ? 'btn button-software-grey' : 'btn'} onClick={() => handleSelectedCareer(career)}>
                             <Box boxShadow={2} padding={1.2} py={2} >
                                 <Grid item xs={12} lg={12}>
                                     <Typography className="mondwest text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
@@ -236,7 +261,7 @@ export const CareersPage = () => {
                                 }}
                             >{selectedCareer?.salary}
                             </Typography>
-                        </Box>           
+                        </Box>
                     </Box>
                 </Grid>
                 <Grid item xs={12} lg={12}>
@@ -249,12 +274,7 @@ export const CareersPage = () => {
     const Roles = () => {
         return (
             <div>
-                <Box display={'flex'} flexDirection={'row'} gap={1} py={2}>
-                    <TextField defaultValue={search} placeholder='enter role' size='small' label="search roles" />
-                    <IconButton className='button-software-grey' onClick={() => { }} size="xs" variant="plain" color="neutral">
-                        <SearchIcon />
-                    </IconButton>
-                </Box>
+
                 <Divider sx={{ borderBottomWidth: 0.3, mb: 1, bgcolor: 'black' }} />
                 <Grid container height={'100vh'} spacing={1} alignItems={'left'} textAlign={'center'}>
                     <RolePreview />
@@ -278,6 +298,12 @@ export const CareersPage = () => {
                 <Banner bgImage={images.IMG_9005} image={images.pc} page={'Careers'} intro={intro()} />
                 <Box paddingY={{ xs: 5, sm: 5 }} paddingX={{ xs: 5, sm: 10 }}>
                     <Filters />
+                    <Box display={'flex'} flexDirection={'row'} gap={1} py={2}>
+                        <TextField defaultValue={search} onChange={(e) => {setSearch(e.target.value)}} placeholder='enter role' size='small' label="search roles" />
+                        <IconButton className='button-software-grey' onClick={() => { handleSearch() }} size="xs" variant="plain" color="neutral">
+                            <SearchIcon />
+                        </IconButton>
+                    </Box>
                     <Roles title={''} description={''} resp={''} department={''} />
                 </Box>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Box, Typography } from "@mui/material";
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -18,13 +18,14 @@ const CareerApplicationForm = (props) => {
     const [email, setEmail] = useState('');
     const [cv, setCv] = useState(null)
     const [error, setError] = useState('')
-    
-    const handleCv=(file)=>{
-        const {status,message} = validatePdf(file)
-        if(!status){
+    const cvRef = useRef();
+
+    const handleCv = (file) => {
+        const { status, message } = validatePdf(file)
+        if (!status) {
             setError(message)
         }
-        else{
+        else {
             setError("")
         }
     }
@@ -37,12 +38,13 @@ const CareerApplicationForm = (props) => {
             cv: cv,
             email: email
         }
-        
+
 
 
         setFirstName('');
         setLastName('');
         setEmail('');
+        cvRef.current.value = ""
         setCv(null);
     }
 
@@ -113,12 +115,14 @@ const CareerApplicationForm = (props) => {
                     Upload CV
                     <TextField
                         // autoFocus
+                        defaultValue={cv}
                         required
-                        error ={error}
+                        error={error}
                         helperText={error}
                         margin="dense"
                         size='small'
                         id="image"
+                        ref={cvRef}
                         // label="Add Image"
                         placeholder='cv'
                         type="file"
@@ -126,7 +130,7 @@ const CareerApplicationForm = (props) => {
                         fullWidth
                         variant="outlined"
                     />
-                    <Button disabled={error} type="submit" className={error?'btn':'btn button-welcoming'} variant='contained' endIcon={<ArrowOutwardOutlined/>}>Apply</Button>
+                    <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={<ArrowOutwardOutlined />}>Apply</Button>
                 </Box>
             </form>
         </Box>
