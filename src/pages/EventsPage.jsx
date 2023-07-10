@@ -75,6 +75,7 @@ export const EventsPage = () => {
                 }}>
                     {eventTypes.map((event, idx) => (
                         <Chip
+                        className='body-font'
                             sx={{
                                 backgroundColor: event.status.toLocaleLowerCase() === eventStatus.toLocaleLowerCase() ? "#b0b0ff" : '#fff',
                                 color: "black",
@@ -116,7 +117,7 @@ export const EventsPage = () => {
                         <img width="200px" src={images.thumb} alt='thumb' />
                     </Grid>
                     <Grid item xs={12} lg={12}>
-                        <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
+                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
                             Leading Global Talent<br />
                             to your software
                             solutions

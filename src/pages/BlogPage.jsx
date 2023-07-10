@@ -57,7 +57,7 @@ export const BlogPage = () => {
                         <img width="200px" src={images.thumb} />
                     </Grid>
                     <Grid item xs={12} lg={12}>
-                        <Typography className='mondwest' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
+                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
                             Leading Global Talent<br />
                             to your software
                             solutions

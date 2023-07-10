@@ -8,6 +8,7 @@ import Typography from '@mui/joy/Typography';
 export default function ServicesCard({title,description, icon}) {
   return (
     <Card
+    className='body-font'
       data-resizable
       sx={{
         textAlign: 'center',
@@ -40,7 +41,7 @@ export default function ServicesCard({title,description, icon}) {
           </div>
         </AspectRatio>
       </CardOverflow>
-      <Typography level="h2" fontSize="xl" sx={{ mt: 'calc(var(--icon-size) / 2)' }}>
+      <Typography className='body-font' level="h2" fontSize="xl" sx={{ mt: 'calc(var(--icon-size) / 2)' }}>
     {title}
       </Typography>
       <CardContent sx={{ maxWidth: '40ch' }}>

@@ -47,12 +47,13 @@ const ContentCard = (props) => {
                 />
                 <CardContent>
                     <Box>
-                        Posted: <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={date?.split(" ")[0]} />
+                        Posted: <Chip className='body-font' size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={date?.split(" ")[0]} />
                     </Box>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography className='body-font' gutterBottom variant="h5" component="div">
                         {name}
                     </Typography>
                     <Typography
+                    className='body-font'
                         sx={{
                             height: '80px',
                             overflow: 'auto'
@@ -84,6 +85,7 @@ const ContentCard = (props) => {
                         </Button> : ''}
                     {status ?
                         <Typography
+                        className='body-font'
                             hidden={userView}
                             sx={{
                                 color: '#b0b0ff',

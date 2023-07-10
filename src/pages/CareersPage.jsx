@@ -131,12 +131,12 @@ export const CareersPage = () => {
                             onClick={() => handleSelectedCareer(career)}>
                             <Box boxShadow={0} padding={1.2} py={2} >
                                 <Grid item xs={12} lg={12}>
-                                    <Typography className="mondwest text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
+                                    <Typography className="body-font text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
                                 </Grid>
                                 <Grid item xs={12} lg={12}>
-                                    <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.date_created.split(' ')[0]} />
-                                    <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
-                                    <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.department} />
+                                    <Chip className='body-font' size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.date_created.split(' ')[0]} />
+                                    <Chip className='body-font' size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
+                                    <Chip className='body-font' size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.department} />
                                 </Grid>
                             </Box>
                         </Button>
@@ -158,7 +158,7 @@ export const CareersPage = () => {
         return (
             <Grid item xs={7} textAlign={'center'} lg={8} height={'60vh'} px={4} sx={{ overflowY: 'scroll' }}>
                 <Grid item xs={12} lg={12} py={1}>
-                    <Typography className="mondwest" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
+                    <Typography className="alt-header-font" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
                 </Grid>
                 <Grid item xs={12} lg={12} py={1}>
                     <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.date_created.split(' ')[0]} />
@@ -166,16 +166,17 @@ export const CareersPage = () => {
                     <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.department} />
                 </Grid>
                 <Grid item xs={12} lg={12}>
-                    <Typography className="mondwest" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
+                    <Typography className="body-font" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
                         {selectedCareer.description}
                     </Typography>
                 </Grid>
                 <Grid item xs={12} lg={12}>
-                    <Typography className="mondwest" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
+                    <Typography className="body-font" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
                         {selectedCareer.description}
                     </Typography>
                     <Box pt={4}>
                         <Typography
+                            className='body-font'
                             sx={{
                                 fontSize: { xs: '14px', sm: '16px' },
                                 display: 'flex', justifyContent: 'flex-start',
@@ -196,6 +197,7 @@ export const CareersPage = () => {
                                     key={idx}
                                 >
                                     <Typography
+                                        className='body-font'
                                         sx={{
                                             fontSize: {
                                                 xs: '12px', sm: '16px',
@@ -208,6 +210,7 @@ export const CareersPage = () => {
                         </Box>
                         <Box pt={2}>
                             <Typography
+                                className='body-font'
                                 sx={{
                                     fontSize: { xs: '14px', sm: '16px' },
                                     display: 'flex', justifyContent: 'flex-start',
@@ -229,6 +232,7 @@ export const CareersPage = () => {
                                         key={idx}
                                     >
                                         <Typography
+                                            className='body-font'
                                             sx={{
                                                 fontSize: {
                                                     xs: '12px', sm: '16px',
@@ -249,6 +253,7 @@ export const CareersPage = () => {
                             }}
                         >
                             <Typography
+                                className='body-font'
                                 sx={{
                                     fontSize: { xs: '14px', sm: '16px' },
                                     fontWeight: 'bold'
@@ -267,6 +272,7 @@ export const CareersPage = () => {
                             >
                                 {selectedCareer?.technologies?.map((technology, idx) => (
                                     <Typography
+                                        className='body-font'
                                         sx={{
                                             fontSize: { xs: '12px', sm: '16px' }
                                         }}
@@ -286,6 +292,7 @@ export const CareersPage = () => {
                             }}
                         >
                             <Typography
+                                className='body-font'
                                 sx={{
                                     display: 'flex', justifyContent: 'flex-start',
                                     fontSize: { xs: '14px', sm: '16px' },
@@ -297,6 +304,7 @@ export const CareersPage = () => {
                                 Compensation:
                             </Typography>
                             <Typography
+                                className='body-font'
                                 sx={{
                                     fontSize: { xs: '12px', sm: '16px' }
                                 }}

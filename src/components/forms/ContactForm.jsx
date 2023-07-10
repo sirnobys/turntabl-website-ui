@@ -72,8 +72,8 @@ const ContactForm = (props) => {
                         flexDirection: "column",
                         textAlign: "center",
                     }}>
-                    <Typography>Got ideas? We've got the skills</Typography>
-                    <Typography>Let's team up!</Typography>
+                    <Typography className='body-font'>Got ideas? We've got the skills</Typography>
+                    <Typography className='body-font'>Let's team up!</Typography>
                     <TextField
                         sx={{
                             background: 'white'

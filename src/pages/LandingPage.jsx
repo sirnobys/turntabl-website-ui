@@ -19,7 +19,6 @@ const clients = [
 export const LandingPage = (props) => {
     useEffect(()=>{
         window.scrollTo(0, 0)
-    
     },[])
     const navigate = useNavigate()
     return (

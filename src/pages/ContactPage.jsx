@@ -34,9 +34,9 @@ export const Contact = () => {
                         }}>
                             <ChatIcon />
                             <div>
-                                <Typography className="mondwest" sx={{ fontWeight: "bold" }}>Chat to us</Typography>
-                                <Typography className="mondwest">Our friendly team is here to help</Typography>
-                                <Typography className="mondwest">info@turntabl.io</Typography>
+                                <Typography className='body-font' sx={{ fontWeight: "bold" }}>Chat to us</Typography>
+                                <Typography className='body-font'>Our friendly team is here to help</Typography>
+                                <Typography className='body-font'>info@turntabl.io</Typography>
                             </div>
 
                         </Box>
@@ -66,10 +66,10 @@ export const Contact = () => {
                         }}>
                             <PlaceIcon />
                             <div>
-                                <Typography className="mondwest" sx={{ fontWeight: "bold" }}>Visit us</Typography>
-                                <Typography className="mondwest">Come say hello at our offices</Typography>
-                                <Typography className="mondwest">4th & 5th floor, Advantage Place Mayor Road Ridge West, Accra</Typography>
-                                <Typography className="mondwest">1st & 2nd floor, Sonnidom House Mile 7, Achimota</Typography>
+                                <Typography className='body-font' sx={{ fontWeight: "bold" }}>Visit us</Typography>
+                                <Typography className='body-font'>Come say hello at our offices</Typography>
+                                <Typography className='body-font'>4th & 5th floor, Advantage Place Mayor Road Ridge West, Accra</Typography>
+                                <Typography className='body-font'>1st & 2nd floor, Sonnidom House Mile 7, Achimota</Typography>
                             </div>
 
                         </Box>
