@@ -396,7 +396,7 @@ body {
 }
 
 #content-wrap {
-  padding-bottom: 40rem;
+  padding-bottom: 25rem;
   /* Footer height */
 }
 
@@ -553,5 +553,11 @@ body {
 
   body {
     /* background-color: lightblue; */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #content-wrap {
+    padding-bottom: 40rem !important;
   }
 }
