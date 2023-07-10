@@ -33,11 +33,11 @@ const Careers = () => {
             fetch(`${baseUrl}/api/v1/careers`)
                 .then(response => response.json())
                 .then(data => {
-                    setNotificationMessage({text:'loaded successfully'})
+                    setNotificationMessage({ text: 'loaded successfully' })
                     setCareers(data.result)
                     setLoad(false)
                     // setSelectedCareer(data.result[0])
-                }).catch((e)=>{
+                }).catch((e) => {
                     setLoad(false)
                 })
         }
@@ -128,7 +128,7 @@ const Careers = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setNotificationMessage({text:'deleted successfully'})
+                setNotificationMessage({ text: 'deleted successfully' })
 
                 // Handle the response from the backend
                 setLoad(!load)
@@ -178,43 +178,60 @@ const Careers = () => {
                 </Button>
             </Box>
             <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} data={updateData} />
-           { !load?careers?.length!==0?<Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
+            {!load ? careers?.length !== 0 ? <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 <Grid item xs={12} sm={12} md={3}>
-                    <motion.div
-                        className="box"
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.5,
-                            ease: [0, 0.71, 0.2, 1.01]
-                        }}
+                    <Box sx={{
+                        height: 400,
+                        overflowY: 'scroll',
+                        paddingX: 0,
+                        py: 1
+                    }}
                     >
-                        <List
-                            sx={{
-                                height: { xs: '200px', sm: '350px', md: '600px' },
-                                overflow: 'auto'
+                        <motion.div
+                            className="box"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.5,
+                                ease: [0, 0.71, 0.2, 1.01]
                             }}
                         >
-                            {careers.map((career, idx) => (
-                                <ListItem disablePadding key={idx}>
-                                    <ListItemButton
-                                        onClick={() => handleCareerSelection(career)}
-                                    >
-                                        <ListItemIcon>
-                                            <LabelIcon sx={{ fontSize: { xs: '16px', sm: '20px' } }} />
-                                        </ListItemIcon>
-                                        <ListItemText primaryTypographyProps={{ fontSize: { xs: '12px', sm: '16px' } }} primary={career.name} />
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </motion.div>
+                            <List
+                                sx={{
+                                    height: { xs: '200px', sm: '350px', md: '600px' },
+                                    overflow: 'auto'
+                                }}
+                            >
+                                {careers.map((career, idx) => (
+                                    <ListItem disablePadding key={idx}>
+                                        <ListItemButton
+                                            onClick={() => handleCareerSelection(career)}
+                                        >
+                                            <ListItemIcon>
+                                                <LabelIcon sx={{ fontSize: { xs: '16px', sm: '20px' } }} />
+                                            </ListItemIcon>
+                                            <ListItemText primaryTypographyProps={{ fontSize: { xs: '12px', sm: '16px' } }} primary={career.name} />
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </motion.div>
+                    </Box>
+
                 </Grid>
                 <Grid item xs={12} sm={12} md={9}>
-                    <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer} />
+                    <Box sx={{
+                        height: 400,
+                        overflowY: 'scroll',
+                        paddingX: 0,
+                        py: 1
+                    }}
+                    >
+                        <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer} />
+                    </Box>
                 </Grid>
-            </Grid>:'No data':<LoadingProgress/>}
+            </Grid> : 'No data' : <LoadingProgress />}
         </Box>
     )
 }
