@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
-// import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
 import PeopleIcon from '@mui/icons-material/People';
 import EventIcon from '@mui/icons-material/Event';
 import WorkIcon from '@mui/icons-material/Work';
@@ -14,15 +14,38 @@ import FeedIcon from '@mui/icons-material/Feed';
 import ArticleIcon from '@mui/icons-material/Article';
 import CallIcon from '@mui/icons-material/Call';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-
+import LoginIcon from '@mui/icons-material/Login';
 import { images } from '../constants';
 import { ArrowDropDown } from '@mui/icons-material';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 const Nav = (props) => {
+    const { loginWithRedirect, isLoading, isAuthenticated, user, loginWithPopup, logout } = useAuth0();
+    const confirmLogout = () => {
+        const goOff = window.confirm('logout?')
+        if (goOff) {
+            logout()
+        }
+    }
+    useEffect(() => {
+        console.log(user);
+        console.log(isAuthenticated);
 
+    }, [isAuthenticated])
+    const Auth = () => {
+        console.log(isAuthenticated);
+        if (isAuthenticated) {
+            return (
+                <Button variant="text" className={'text-grey'} onClick={() => confirmLogout()} startIcon={<LogoutIcon />}> <Link className={'text-grey'} underline='none'>Logout</Link></Button>
+            )
+        }
+        else {
+            return <Button variant="text" className={'text-grey'} onClick={() => loginWithPopup()} startIcon={<LoginIcon />}> <Link className={'text-grey'} underline='none'>Sign In</Link></Button>
 
+        }
+    }
     const navigate = useNavigate();
     const path = window.location.pathname
     const [activeLink, setActiveLink] = useState(path)
@@ -137,7 +160,7 @@ const Nav = (props) => {
     if (!matches) {
         return (
             <div className={scrolled ? 'header' : 'nav'}>
-                <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} alt='logo'/></div>
+                <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} alt='logo' /></div>
                 <BasicMenu />
             </div>
         )
@@ -146,7 +169,7 @@ const Nav = (props) => {
         return (
             <div>
                 <div className={scrolled ? 'header' : 'nav'}>
-                    <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} alt=''/></div>
+                    <div className='logo' onClick={() => navigate('/')}><img width={150} src={images.logo} alt='' /></div>
                     <div className='nav-link'>
                         {/* <Button variant="text" className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/about-us'), setActiveLink('/about-us')]} startIcon={<PeopleIcon />}> <Link className={activeLink === "/about-us" ? 'text-inspiration' : 'text-grey'} underline='none'>About Us</Link></Button> */}
                         <AboutDropdown />
@@ -155,6 +178,11 @@ const Nav = (props) => {
                         {/* <Button variant="text" className={activeLink === "/services" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/services'), setActiveLink('/services')]} startIcon={<HailIcon />}> <Link className={activeLink === "/services" ? 'text-inspiration' : 'text-grey'} underline='none'>Services</Link></Button> */}
                         <Button variant="text" className={activeLink === "/events" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/events'), setActiveLink('/events')]} startIcon={<EventIcon />}> <Link className={activeLink === "/events" ? 'text-inspiration' : 'text-grey'} underline='none'>Events</Link></Button>
                         <Button variant="text" className={activeLink === "/blog" ? 'text-inspiration' : 'text-grey'} onClick={() => [navigate('/blog'), setActiveLink('/blog')]} startIcon={<ArticleIcon />}> <Link className={activeLink === "/blog" ? 'text-inspiration' : 'text-grey'} underline='none'>Blog</Link></Button>
+                        {isAuthenticated ?
+                            <Button variant="text" className={'text-grey'} onClick={() => confirmLogout()} startIcon={<LogoutIcon />}> <Link className={'text-grey'} underline='none'>Logout</Link></Button> :
+                            <Button variant="text" className={'text-grey'} onClick={() => loginWithPopup()} startIcon={<LoginIcon />}> <Link className={'text-grey'} underline='none'>Sign In</Link></Button>
+                        }
+                       
                     </div>
                 </div>
             </div>

@@ -9,7 +9,6 @@ import { Services } from "./pages/ServicesPage";
 import { EventsPage } from "./pages/EventsPage";
 import { BlogPage } from "./pages/BlogPage";
 import { CareersPage } from "./pages/CareersPage";
-import { LoginPage } from "./pages/LoginPage";
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>
     </div>

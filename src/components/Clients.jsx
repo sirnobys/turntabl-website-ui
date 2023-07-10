@@ -10,7 +10,7 @@ export default function Clients(name, image, location) {
     <Card
       orientation="horizontal"
       variant="outlined"
-      sx={{ width: 260}}
+      sx={{ width: 260 }}
     >
       <CardOverflow>
         <AspectRatio ratio="1" sx={{ width: 90 }}>
@@ -22,12 +22,12 @@ export default function Clients(name, image, location) {
         </AspectRatio>
       </CardOverflow>
       <CardContent>
-        <Typography fontWeight="md"  mb={0.5}>
+        <Typography className='body-font' fontWeight="md" mb={0.5}>
           {name}
         </Typography>
-        <Typography level="body2">{location}</Typography>
+        <Typography className='body-font' level="body2">{location}</Typography>
       </CardContent>
-      
+
     </Card>
   );
 }
