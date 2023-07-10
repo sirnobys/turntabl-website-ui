@@ -18,8 +18,11 @@ export const EventsPage = () => {
 
     let baseUrl = links.BASE_URL
 
-    useEffect(() => {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
 
+    },[])
+    useEffect(() => {
         const fetchEvents = () => {
             setLoad(true)
             fetch(`${baseUrl}/api/v1/events`)
@@ -85,7 +88,7 @@ export const EventsPage = () => {
                 <Grid container textAlign={'center'}>
 
                     {!load && events?.length !== 0 ? events.map((event) => (
-                        <Grid item xs={12} sm={6} md={6} paddingTop={4}>
+                        <Grid px={3} item xs={12} sm={6} md={3} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
                                     key={event.id}
