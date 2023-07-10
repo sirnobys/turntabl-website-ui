@@ -3,8 +3,8 @@ import { Button, Typography, Box, Tooltip } from "@mui/material";
 import { motion } from "framer-motion"
 import { PreviewTable } from "./table";
 import SnackbarNotification from "./SnackbarNotification";
-import { sassTrue } from "sass";
 import LoadingProgress from "./LoadingProgress";
+import IosShareIcon from '@mui/icons-material/IosShare';
 
 const Newsletters = () => {
     const [subscribers, setSubscribers] = useState([]);
@@ -75,15 +75,16 @@ const Newsletters = () => {
                     <Button
                         sx={{
                             fontSize: { xs: 8, sm: 12 },
-                            backgroundColor: '#b0b0ff',
-                            color: '#fff',
+                            color: '#b0b0ff',
+                            borderColor: '#b0b0ff',
                             ":hover": {
-                                backgroundColor: '#6d6e71',
-                                color: '#fff'
+                                color: '#6d6e71',
+                                borderColor: '#6d6e71',
                             },
                             mr: 2
                         }}
-                    >Export</Button>
+                        variant="outlined"
+                        endIcon={<IosShareIcon />}>Export</Button>
                 </Tooltip>
             </Box>
             {

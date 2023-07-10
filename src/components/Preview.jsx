@@ -79,7 +79,7 @@ const Preview = (props) => {
             deleteCareer(career)
         }
     }
-    console.log(career)
+
     return (
         <motion.div
             className="box"
