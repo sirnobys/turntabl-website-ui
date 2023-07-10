@@ -119,7 +119,6 @@ const ContactForm = (props) => {
                         size="md"
                         onChange={(e) => setMessage(e.target.value)}
                     />
-                    {/* <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={<ArrowOutwardOutlined />}>Apply</Button> */}
 
                     <Button type="submit" className={!(name && message && email) ? 'btn' : 'btn button-pixel-black'} disabled={!(name && message && email)}  variant='contained'>Let's get started</Button>
                 </Box>

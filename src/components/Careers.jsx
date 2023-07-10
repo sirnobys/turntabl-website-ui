@@ -13,6 +13,8 @@ import AddIcon from '@mui/icons-material/Add';
 
 import { Preview } from ".";
 import { CareerForm } from "./forms";
+import SnackbarNotification from "./SnackbarNotification";
+import LoadingProgress from "./LoadingProgress";
 
 
 const Careers = () => {
@@ -21,6 +23,7 @@ const Careers = () => {
     const [open, setOpen] = useState(false);
     const [load, setLoad] = useState(true);
     const [updateData, setUpdateData] = useState({})
+    const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
     let baseUrl = 'http://localhost:5000';
 
@@ -30,8 +33,12 @@ const Careers = () => {
             fetch(`${baseUrl}/api/v1/careers`)
                 .then(response => response.json())
                 .then(data => {
+                    setNotificationMessage({text:'loaded successfully'})
                     setCareers(data.result)
+                    setLoad(false)
                     // setSelectedCareer(data.result[0])
+                }).catch((e)=>{
+                    setLoad(false)
                 })
         }
         fetchCareers();
@@ -41,7 +48,7 @@ const Careers = () => {
         setSelectedCareer(career);
     }
 
-    const sendCareerData = (data, id=null) => {
+    const sendCareerData = (data, id = null) => {
         if (id) {
             let careerUpdate = {
                 id: data.id,
@@ -64,6 +71,7 @@ const Careers = () => {
             })
                 .then(response => response.json())
                 .then(data => {
+                    setNotificationMessage({ text: 'details updated successfully', type: 'success' })
                     // Handle the response from the backend
                     setLoad(!load)
                 })
@@ -88,6 +96,8 @@ const Careers = () => {
             })
                 .then(response => response.json())
                 .then(data => {
+                    setNotificationMessage({ text: 'details updated successfully', type: 'success' })
+
                     // Handle the response from the backend
                     setLoad(!load)
                 })
@@ -118,10 +128,13 @@ const Careers = () => {
         })
             .then(response => response.json())
             .then(data => {
+                setNotificationMessage({text:'deleted successfully'})
+
                 // Handle the response from the backend
                 setLoad(!load)
             })
             .catch(error => {
+                setLoad(false)
                 // Handle any errors
             });
     }
@@ -135,6 +148,8 @@ const Careers = () => {
                 gap: '2px'
             }}
         >
+            {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
+
             <Box
                 sx={{
                     display: 'flex',
@@ -163,7 +178,7 @@ const Careers = () => {
                 </Button>
             </Box>
             <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} data={updateData} />
-            <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
+           { !load?careers?.length!==0?<Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 <Grid item xs={12} sm={12} md={3}>
                     <motion.div
                         className="box"
@@ -197,9 +212,9 @@ const Careers = () => {
                     </motion.div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={9}>
-                    <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer}/>
+                    <Preview career={selectedCareer} updateCareer={updateCareer} deleteCareer={deleteCareer} />
                 </Grid>
-            </Grid>
+            </Grid>:'No data':<LoadingProgress/>}
         </Box>
     )
 }

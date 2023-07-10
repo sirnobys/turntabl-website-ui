@@ -5,15 +5,17 @@ import TextField from '@mui/material/TextField';
 import { ArrowOutwardOutlined } from '@mui/icons-material';
 import { validatePdf } from '../../shared_logic/Validators';
 import { links } from '../../constants';
+import SnackbarNotification from '../SnackbarNotification';
 
 
-const CareerApplicationForm = ({careerId}) => {
+const CareerApplicationForm = ({ careerId }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [cv, setCv] = useState(null)
     const [error, setError] = useState('')
     const [load, setLoad] = useState(false)
+    const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
     const handleCv = (file) => {
         setCv(file)
@@ -34,7 +36,7 @@ const CareerApplicationForm = ({careerId}) => {
             .then(response => response.json())
             .then(data => {
                 // Handle the response from the backend
-                console.log(data)
+                setNotificationMessage({text:'details submitted successfully',type:'success'})
                 setLoad(!load)
             })
             .catch(error => {
@@ -66,6 +68,8 @@ const CareerApplicationForm = ({careerId}) => {
 
     return (
         <Box>
+            {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
+
             <form onSubmit={handleSubmit}>
                 <Box borderRadius={4}
                     sx={{

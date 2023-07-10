@@ -6,12 +6,13 @@ import { Button, Grid } from '@mui/material';
 import BlogForm from "./forms/BlogForm";
 import ContentCard from "./ContentCard";
 import SnackbarNotification from "./SnackbarNotification";
+import LoadingProgress from "./LoadingProgress";
 
 const Blogs = () => {
     const [open, setOpen] = useState(false);
     const [blogs, setBlogs] = useState([]);
     const [load, setLoad] = useState(true)
-    const [message, setMessage] = useState({text:'',type:''})
+    const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
     let baseUrl = 'http://localhost:5000';
 
@@ -21,14 +22,16 @@ const Blogs = () => {
             fetch(`${baseUrl}/api/v1/blogs`)
                 .then(response => response.json())
                 .then(data => {
-                    setMessage({text:'loaded sucessfully',type:'success'})
-                    console.log(data)
+                    setLoad(false)
+                    setNotificationMessage({ text: 'loaded successfully', type: 'success' })
                     setBlogs(data.result)
+                }).catch((e)=>{
+                    setLoad(false)
                 })
         }
         fetchBlogs();
     }, [load])
-    
+
     const sendBlogData = (data) => {
         console.log(data)
         const formData = new FormData();
@@ -47,42 +50,45 @@ const Blogs = () => {
         })
             .then(response => response.json())
             .then(data => {
+                setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
                 // Handle the response from the backend
                 console.log(data)
-                setLoad(!load)
+                // setLoad(false)
             })
             .catch(error => {
                 // Handle any errors
             });
-            
+
         setOpen(false)
     }
 
     const handleClickOpen = () => {
         setOpen(true);
     };
-    
+
     const handleClose = () => {
         setOpen(false);
     }
-    
+
     const deleteBlog = (id) => {
         fetch(`${baseUrl}/api/v1/blogs/${id}`, {
             method: 'DELETE'
         })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response from the backend
-            setLoad(!load)
-        })
-        .catch(error => {
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the backend
+                setNotificationMessage({ text: 'deleted successfully', type: 'success' })
+
+                // setLoad(!load)
+            })
+            .catch(error => {
                 // Handle any errors
             });
     }
 
     return (
         <Box>
-            {message?.text!==""?<SnackbarNotification message={message}/>:''}
+            {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
             <Box
                 sx={{
                     display: 'flex',
@@ -112,7 +118,7 @@ const Blogs = () => {
                 </div>
             </Box>
             <BlogForm open={open} sendBlogData={sendBlogData} handleClose={handleClose} />
-            <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
+            {!load?blogs?.length!==0?<Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 {blogs.map((event, idx) => (
                     <Grid item xs={12} sm={6} md={3} key={idx}>
                         <ContentCard
@@ -127,7 +133,7 @@ const Blogs = () => {
                         />
                     </Grid>
                 ))}
-            </Grid>
+            </Grid>:'No data':<LoadingProgress/>}
         </Box>
     )
 }

@@ -4,12 +4,15 @@ import { Typography, Box, Button } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import { AdminForm } from "./forms";
 import AddIcon from '@mui/icons-material/Add';
+import SnackbarNotification from "./SnackbarNotification";
+import LoadingProgress from "./LoadingProgress";
 
 
 const Roles = () => {
     const [admin, setAdmin] = useState([]);
     const [open, setOpen] = useState(false);
-    const [load, setLoad] = useState(false);
+    const [load, setLoad] = useState(true);
+    const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
     let baseUrl = 'http://localhost:5000';
 
@@ -29,7 +32,8 @@ const Roles = () => {
                         })
                     })
                     setAdmin(rowData)
-                })
+                    setLoad(false)
+                }).catch(e=>setLoad(false))
         }
         fetchAdmin();
     }, [])
@@ -48,10 +52,12 @@ const Roles = () => {
         })
             .then(response => response.json())
             .then(data => {
+                setNotificationMessage({text:'submitted successfully',type:'success'})
                 // Handle the response from the backend
-                setLoad(!load)
+                setLoad(false)
             })
             .catch(error => {
+                setLoad(false)
                 // Handle any errors
             });
 
@@ -77,6 +83,8 @@ const Roles = () => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
+            {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
+
             <Box
                 sx={{
                     display: 'flex',
@@ -117,6 +125,7 @@ const Roles = () => {
                     checkboxSelection
                 />
             </Box>
+            {!load? admin?.length!==0?"":"No data":<LoadingProgress/>}
         </motion.div>
     )
 }

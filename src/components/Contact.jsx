@@ -5,7 +5,7 @@ import { DataGrid } from '@mui/x-data-grid';
 
 const Contact = () => {
     const [contactList, setContactList] = useState([]);
-
+    const [load,setLoad] = useState(true)
     let baseUrl = 'http://localhost:5000';
 
     useEffect(() => {
@@ -25,8 +25,9 @@ const Contact = () => {
                             date_created: item.date_created
                         })
                     })
+                    setLoad(false)
                     setContactList(rowData)
-                })
+                }).catch(e=>setLoad(false))
         }
         fetchCareers();
     }, [])

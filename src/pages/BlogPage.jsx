@@ -3,12 +3,7 @@ import { ContentCard, Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
 import { Box, Grid, Typography } from '@mui/material';
-import CoreValues from '../components/CoreValues';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import Team from '../components/Team';
+
 import LoadingProgress from '../components/LoadingProgress';
 
 export const BlogPage = () => {
