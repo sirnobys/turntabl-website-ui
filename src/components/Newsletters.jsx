@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typography } from "@mui/material";
+import { Button, Typography, Box, Tooltip } from "@mui/material";
 import { motion } from "framer-motion"
 import { PreviewTable } from "./table";
 import SnackbarNotification from "./SnackbarNotification";
@@ -60,12 +60,36 @@ const Newsletters = () => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
-
-            <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Newsletters</Typography>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
+                    margin: 2
+                }}
+            >
+                <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Newsletters</Typography>
+                <Tooltip title="Export Table To CSV">
+                    <Button
+                        sx={{
+                            fontSize: { xs: 8, sm: 12 },
+                            backgroundColor: '#b0b0ff',
+                            color: '#fff',
+                            ":hover": {
+                                backgroundColor: '#6d6e71',
+                                color: '#fff'
+                            },
+                            mr: 2
+                        }}
+                    >Export</Button>
+                </Tooltip>
+            </Box>
             {
-                // subscribers.length > 0 ?
-                <PreviewTable data={subscribers} headCells={headCells} tableName="Subscribers" />
-                // : 'No Data'
+                subscribers.length > 0 ?
+                    <PreviewTable data={subscribers} headCells={headCells} tableName="Subscribers" />
+                    : 'No Data'
             }
         </motion.div>
             {!load ? subscribers?.length !== 0 ? "" : "No data" : <LoadingProgress />}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Tooltip } from "@mui/material";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -161,21 +161,23 @@ const Careers = () => {
                 }}
             >
                 <Typography sx={{ fontSize: { xs: '35px', sm: '40px' } }}>Careers</Typography>
-                <Button
-                    sx={{
-                        fontSize: { xs: 8, sm: 12 },
-                        color: '#b0b0ff',
-                        borderColor: '#b0b0ff',
-                        ":hover": {
-                            color: '#6d6e71',
-                            borderColor: '#6d6e71',
-                        }
-                    }}
-                    variant="outlined"
-                    onClick={handleClickOpen}
-                    endIcon={<AddIcon />}>
-                    New Career
-                </Button>
+                <Tooltip title="Add new Career">
+                    <Button
+                        sx={{
+                            fontSize: { xs: 8, sm: 12 },
+                            color: '#b0b0ff',
+                            borderColor: '#b0b0ff',
+                            ":hover": {
+                                color: '#6d6e71',
+                                borderColor: '#6d6e71',
+                            }
+                        }}
+                        variant="outlined"
+                        onClick={handleClickOpen}
+                        endIcon={<AddIcon />}>
+                        New Career
+                    </Button>
+                </Tooltip>
             </Box>
             <CareerForm open={open} sendCareerData={sendCareerData} handleClose={handleClose} data={updateData} />
             {!load ? careers?.length !== 0 ? <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>

@@ -158,7 +158,6 @@ const PreviewTable = (props) => {
 
     const { data, headCells, tableName } = props;
     const [rows, setRows] = useState(data);
-    console.log(rows, headCells)
 
     const handleRequestSort = (
         event,
@@ -235,7 +234,6 @@ const PreviewTable = (props) => {
                         sx={{ minWidth: 750 }}
                         aria-labelledby="tableTitle"
                         size={dense ? 'small' : 'medium'}
-                        stickyHeader='true'
                     >
                         <EnhancedTableHead
                             numSelected={selected.length}
@@ -271,12 +269,13 @@ const PreviewTable = (props) => {
                                                 }}
                                             />
                                         </TableCell>
-                                        {headCells.map((header) => (
+                                        {headCells.map((header, idx) => (
                                             <TableCell
                                                 component="th"
                                                 id={labelId}
                                                 scope="row"
                                                 padding="none"
+                                                key={idx}
                                             >
                                                 {row[header.id]}
                                             </TableCell>
