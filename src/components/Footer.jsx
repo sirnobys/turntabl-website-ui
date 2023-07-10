@@ -1,26 +1,62 @@
+import React, { useState } from 'react';
 import { Button, Divider, Grid, Link, TextField } from '@mui/material';
-import React from 'react';
 import { Twitter, YouTube, LinkedIn } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
-
-import { images } from '../constants';
-import { links } from '../constants';
+import { Box } from "@mui/material";
 import { IconButton } from '@mui/joy';
 import { useNavigate } from 'react-router';
 
+import { images } from '../constants';
+import { links } from '../constants';
+import SnackbarNotification from "./SnackbarNotification";
+import LoadingProgress from "./LoadingProgress";
+
 
 const Footer = () => {
-    const navigate = useNavigate()
+    const [email, setEmail] = useState("");
+    const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
+
+    const navigate = useNavigate();
+    let baseUrl = 'http://localhost:5000';
+
+    const handleNewsletterSubscription = () => {
+        console.log(email)
+        fetch(`${baseUrl}/api/v1/newsletters/subscriber/${email}`, {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                setEmail('');
+                setNotificationMessage({ text: 'subscribed successfully!', type: 'success' })
+                // setLoad(!load)
+            })
+            .catch(error => {
+                // Handle any errors
+            });
+    }
+
+    const handleChange = (e) => {
+        setEmail(e.target.value)
+    }
+
     return (
         <div id='footer'>
             <div className="footer-ceil">
+                {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
                 <Grid container spacing={2} >
                     <Grid item xs={12} md={4} lg={4} pb={2}>
                         <span className='logo' onClick={() => navigate('/')}><img width="50%" src={images.logo} alt='turntabl logo' /></span>
                         <div className='news-letter'>
                             <span className='layout-x'>
-                                <TextField className='body-font' placeholder='enter email' size='small' label="Subscribe to news letter" />
-                                <Button className='btn button-pixel-black' variant='contained' endIcon={<SendIcon />}>Subscribe</Button>
+                                <TextField className='body-font' placeholder='enter email' size='small' label="Subscribe to news letter" value={email} onChange={handleChange} />
+                                <Button
+                                    className='btn button-pixel-black'
+                                    variant='contained'
+                                    endIcon={<SendIcon />}
+                                    onClick={handleNewsletterSubscription}
+                                >
+                                    Subscribe
+                                </Button>
                             </span>
                         </div>
 
@@ -83,10 +119,26 @@ const Footer = () => {
                     <Divider sx={{ padding: '10px', width: '100%' }} />
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <span className="layout-x">
-                            <span>Home</span>
-                            <span>About Us</span>
-                            <span>Privacy</span>
-                            <span>Terms Of Service</span>
+                            <Box
+                                component="a"
+                                href=""
+                                target='_blank'
+                                rel='noreferrer'
+                                className='text-grey'
+                                sx={{
+                                    textDecoration: 'none'
+                                }}
+                            >Privacy</Box>
+                            <Box
+                                component="a"
+                                href=""
+                                target='_blank'
+                                rel='noreferrer'
+                                className='text-grey'
+                                sx={{
+                                    textDecoration: 'none'
+                                }}
+                            >Terms Of Service</Box>
                         </span>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
