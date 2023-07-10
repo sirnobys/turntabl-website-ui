@@ -13,7 +13,7 @@ export const BlogPage = () => {
     let baseUrl = 'http://localhost:5000';
 
     useEffect(() => {
-
+        window.scrollTo(0, 0)
         const fetchBlogs = () => {
             fetch(`${baseUrl}/api/v1/blogs`)
                 .then(response => response.json())
@@ -36,7 +36,7 @@ export const BlogPage = () => {
                 {blogs.length==0 && load && <LoadingProgress/>}
                 <Grid container spacing={0} alignItems={'left'}>
                     {blogs.map((blog) => (
-                        <Grid item xs={12} sm={6} md={4} paddingTop={4}>
+                        <Grid px={3} item xs={12} sm={6} md={3} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
                                     key={blog.id}

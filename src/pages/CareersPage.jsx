@@ -59,6 +59,7 @@ export const CareersPage = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         const fetchCareers = () => {
             setLoad(true)
             fetch(`${baseUrl}/api/v1/careers/`)

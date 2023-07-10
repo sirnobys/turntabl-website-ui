@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
@@ -11,6 +11,10 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import Team from '../components/Team';
 
 export const AboutUs = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+
+    },[])
     const coreValues = [
         { value: 'Teaching & Learning', icon: <LocalLibraryIcon sx={{ color: '#bdff00' }} /> },
         { value: 'Technical Excellence', icon: <LightbulbIcon sx={{ color: '#bdff00' }} /> },

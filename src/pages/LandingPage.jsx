@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -17,6 +17,10 @@ const clients = [
 ]
 
 export const LandingPage = (props) => {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    
+    },[])
     const navigate = useNavigate()
     return (
         <div id='page-container'>

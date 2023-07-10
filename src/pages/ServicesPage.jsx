@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
@@ -10,6 +10,10 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import ServicesCard from '../components/ServicesCard';
 
 export const Services = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+
+    },[])
     const services = [
         {
             title: 'Development',
