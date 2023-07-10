@@ -51,6 +51,7 @@ export const BlogPage = () => {
                                     description={blog.description}
                                     status={blog.status}
                                     link={blog.link}
+                                    userView={true}
                                     date={blog.date_created}
                                 />
                             </div>

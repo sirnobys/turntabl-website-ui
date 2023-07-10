@@ -65,7 +65,7 @@ export class Slider extends React.Component {
                 </h2>
                 <p className="slider__slide-readmore text-pixel-black" >
                 <Navigate to="/" />
-                <Link to={slide.link} ><Button size='small' className='btn button-software-grey button-full-rounded'>Check it out!</Button></Link> 
+                <Link to={slide.link} ><Button  size='small' className='btn button-disruption button-full-rounded'>Check it out!</Button></Link> 
                 </p>
               </div>
               <div className="slider__slide-parts">

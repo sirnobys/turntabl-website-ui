@@ -74,7 +74,10 @@ const Preview = (props) => {
     }
 
     const handleDelete = () => {
-        deleteCareer(career)
+        let deleteConfirmation = window.confirm('are you sure you want to delete?')
+        if (deleteConfirmation) {
+            deleteCareer(career)
+        }
     }
     console.log(career)
     return (
@@ -88,6 +91,11 @@ const Preview = (props) => {
                 ease: [0, 0.71, 0.2, 1.01]
             }}
         >
+            {
+                applicants.length > 0 ?
+                    <PreviewTable data={applicants} headCells={headCells} tableName="Applicants" />
+                    : ''
+            }
             <Card
                 sx={{
                     flexGrow: 1,
@@ -372,11 +380,7 @@ const Preview = (props) => {
                         Select To View
                     </Typography>}
             </Card>
-            {
-                applicants.length > 0 ?
-                    <PreviewTable data={applicants} headCells={headCells} tableName="Applicants" />
-                    : ''
-            }
+
         </motion.div >
     )
 }
