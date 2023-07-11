@@ -46,7 +46,7 @@ export const Services = () => {
         <div id='page-container'>
             <Nav />
             <div id='content-wrap'>
-                <Banner bgImage={images.event} image={images.pc} page={'Services'} intro={intro()} />
+                <Banner bgImage={images.service_header} image={images.pc} page={'Services'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
                     {services.map((e,idx) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>

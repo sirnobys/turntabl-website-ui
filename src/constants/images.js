@@ -17,10 +17,8 @@ import MS from '../assets/trusted/MS.jpg';
 import career_alt from '../assets/career-alt.jpg'
 import career from '../assets/career.jpeg'
 import event_alt from '../assets/event-alt.jpg'
-import event from '../assets/event.jpg'
 import service_header from '../assets/service-header.jpg'
-import happy_faces from '../assets/happy_faces.jpg'
-import career_alt_2 from '../assets/career-alt-2.jpg'
+import happy_faces from '../assets/IMG_9378.jpg'
 import event_alt_2 from '../assets/event-alt-2.jpg'
 import pair from '../assets/pair.svg'
 import pair_2 from '../assets/pair2.svg'
@@ -28,6 +26,7 @@ import contact from '../assets/contact.svg'
 import not_found from '../assets/404.svg'
 import services from '../assets/services.svg'
 import party from '../assets/party.svg'
+import team_frame_1 from '../assets/team-frame-1.png'
 
 
 export default {
@@ -49,10 +48,8 @@ export default {
     MS,
     career,
     career_alt,
-    event,
     event_alt,
     service_header,
-    career_alt_2,
     happy_faces,
     event_alt_2,
     pair,
@@ -61,4 +58,5 @@ export default {
     not_found,
     services,
     party,
+    team_frame_1
 };

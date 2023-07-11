@@ -6,6 +6,7 @@ import { ArrowOutwardOutlined } from '@mui/icons-material';
 import { validatePdf } from '../../shared_logic/Validators';
 import { links } from '../../constants';
 import SnackbarNotification from '../SnackbarNotification';
+import { CircularProgress } from '@mui/joy';
 
 
 const CareerApplicationForm = ({ careerId }) => {
@@ -37,10 +38,10 @@ const CareerApplicationForm = ({ careerId }) => {
             .then(data => {
                 // Handle the response from the backend
                 setNotificationMessage({text:'details submitted successfully',type:'success'})
-                setLoad(!load)
+                setLoad(false)
             })
             .catch(error => {
-                setLoad(!load)
+                setLoad(false)
                 // Handle any errors
             });
     }
@@ -146,7 +147,8 @@ const CareerApplicationForm = ({ careerId }) => {
                         fullWidth
                         variant="outlined"
                     />
-                    <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={<ArrowOutwardOutlined />}>Apply</Button>
+                    
+                    <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={load ? <CircularProgress color='neutral' size='sm' thickness={1} /> :<ArrowOutwardOutlined />}>Apply</Button>
                 </Box>
             </form>
         </Box>

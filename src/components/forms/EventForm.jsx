@@ -23,7 +23,7 @@ const EventForm = (props) => {
     const [urlTitle, setUrlTitle] = useState(null);
     const [urlLink, setUrlLink] = useState(null);
     const [status, setStatus] = useState('current');
-
+    const [error, setError] = useState('')
     const { sendEventData, handleClose, open } = props;
 
     const handleEventSubmit = () => {
@@ -50,7 +50,13 @@ const EventForm = (props) => {
 
     const handleImage = (e) => {
         // validate image first
-        let {status, message} = validateImage(e.target.files[0]);
+        let { status, message } = validateImage(e.target.files[0]);
+        if (!status) {
+            setError(message)
+        }
+        else {
+            setError("")
+        }
         console.log(status, message)
         setSelectedImage(e.target.files[0])
     }
@@ -90,6 +96,8 @@ const EventForm = (props) => {
                                 onChange={(e) => setName(e.target.value)}
                             />
                             <TextField
+                                helperText={error}
+                                error={error}
                                 autoFocus
                                 margin="dense"
                                 id="image"

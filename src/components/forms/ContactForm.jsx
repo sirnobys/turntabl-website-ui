@@ -10,6 +10,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Textarea from '@mui/joy/Textarea';
 import { links } from '../../constants';
 import SnackbarNotification from '../SnackbarNotification';
+import SendIcon from '@mui/icons-material/Send';
+import { CircularProgress } from '@mui/joy';
 
 
 const ContactForm = (props) => {
@@ -18,7 +20,7 @@ const ContactForm = (props) => {
     const [email, setEmail] = useState('');
     const [company, setCompany] = useState('');
     const [load, setLoad] = useState(false);
-    const [notificationMessage, setNotificationMessage] = useState({text:'',type:''});
+    const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
 
     const submitContactInfo = (formData) => {
@@ -30,7 +32,7 @@ const ContactForm = (props) => {
             .then(data => {
                 // Handle the response from the backend
                 console.log(data)
-                setNotificationMessage({text:'details submitted successfully',type:'success'})
+                setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
                 setLoad(!load)
             })
             .catch(error => {
@@ -62,7 +64,7 @@ const ContactForm = (props) => {
     return (
         <Box>
             <form onSubmit={handleSubmit}>
-            {notificationMessage?.text!==""?<SnackbarNotification message={notificationMessage}/>:''}
+                {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
                 <Box borderRadius={4}
                     sx={{
                         minHeight: '40vh',
@@ -119,7 +121,7 @@ const ContactForm = (props) => {
                         onChange={(e) => setMessage(e.target.value)}
                     />
 
-                    <Button type="submit" className={!(name && message && email) ? 'btn' : 'btn button-pixel-black'} disabled={!(name && message && email)}  variant='contained'>Let's get started</Button>
+                    <Button endIcon={load ? <CircularProgress color='neutral' size='sm' thickness={1} /> : <SendIcon />} type="submit" className={!(name && message && email) ? 'btn ' : 'btn button-pixel-black'} disabled={!(name && message && email)} variant='contained'>Let's get started</Button>
                 </Box>
             </form>
         </Box>

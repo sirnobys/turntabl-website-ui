@@ -33,7 +33,6 @@ const Blogs = () => {
     }, [load])
 
     const sendBlogData = (data) => {
-        console.log(data)
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('description', data.description);
@@ -52,7 +51,6 @@ const Blogs = () => {
             .then(data => {
                 setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
                 // Handle the response from the backend
-                console.log(data)
                 // setLoad(false)
             })
             .catch(error => {

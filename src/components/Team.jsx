@@ -24,7 +24,7 @@ const Team = ({ name, bio, role, image, twitter, linkedIn }) => {
             }}
         >
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-                <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
+                <Avatar src={image} sx={{ '--Avatar-size': '9rem' }} />
                 <Chip
                     className="body-font"
                     size="sm"

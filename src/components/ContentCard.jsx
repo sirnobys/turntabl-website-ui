@@ -41,7 +41,7 @@ const ContentCard = (props) => {
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="Event Image"
                     height="140"
                     image={imageUrl}
                 />
@@ -81,7 +81,7 @@ const ContentCard = (props) => {
                                     backgroundColor: '#6d6e71',
                                 }
                             }}>
-                            <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url} target="_blank" rel="noreferrer">{link?.title}</a>
+                            <a style={{ textDecoration: 'none', color: '#fff' }} href={link?.url} target="_blank" rel="noreferrer">{link?.title??'No Link'}</a>
                         </Button> : ''}
                     {status ?
                         <Typography

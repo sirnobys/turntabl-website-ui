@@ -26,7 +26,7 @@ const CareerForm = (props) => {
     const [hidden, setHidden] = useState(true);
 
     const { sendCareerData, handleClose, data, open } = props;
-
+    console.log(data);
     useEffect(() => {
         const updateFormFields = () => {
             setName(data?.name)
@@ -110,7 +110,8 @@ const CareerForm = (props) => {
         setTechnologies(newFormValues)
     }
 
-    const handleCareerSubmit = () => {
+    const handleCareerSubmit = (e) => {
+        e.preventDefault()
         let req = []
         let resp = []
         let tech = []
@@ -136,10 +137,10 @@ const CareerForm = (props) => {
         }
 
         if (data) {
-            sendCareerData(careerDetails, data?.id);
+            // sendCareerData(careerDetails, data?.id);
         }
         else {
-            sendCareerData(careerDetails);
+            // sendCareerData(careerDetails);
         }
         setName('');
         setDepartment('');
@@ -172,7 +173,7 @@ const CareerForm = (props) => {
                 alignItems: 'center',
             }}
         >
-            <div>
+            <form  onSubmit={handleCareerSubmit}>
                 <Dialog open={open} onClose={handleCareerClose}>
                     <DialogTitle>Add New Career</DialogTitle>
                     <DialogContent>
@@ -186,6 +187,7 @@ const CareerForm = (props) => {
                         >
                             <TextField
                                 autoFocus
+                                required
                                 margin="dense"
                                 id="name"
                                 label="Career Name"
@@ -374,10 +376,10 @@ const CareerForm = (props) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCareerClose}>Cancel</Button>
-                        <Button onClick={handleCareerSubmit}>{data ? 'Update' : 'Submit'}</Button>
+                        <Button type="submit">{data?.id ? 'Update' : 'Submit'}</Button>
                     </DialogActions>
                 </Dialog>
-            </div>
+            </form>
         </Box>
     )
 }

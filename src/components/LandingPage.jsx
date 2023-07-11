@@ -99,9 +99,9 @@ export const LandingPage = (props) => {
                 <div className='clients'>
                     <span>Trusted By</span>
                     <span className='layout-x'>
-                        <div class="slider-logo">
-                            <div class="slide-track">
-                                <div class="slide">
+                        <div className="slider-logo">
+                            <div className="slide-track">
+                                <div className="slide">
                                     <motion.div
                                         animate={{
                                             rotate: [20, -20, 20, -20, 20, -20, 0]
@@ -113,7 +113,7 @@ export const LandingPage = (props) => {
                                     </motion.div>
 
                                 </div>
-                                <div class="slide">
+                                <div className="slide">
                                     <motion.div
                                         animate={{
                                             rotate: [20, -20, 20, -20, 20, -20, 0]
@@ -124,7 +124,7 @@ export const LandingPage = (props) => {
                                         <img src={ms} height="100" width="100" alt="" />
                                     </motion.div>
                                 </div>
-                                <div class="slide">
+                                <div className="slide">
                                     <motion.div
                                         animate={{
                                             rotate: [20, -200, 20, -200, 20, -20, 0]
@@ -135,7 +135,7 @@ export const LandingPage = (props) => {
                                         <img src={fidelity} height="100" width="100" alt="fidelity" />
                                     </motion.div>
                                 </div>
-                                <div class="slide">
+                                <div className="slide">
                                     <motion.div
                                         animate={{
                                             rotate: [20, -200, 20, -20, 20, -20, 0]
@@ -146,10 +146,10 @@ export const LandingPage = (props) => {
                                         <img src={finos} height="100" width="100" alt="" />
                                     </motion.div>
                                 </div>
-                                {/* <div class="slide">
+                                {/* <div className="slide">
                                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
                                 </div>
-                                <div class="slide">
+                                <div className="slide">
                                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
                                 </div> */}
                             </div>

@@ -24,7 +24,6 @@ const Events = () => {
                 .then(response => response.json())
                 .then(data => {
                     setLoad(false)
-                    console.log(data)
                     setNotificationMessage({text:'loaded successfully'})
                     setEvents(data.result)
                 }).catch((e)=>{

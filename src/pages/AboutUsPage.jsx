@@ -22,8 +22,8 @@ export const AboutUs = () => {
         { value: 'Accountability', icon: <HandshakeIcon sx={{ color: '#bdff00' }} /> }
     ]
     const team = [
-        { name: 'Sam Moorhouse', bio: "", role: "CEO", image: "", twitter: "", linkedIn: "" },
-        { name: 'Inusah Ibrahim', bio: "", role: "Admin", image: "", twitter: "", linkedIn: "" },
+        { name: 'Sam Moorhouse', bio: "", role: "CEO", image: images.IMG_9005, twitter: "", linkedIn: "" },
+        { name: 'Inusah Ibrahim', bio: "", role: "Admin", image: images.team_frame_1, twitter: "", linkedIn: "" },
         { name: 'Sam Appiah', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
         { name: 'Mike Annan', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
     ]
@@ -105,7 +105,7 @@ export const AboutUs = () => {
                         ))
                     }
                     <Grid item xs={12} lg={12} paddingTop={15}>
-                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Meet Our Team</Typography>
+                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Meet Our Leadership Team</Typography>
                     </Grid>
                     {
                         team.map((e, idx) => (
