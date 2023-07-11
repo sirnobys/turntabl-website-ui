@@ -44,7 +44,7 @@ const Footer = () => {
             <div className="footer-ceil">
                 {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
                 <Grid container spacing={2} >
-                    <Grid item xs={12} md={4} lg={4} pb={2}>
+                    <Grid item xs={12} sm={12} md={4} lg={4} pb={2}>
                         <span className='logo' onClick={() => navigate('/')}><img width="50%" src={images.logo} alt='turntabl logo' /></span>
                         <div className='news-letter'>
                             <span className='layout-x'>
@@ -61,7 +61,7 @@ const Footer = () => {
                         </div>
 
                     </Grid>
-                    <Grid item xs={6} sm={6} md={3} lg={3} >
+                    <Grid item xs={6} sm={6} md={4} lg={3} >
                         <span className='text-grey'>Company</span>
                         <div className="layout-y">
                             <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -74,7 +74,7 @@ const Footer = () => {
                             </Grid>
                         </div>
                     </Grid>
-                    <Grid item xs={6} sm={6} md={2} lg={2}>
+                    <Grid item xs={6} sm={6} md={1} lg={2}>
                         <span className='text-grey'>Socials</span>
                         <div className='social-media'>
                             <div className="layout-y">

@@ -24,6 +24,7 @@ import career_alt_2 from '../assets/career-alt-2.jpg'
 import event_alt_2 from '../assets/event-alt-2.jpg'
 import pair from '../assets/pair.svg'
 import pair_2 from '../assets/pair2.svg'
+import contact from '../assets/contact.svg'
 
 
 export default {
@@ -53,4 +54,5 @@ export default {
     event_alt_2,
     pair,
     pair_2,
+    contact
 };

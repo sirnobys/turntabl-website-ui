@@ -65,8 +65,6 @@ const ContactForm = (props) => {
             {notificationMessage?.text!==""?<SnackbarNotification message={notificationMessage}/>:''}
                 <Box borderRadius={4}
                     sx={{
-                        // px: { xs: 2, sm: 5 },
-                        // py: { xs: 2, sm: 5 },
                         minHeight: '40vh',
                         display: "flex",
                         flexDirection: "column",
@@ -78,6 +76,7 @@ const ContactForm = (props) => {
                         sx={{
                             background: 'white'
                         }}
+                        size='small'
                         required
                         value={name}
                         autoFocus
@@ -96,7 +95,7 @@ const ContactForm = (props) => {
                         }}
                         required
                         value={email}
-                        // autoFocus
+                        size='small'
                         margin="dense"
                         id="email"
                         label="Your email"

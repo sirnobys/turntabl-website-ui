@@ -8,29 +8,26 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/joy/IconButton';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ContactForm from '../components/forms/ContactForm';
+import { images } from '../constants';
 
 export const Contact = () => {
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0)
 
-    },[])
+    }, [])
     return (
         <div id='page-container'>
             <Nav />
             <div id='content-wrap'>
                 <Grid container spacing={2} padding={5}>
-                    <Grid item xs={12} lg={4} sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        textAlign: "left"
-                    }}>
-
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
                         <Box sx={{
                             gap: 5,
                             display: "flex",
                             flexDirection: "row",
                             textAlign: "left",
-                            py: {xs:2,sm:7}
+                            // justifyContent:'center'
+                            // py: {xs:2,sm:7}
                         }}>
                             <ChatIcon />
                             <div>
@@ -40,29 +37,14 @@ export const Contact = () => {
                             </div>
 
                         </Box>
-
-                        {/* <Box sx={{
-                            gap: 5,
-                            display: "flex",
-                            flexDirection: "row",
-                            textAlign: "left",
-                            py: 5
-
-                        }}>
-                            <CallIcon />
-                            <div>
-                                <Typography className="mondwest" sx={{ fontWeight: "bold" }}>Chat to us</Typography>
-                                <Typography className="mondwest">Our friendly team is here to help</Typography>
-                                <Typography className="mondwest">info@turntabl.io</Typography>
-                            </div>
-
-                        </Box> */}
-
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
                         <Box sx={{
                             gap: 5,
                             display: "flex",
                             flexDirection: "row",
-                            textAlign: "left"
+                            textAlign: "left",
+                            // justifyContent:'center'
                         }}>
                             <PlaceIcon />
                             <div>
@@ -73,12 +55,16 @@ export const Contact = () => {
                             </div>
 
                         </Box>
+                    </Grid>
 
+                    <Grid item xs={12} sm={12} md={6} lg={6} >
+                        <img width={300} src={images.contact} />
                         <Box sx={{
                             gap: 1,
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: "row",
                             textAlign: "center",
+                            justifyContent: "center",
                             pt: 5
                         }}>
                             <div>
@@ -94,10 +80,10 @@ export const Contact = () => {
                             </div>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} lg={8}>
+                    <Grid item xs={12} sm={12} md={6} lg={6} >
                         <Box borderRadius={4} sx={{
                             px: { xs: 2, sm: 5 },
-                            py: { xs: 2, sm: 5 },
+                            py: { xs: 2, sm: 2 },
                             background: '#b0b0ff',
                             minHeight: '40vh',
                             display: "flex",
