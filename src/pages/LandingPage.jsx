@@ -26,7 +26,15 @@ export const LandingPage = (props) => {
             <Nav />
             <div id="content-wrap">
                 <div style={{ height: '100vh' }}>
-                    <Grid container spacing={1} alignItems={'center'} paddingBottom={10}>
+                    <Grid
+                        container
+                        spacing={1}
+                        alignItems={'center'}
+                        paddingBottom={10}
+                        sx={{
+                            pt: 10
+                        }}
+                    >
                         <Grid item xs={12} lg={6}>
                             <div className='section'>
                                 <div className='text'>
@@ -51,6 +59,7 @@ export const LandingPage = (props) => {
                                 }}
                                 whileHover={{ scale: 1.07 }}
                                 whileTap={{ scale: 0.7 }}
+                                transition={{ duration: 0.5, type: "tween" }}
                             >
                                 <span ><img width="90%" src={images.pair} /></span>
                             </motion.div>
@@ -65,15 +74,24 @@ export const LandingPage = (props) => {
                     </div>
                 </div>
 
-                <div className='text-clear-white mission' style={{ padding: '80px', background: 'black' }}>
-                    <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>Next Level of Software Engineering</span><img width="70px" src={images.thumb} /></div>
-                    We offer a unique proposition in the software development market with our unparalleled talent pool of developers
+                <div className='text-clear-white mission' style={{ padding: '80px', background: 'black', transition: 'all 0.3s ease-in-out' }}>
+                    <motion.div
+                        whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>Next Level of Software Engineering</span><img width="70px" src={images.thumb} /></div>
+                        We offer a unique proposition in the software development market with our unparalleled talent pool of developers
+                    </motion.div>
                 </div>
 
                 <Grid container spacing={2} alignItems={'center'}>
                     <Grid item xs={12} lg={6}>
                         <div className='section'>
-                            <div className='text'>
+                            <motion.div
+                                className='text'
+                                whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+                                transition={{ duration: 0.5 }}
+                            >
                                 <span className='leading alt-header-font'>
                                     World class IT solutions delivered to a global client base</span>
                                 <span className='end'>We’ve got a strong focus on technical excellence.<br />
@@ -82,36 +100,38 @@ export const LandingPage = (props) => {
                                 <span>
                                     <Button onClick={() => navigate('/services')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                 </span>
-                            </div>
+                            </motion.div>
                         </div>
                     </Grid>
                     <Grid item xs={12} lg={6}>
                         <motion.div
-                            animate={{
-                                rotate: [5, -2, 0]
-                            }}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 1.2 }}
+                            whileInView={{ opacity: [0, 0, 1] }}
+                            transition={{ type: "spring", stiffness: 100, duration: 3 }}
                         >
                             <span><img style={{ borderRadius: 40, padding: 20 }} width="90%" src={images.service} /></span>
                         </motion.div>
                     </Grid>
                 </Grid>
 
-                <div className='layout-y call-to-action'>
+                <motion.div
+                    whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className='layout-y call-to-action'>
                     <span className='text-grey alt-header-font'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
                     <motion.div
-                        animate={{
-                            rotate: [5, -2, 0]
-                        }}
-                        whileHover={{ scale: 0.7 }}
-                        whileTap={{ scale: 1.3 }}
+                        whileHover={{ scale: 0.9 }}
+                        transition={{ duration: 0.5, type: "tween" }}
+                        style={{ paddingTop: 15 }}
                     >
                         <img src={images.pair_2} />
                     </motion.div>
                     <Button onClick={() => navigate('/contact')} className='btn button-disruption button-full-rounded' variant="contained">Say hi</Button>
-                </div>
-                <div className='clients'>
+                </motion.div>
+                <motion.div
+                    whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className='clients'
+                >
                     <span className='alt-header-font'>Trusted By</span>
                     <span className='layout-x'>
                         <Grid container spacing={0} alignItems={'center'} mb={10}>
@@ -133,13 +153,17 @@ export const LandingPage = (props) => {
                             }
                         </Grid>
                     </span>
-                </div>
-                <div className='testimony'>
+                </motion.div>
+                <motion.div
+                    whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className='testimony'
+                >
                     <div className='intro text-grey alt-header-font'>What Do Our Clients Say About Us?</div>
                     <span className=''>
                         <Testimonial />
                     </span>
-                </div>
+                </motion.div>
             </div>
             <Footer />
         </div >
