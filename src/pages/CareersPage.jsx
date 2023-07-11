@@ -97,7 +97,7 @@ export const CareersPage = () => {
                 {departmentData.map((dep, idx) => (
                     <Grid key={idx} item xs={4} sm={2}>
                         <motion.div
-                        onClick={() => { handleDepartmentSelection(dep.name); }}
+                            onClick={() => { handleDepartmentSelection(dep.name); }}
                             whileHover={{ scale: 1.07 }}
                             whileTap={{ scale: 0.7 }}
                         >
@@ -125,22 +125,38 @@ export const CareersPage = () => {
                     py: 1
                 }}>
                     {careers?.length !== 0 ? careers?.map((career, idx) => (
-                        <Button key={idx}
-                            sx={{
-                                border: selectedCareer?.id == career.id ? '2px solid #b0b0ff' : ''
-                            }}
-                            onClick={() => handleSelectedCareer(career)}>
-                            <Box boxShadow={0} padding={1.2} py={2} >
-                                <Grid item xs={12} lg={12}>
-                                    <Typography className="body-font text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
-                                </Grid>
-                                <Grid item xs={12} lg={12}>
-                                    <Chip className='body-font' size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.date_created.split(' ')[0]} />
-                                    <Chip className='body-font' size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
-                                    <Chip className='body-font' size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.department} />
-                                </Grid>
-                            </Box>
-                        </Button>
+                        <motion.div
+                            whileInView={{ opacity: 1 }}
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.5, type: 'tween' }}
+                        >
+                            <Button key={idx}
+                                sx={{
+                                    border: selectedCareer?.id == career.id ? '2px solid #b0b0ff' : ''
+                                }}
+                                onClick={() => handleSelectedCareer(career)}>
+                                <Box boxShadow={0} padding={1.2} py={2} >
+                                    <Grid item xs={12} lg={12}>
+                                        <Typography className="body-font text-pixel-black" sx={{ fontWeight: 'bold', fontSize: { xs: '16px', sm: '20px' } }}>{career.name}</Typography>
+                                    </Grid>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        lg={12}
+                                        sx={{
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            gap: 1
+                                        }}
+                                    >
+                                        <Chip className='body-font' size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.date_created.split(' ')[0]} />
+                                        <Chip className='body-font' size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
+                                        <Chip className='body-font' size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={career.department} />
+                                    </Grid>
+                                </Box>
+                            </Button>
+                        </motion.div>
                     )) : 'No data to display'
 
                     }
@@ -161,7 +177,19 @@ export const CareersPage = () => {
                 <Grid item xs={12} lg={12} py={1}>
                     <Typography className="alt-header-font text-inspiration" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
                 </Grid>
-                <Grid item xs={12} lg={12} py={1}>
+                <Grid
+                    item
+                    xs={12}
+                    lg={12}
+                    py={1}
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        gap: 1
+                    }}
+                >
                     <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.date_created.split(' ')[0]} />
                     <Chip size='small' icon={<WorkIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={'full time'} />
                     <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.department} />
