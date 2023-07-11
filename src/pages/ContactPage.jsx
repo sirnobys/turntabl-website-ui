@@ -9,6 +9,7 @@ import IconButton from '@mui/joy/IconButton';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ContactForm from '../components/forms/ContactForm';
 import { images, links } from '../constants';
+import { motion } from "framer-motion"
 
 export const Contact = () => {
     useEffect(() => {
@@ -58,7 +59,16 @@ export const Contact = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={6} lg={6} >
+                    <motion.div
+                            animate={{
+                                rotate: [5, -2, 0]
+                            }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 1.2 }}
+                        >
+
                         <img width={300} src={images.contact} />
+                        </motion.div>
                         <Box sx={{
                             gap: 1,
                             display: "flex",

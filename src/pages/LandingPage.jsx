@@ -33,7 +33,7 @@ export const LandingPage = (props) => {
                                     <Typography className='leading alt-header-font'>Hello!
                                         &nbsp;<img width={"5%"} src={images.smile} />
                                     </Typography>
-                                    <Typography className='leading alt-header-font'>Next Level of Software Engineering</Typography>
+                                    <Typography className='leading alt-header-font'>Software: Reinvented</Typography>
                                     <span className='end'>
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
                                         <img width={16} src={images.smile} /></span>
@@ -66,10 +66,8 @@ export const LandingPage = (props) => {
                 </div>
 
                 <div className='text-clear-white mission' style={{ padding: '80px', background: 'black' }}>
-                    <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>MISSION</span><img width="70px" src={images.thumb} /></div>
-                    Our mission is to make a difference in the world of digital technology and more
-                    specifically, in Ghana and the emerging skills of a digitally enabled workforce, and the
-                    world.
+                    <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>Next Level of Software Engineering</span><img width="70px" src={images.thumb} /></div>
+                    We offer a unique proposition in the software development market with our unparalleled talent pool of developers
                 </div>
 
                 <Grid container spacing={2} alignItems={'center'}>
