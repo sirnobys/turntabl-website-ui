@@ -19,10 +19,10 @@ export const EventsPage = () => {
 
     let baseUrl = links.BASE_URL
 
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0)
 
-    },[])
+    }, [])
     useEffect(() => {
         const fetchEvents = () => {
             setLoad(true)
@@ -76,7 +76,7 @@ export const EventsPage = () => {
                 }}>
                     {eventTypes.map((event, idx) => (
                         <Chip
-                        className='body-font'
+                            className='body-font'
                             sx={{
                                 backgroundColor: event.status.toLocaleLowerCase() === eventStatus.toLocaleLowerCase() ? "#b0b0ff" : '#fff',
                                 color: "black",
@@ -115,25 +115,15 @@ export const EventsPage = () => {
                     }
 
                     <Grid item xs={12} lg={12} pt={6}>
-                    <motion.div
-                                animate={{
-                                    rotate: [5, -5, 5, 0],
-                                    // scale: 1.2
-                                }}
-                                whileHover={{ scale: 1.07 }}
-                                whileTap={{ scale: 0.7 }}
-                            >
-                                <span ><img width="500px" src={images.party} /></span>
-                            </motion.div>
-                  
+                        <motion.div
+                            whileInView={{ opacity: 1 }}
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.5, type: 'tween' }}
+                        >
+                            <span ><img width="500px" src={images.party} /></span>
+                        </motion.div>
+
                     </Grid>
-                    {/* <Grid item xs={12} lg={12}>
-                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
-                            Leading Global Talent<br />
-                            to your software
-                            solutions
-                        </Typography>
-                    </Grid> */}
                 </Grid>
             </div>
             <Footer />

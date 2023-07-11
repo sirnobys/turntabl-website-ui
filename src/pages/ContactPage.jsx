@@ -26,9 +26,7 @@ export const Contact = () => {
                             gap: 5,
                             display: "flex",
                             flexDirection: "row",
-                            textAlign: "left",
-                            // justifyContent:'center'
-                            // py: {xs:2,sm:7}
+                            textAlign: "left"
                         }}>
                             <ChatIcon />
                             <div>
@@ -45,7 +43,6 @@ export const Contact = () => {
                             display: "flex",
                             flexDirection: "row",
                             textAlign: "left",
-                            // justifyContent:'center'
                         }}>
                             <PlaceIcon />
                             <div>
@@ -59,7 +56,7 @@ export const Contact = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={6} lg={6} >
-                    <motion.div
+                        <motion.div
                             animate={{
                                 rotate: [5, -2, 0]
                             }}
@@ -67,7 +64,7 @@ export const Contact = () => {
                             whileTap={{ scale: 1.2 }}
                         >
 
-                        <img width={300} src={images.contact} />
+                            <img width={300} src={images.contact} />
                         </motion.div>
                         <Box sx={{
                             gap: 1,
@@ -77,17 +74,33 @@ export const Contact = () => {
                             justifyContent: "center",
                             pt: 5
                         }}>
-                            <div>
-                                <IconButton onClick={() => window.open(links.TWITTER, '_blank')}  size="sm" variant="plain" color="neutral">
+                            <motion.div
+                                whileInView={{ opacity: 1 }}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.5, type: 'tween' }}
+                            >
+                                <IconButton onClick={() => window.open(links.TWITTER, '_blank')} size="sm" variant="plain" color="neutral">
                                     <TwitterIcon />
                                 </IconButton>
+                            </motion.div>
+                            <motion.div
+                                whileInView={{ opacity: 1 }}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.5, type: 'tween' }}
+                            >
                                 <IconButton onClick={() => window.open(links.LINKEDIN, '_blank')} size="sm" variant="plain" color="neutral">
                                     <LinkedInIcon />
                                 </IconButton>
+                            </motion.div>
+                            <motion.div
+                                whileInView={{ opacity: 1 }}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.5, type: 'tween' }}
+                            >
                                 <IconButton onClick={() => window.open(links.YOUTUBE, '_blank')} size="sm" variant="plain" color="neutral">
                                     <YouTubeIcon />
                                 </IconButton>
-                            </div>
+                            </motion.div>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} >
