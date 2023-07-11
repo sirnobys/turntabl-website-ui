@@ -7,6 +7,7 @@ import EventIcon from '@mui/icons-material/Event';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import { useNavigate } from 'react-router-dom';
 import LoadingProgress from '../components/LoadingProgress';
+import { motion } from "framer-motion"
 
 export const EventsPage = () => {
     const [events_, setEvents_] = useState([]);
@@ -114,15 +115,25 @@ export const EventsPage = () => {
                     }
 
                     <Grid item xs={12} lg={12} pt={6}>
-                        <img width="200px" src={images.thumb} alt='thumb' />
+                    <motion.div
+                                animate={{
+                                    rotate: [5, -5, 5, 0],
+                                    // scale: 1.2
+                                }}
+                                whileHover={{ scale: 1.07 }}
+                                whileTap={{ scale: 0.7 }}
+                            >
+                                <span ><img width="500px" src={images.party} /></span>
+                            </motion.div>
+                  
                     </Grid>
-                    <Grid item xs={12} lg={12}>
+                    {/* <Grid item xs={12} lg={12}>
                         <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
                             Leading Global Talent<br />
                             to your software
                             solutions
                         </Typography>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </div>
             <Footer />

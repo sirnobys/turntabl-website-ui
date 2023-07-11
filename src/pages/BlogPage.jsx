@@ -27,7 +27,7 @@ export const BlogPage = () => {
     }, [])
    
 
-    const intro = () => <span>Whatever software your business requires,<br /> we are able to design and develop a bespoke solution tailored specifically to your needs.</span>
+    const intro = () => <span>Thoughts and ideas around the things that actually matter</span>
     return (
         <div id='page-container'>
             <Nav />
@@ -53,16 +53,16 @@ export const BlogPage = () => {
                         </Grid>
                     ))}
 
-                    <Grid item xs={12} lg={12} pt={6}>
+                    {/* <Grid item xs={12} lg={12} pt={6}>
                         <img width="200px" src={images.thumb} />
-                    </Grid>
-                    <Grid item xs={12} lg={12}>
+                    </Grid> */}
+                    {/* <Grid item xs={12} lg={12}>
                         <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
                             Leading Global Talent<br />
                             to your software
                             solutions
                         </Typography>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </div>
             <Footer />

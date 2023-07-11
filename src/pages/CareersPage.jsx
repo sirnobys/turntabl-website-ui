@@ -97,6 +97,7 @@ export const CareersPage = () => {
                 {departmentData.map((dep, idx) => (
                     <Grid key={idx} item xs={4} sm={2}>
                         <motion.div
+                        onClick={() => { handleDepartmentSelection(dep.name); }}
                             whileHover={{ scale: 1.07 }}
                             whileTap={{ scale: 0.7 }}
                         >
@@ -126,7 +127,7 @@ export const CareersPage = () => {
                     {careers?.length !== 0 ? careers?.map((career, idx) => (
                         <Button key={idx}
                             sx={{
-                                border: selectedCareer?.id == career.id ? '1px solid #b0b0ff' : ''
+                                border: selectedCareer?.id == career.id ? '2px solid #b0b0ff' : ''
                             }}
                             onClick={() => handleSelectedCareer(career)}>
                             <Box boxShadow={0} padding={1.2} py={2} >
@@ -156,9 +157,9 @@ export const CareersPage = () => {
             )
         }
         return (
-            <Grid item xs={7} textAlign={'center'} lg={8} height={600} px={4} sx={{ overflowY: 'scroll' }}>
+            <Grid item xs={7} borderLeft={'solid 2px #b0b0ff'} textAlign={'center'} lg={8} height={600} px={4} sx={{ overflowY: 'scroll' }}>
                 <Grid item xs={12} lg={12} py={1}>
-                    <Typography className="alt-header-font" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
+                    <Typography className="alt-header-font text-inspiration" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
                 </Grid>
                 <Grid item xs={12} lg={12} py={1}>
                     <Chip size='small' icon={<AccessTimeFilledIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.date_created.split(' ')[0]} />
@@ -327,7 +328,7 @@ export const CareersPage = () => {
                 <Divider sx={{ borderBottomWidth: 0.3, mb: 1, bgcolor: 'black' }} />
 
                 {!load ? careers_?.length !== 0 ?
-                    <Grid container height={'100vh'} spacing={1} alignItems={'left'} textAlign={'center'}>
+                    <Grid container spacing={1} alignItems={'left'} textAlign={'center'}>
                         <RolePreview />
                         <RoleDetails />
                     </Grid> : 'No data' : <LoadingProgress />}

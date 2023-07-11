@@ -26,6 +26,8 @@ import pair from '../assets/pair.svg'
 import pair_2 from '../assets/pair2.svg'
 import contact from '../assets/contact.svg'
 import not_found from '../assets/404.svg'
+import services from '../assets/services.svg'
+import party from '../assets/party.svg'
 
 
 export default {
@@ -56,5 +58,7 @@ export default {
     pair,
     pair_2,
     contact,
-    not_found
+    not_found,
+    services,
+    party,
 };

@@ -8,6 +8,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import ServicesCard from '../components/ServicesCard';
+import { motion } from "framer-motion"
 
 export const Services = () => {
     useEffect(()=>{
@@ -56,7 +57,16 @@ export const Services = () => {
                     ))}
 
                     <Grid item xs={12} lg={12} pt={6}>
-                        <img width="200px" src={images.thumb} alt='thumb'/>
+                    <motion.div
+                                animate={{
+                                    rotate: [5, -5, 5, 0],
+                                    // scale: 1.2
+                                }}
+                                whileHover={{ scale: 1.07 }}
+                                whileTap={{ scale: 0.7 }}
+                            >
+                                <span ><img width="500px" src={images.services} /></span>
+                            </motion.div>
                     </Grid>
                     <Grid item xs={12} lg={12}>
                         <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
