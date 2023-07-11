@@ -23,6 +23,7 @@ import happy_faces from '../assets/happy_faces.jpg'
 import career_alt_2 from '../assets/career-alt-2.jpg'
 import event_alt_2 from '../assets/event-alt-2.jpg'
 import pair from '../assets/pair.svg'
+import pair_2 from '../assets/pair2.svg'
 
 
 export default {
@@ -50,5 +51,6 @@ export default {
     career_alt_2,
     happy_faces,
     event_alt_2,
-    pair
+    pair,
+    pair_2,
 };

@@ -30,9 +30,9 @@ export const LandingPage = (props) => {
                         <Grid item xs={12} lg={6}>
                             <div className='section'>
                                 <div className='text'>
-                                <Typography className='leading alt-header-font'>Hello!
-                                &nbsp;<img width={"5%"} src={images.smile} />
-                                </Typography>
+                                    <Typography className='leading alt-header-font'>Hello!
+                                        &nbsp;<img width={"5%"} src={images.smile} />
+                                    </Typography>
                                     <Typography className='leading alt-header-font'>Next Level of Software Engineering</Typography>
                                     <span className='end'>
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
@@ -65,7 +65,7 @@ export const LandingPage = (props) => {
                     </div>
                 </div>
 
-                <div className='text-clear-white mission' style={{  padding: '80px', background: 'black' }}>
+                <div className='text-clear-white mission' style={{ padding: '80px', background: 'black' }}>
                     <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>MISSION</span><img width="70px" src={images.thumb} /></div>
                     Our mission is to make a difference in the world of digital technology and more
                     specifically, in Ghana and the emerging skills of a digitally enabled workforce, and the
@@ -102,7 +102,16 @@ export const LandingPage = (props) => {
 
                 <div className='layout-y call-to-action'>
                     <span className='text-grey alt-header-font'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
-                    <Button onClick={()=>navigate('/contact')} className='btn button-welcoming button-full-rounded' variant="contained">Say hi</Button>
+                    <motion.div
+                        animate={{
+                            rotate: [5, -2, 0]
+                        }}
+                        whileHover={{ scale: 0.7 }}
+                        whileTap={{ scale: 1.3 }}
+                    >
+                        <img src={images.pair_2} />
+                    </motion.div>
+                    <Button onClick={() => navigate('/contact')} className='btn button-disruption button-full-rounded' variant="contained">Say hi</Button>
                 </div>
                 <div className='clients'>
                     <span className='alt-header-font'>Trusted By</span>
