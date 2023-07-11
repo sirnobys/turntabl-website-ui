@@ -1,10 +1,11 @@
 import React from 'react'
 import classNames from 'classnames';
+import { motion } from "framer-motion"
 
 import './Carousel.scss'
 import { images } from '../../constants';
 import { Button } from '@mui/material';
-import { Link, Navigate  } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 export class Slider extends React.Component {
 
@@ -63,10 +64,25 @@ export class Slider extends React.Component {
                 <h2 className="slider__slide-subheading">
                   {/* {slide.description.split('').map((l, index) => <span key={index}>{l}</span>)} */}
                 </h2>
-                <p className="slider__slide-readmore text-pixel-black" >
-                <Navigate to="/" />
-                <Link to={slide.link} ><Button  size='small' className='btn button-disruption button-full-rounded'>Check it out!</Button></Link> 
-                </p>
+                <motion.div
+                  className="box"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{
+                    scale:1.3
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.1,
+                    ease: [0, 0.71, 0.2, 1.01]
+                  }}
+                >
+                  <p className="slider__slide-readmore text-pixel-black" >
+                    <Navigate to="/" />
+                    <Link to={slide.link} ><Button size='small' className='btn button-disruption button-full-rounded'>{slide.text}</Button></Link>
+                  </p>
+                </motion.div>
+
               </div>
               <div className="slider__slide-parts">
                 {[...Array(this.IMAGE_PARTS).fill()].map((x, i) => (
@@ -88,22 +104,24 @@ export class Slider extends React.Component {
 export const slides = [
   {
     title: 'Upoming Events',
-    description: 'Presenting occasions this fall',
-    // country: 'France',
+    description: 'Get up to speed and prepare',
     img: images.IMG_9308,
-    link:'/events?status=upcoming'
+    link: '/events?status=upcoming',
+    text: 'Check out!'
   },
   {
     title: 'Current Events',
-    description: 'Ongoing seasons of events',
+    description: 'Accelerating seasons of events',
     img: images.home,
-    link:'/events?status=current'
+    link: '/events?status=current',
+    text: 'Check out!'
 
   },
   {
     title: 'Blog',
-    description: 'Articles by our very own hands',
+    description: 'Articles fostering our brand',
     img: images.people,
-    link:'/blog'
+    text: 'Read more!',
+    link: '/blog'
   },
 ];

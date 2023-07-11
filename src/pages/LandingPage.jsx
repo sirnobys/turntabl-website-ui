@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from "framer-motion"
 
@@ -17,20 +17,23 @@ const clients = [
 ]
 
 export const LandingPage = (props) => {
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0)
-    },[])
+    }, [])
     const navigate = useNavigate()
     return (
         <div id='page-container'>
             <Nav />
             <div id="content-wrap">
                 <div style={{ height: '100vh' }}>
-                    <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
+                    <Grid container spacing={1} alignItems={'center'} paddingBottom={10}>
                         <Grid item xs={12} lg={6}>
                             <div className='section'>
                                 <div className='text'>
-                                    <span className='leading alt-header-font'>Next level of Software Engineering</span>
+                                <Typography className='leading alt-header-font'>Hello!
+                                &nbsp;<img width={"5%"} src={images.smile} />
+                                </Typography>
+                                    <Typography className='leading alt-header-font'>Next Level of Software Engineering</Typography>
                                     <span className='end'>
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
                                         <img width={16} src={images.smile} /></span>
@@ -49,7 +52,7 @@ export const LandingPage = (props) => {
                                 whileHover={{ scale: 1.07 }}
                                 whileTap={{ scale: 0.7 }}
                             >
-                                <span ><img width="90%" src={images.geek} /></span>
+                                <span ><img width="90%" src={images.pair} /></span>
                             </motion.div>
                         </Grid>
                     </Grid>
@@ -89,10 +92,10 @@ export const LandingPage = (props) => {
                             animate={{
                                 rotate: [5, -2, 0]
                             }}
-                            whileHover={{ scale: 1.1, rotate: [0, 2, -2, 0] }}
+                            whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 1.2 }}
                         >
-                            <span><img style={{ borderRadius: 40, padding: 20 }} width="70%" src={images.service} /></span>
+                            <span><img style={{ borderRadius: 40, padding: 20 }} width="90%" src={images.service} /></span>
                         </motion.div>
                     </Grid>
                 </Grid>
@@ -132,6 +135,6 @@ export const LandingPage = (props) => {
                 </div>
             </div>
             <Footer />
-        </div>
+        </div >
     )
 }

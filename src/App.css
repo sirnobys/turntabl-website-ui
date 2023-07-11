@@ -29,7 +29,10 @@ body {
   font-family: neuebit !important;
   font-size: 60px !important;
 }
-
+.alt-header-font-max {
+  font-family: neuebit !important;
+  font-size: 80px !important;
+}
 .body-font {
   font-family: worksans !important;
 }

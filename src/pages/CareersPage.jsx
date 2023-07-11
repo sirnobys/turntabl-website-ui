@@ -118,7 +118,7 @@ export const CareersPage = () => {
         return (
             <Grid item xs={5} lg={4}>
                 <Box sx={{
-                    height: 400,
+                    height: 600,
                     overflowY: 'scroll',
                     paddingX: 0,
                     py: 1
@@ -156,7 +156,7 @@ export const CareersPage = () => {
             )
         }
         return (
-            <Grid item xs={7} textAlign={'center'} lg={8} height={'60vh'} px={4} sx={{ overflowY: 'scroll' }}>
+            <Grid item xs={7} textAlign={'center'} lg={8} height={600} px={4} sx={{ overflowY: 'scroll' }}>
                 <Grid item xs={12} lg={12} py={1}>
                     <Typography className="alt-header-font" sx={{ fontWeight: 'bold', fontSize: { xs: '20px', sm: '30px' } }}>{selectedCareer.name}</Typography>
                 </Grid>

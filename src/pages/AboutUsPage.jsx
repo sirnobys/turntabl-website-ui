@@ -11,10 +11,10 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import Team from '../components/Team';
 
 export const AboutUs = () => {
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0)
 
-    },[])
+    }, [])
     const coreValues = [
         { value: 'Teaching & Learning', icon: <LocalLibraryIcon sx={{ color: '#bdff00' }} /> },
         { value: 'Technical Excellence', icon: <LightbulbIcon sx={{ color: '#bdff00' }} /> },
@@ -22,12 +22,12 @@ export const AboutUs = () => {
         { value: 'Accountability', icon: <HandshakeIcon sx={{ color: '#bdff00' }} /> }
     ]
     const team = [
-        { name: 'Sam Moorhouse', bio: "", role:"CEO", image: "", twitter: "", linkedIn: "" },
-        { name: 'Inusah Ibrahim', bio: "", role:"Admin", image: "", twitter: "", linkedIn: "" },
-        { name: 'Sam Appiah', bio: "", role:"Engineer", image: "", twitter: "", linkedIn: "" },
-        { name: 'Mike Annan', bio: "", role:"Engineer", image: "", twitter: "", linkedIn: "" },
+        { name: 'Sam Moorhouse', bio: "", role: "CEO", image: "", twitter: "", linkedIn: "" },
+        { name: 'Inusah Ibrahim', bio: "", role: "Admin", image: "", twitter: "", linkedIn: "" },
+        { name: 'Sam Appiah', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
+        { name: 'Mike Annan', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
     ]
-    const intro =() => <span>  We Provide Innovative Software Engineering Solutions <br />To Businesses All Over The World.</span>
+    const intro = () => <span>  We Provide Innovative Software Engineering Solutions <br />To Businesses All Over The World.</span>
     return (
         <div id='page-container'>
             <Nav />
@@ -35,12 +35,26 @@ export const AboutUs = () => {
                 <Banner bgImage={images.happy_faces} image={images.pc} page={'About Us'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
                     <Grid item xs={12} lg={12}>
+                        <Box className='mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, }}>
+
+                            <div className='layout-x'>
+                                <Typography className='alt-header-font' >We Are Ghana's
+                                    Technology Leaders
+                                </Typography>
+                                {/* <img width="60px" src={images.thumb} /> */}
+                            </div>
+                            <Typography className='body-font' >
+                                Turntabl is a technical partner that combines decades of Fortune 500 technology and training experience with a track record in Ghana. We provide highly motivated engineers managed by staff seasoned in western companies. We are based in London and Accra, Ghana.
+                            </Typography>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={12} lg={12}>
                         <Box className='text-clear-white mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, background: 'black' }}>
                             <div className='layout-x'>
                                 <Typography className='alt-header-font text-insightful'>
                                     Mission
                                 </Typography>
-                                <img width="70px" src={images.thumb} alt='thumb'/>
+                                <img width="70px" src={images.thumb} alt='thumb' />
                             </div>
                             <Typography className='body-font' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
                                 Our mission is to make a difference in the world of digital technology and more
@@ -54,8 +68,7 @@ export const AboutUs = () => {
                         <Box className='mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, }}>
 
                             <div className='layout-x'>
-                                <Typography className='alt-header-font' >We Are Ghana's
-                                    Technology Leaders
+                                <Typography className='alt-header-font' >We Are Taking The World of Technology By Storm
                                 </Typography>
                                 {/* <img width="60px" src={images.thumb} /> */}
                             </div>
@@ -66,11 +79,24 @@ export const AboutUs = () => {
                             </Typography>
                         </Box>
                     </Grid>
+                    <Grid item xs={12} lg={12}>
+                        <Box className='text-clear-white mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, background: 'black' }}>
+                            <div className='layout-x'>
+                                <Typography className='alt-header-font text-insightful'>
+                                    We Are Making A Difference
+                                </Typography>
+                                <img width="70px" src={images.thumb} alt='thumb' />
+                            </div>
+                            <Typography className='body-font' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
+                            We have set up Turntabl to make a difference in Ghana. It is our aim to develop a sustainable enterprise with a quality focus and a global outlook. We aim for Turntabl to provide all the employees, including ourselves, with a good wage. At the same time we want to make as much positive change as possible. Ultimately we intend to part with the company, giving it away so that its wealth creation can benefit Ghana to the fullest.
+                            </Typography>
+                        </Box>
+                    </Grid>
                     <Grid item xs={12} lg={12} paddingTop={3}>
                         <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Core Values</Typography>
                     </Grid>
                     {
-                        coreValues.map((e,idx) => (
+                        coreValues.map((e, idx) => (
                             <Grid key={idx} item xs={12} sm={6} md={3} paddingTop={4}>
                                 <div align="center">
                                     <CoreValues value={e.value} icon={e.icon} />
@@ -82,10 +108,10 @@ export const AboutUs = () => {
                         <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Meet Our Team</Typography>
                     </Grid>
                     {
-                        team.map((e,idx) => (
+                        team.map((e, idx) => (
                             <Grid key={idx} item xs={12} sm={6} md={3} paddingTop={4}>
                                 <div align="center">
-                                    <Team name={e.name} image={e.image} role={e.role} bio={e.bio} linkedIn={e.linkedIn} twitter={e.twitter}/>
+                                    <Team name={e.name} image={e.image} role={e.role} bio={e.bio} linkedIn={e.linkedIn} twitter={e.twitter} />
                                 </div>
                             </Grid>
                         ))

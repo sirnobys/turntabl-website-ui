@@ -22,6 +22,7 @@ import service_header from '../assets/service-header.jpg'
 import happy_faces from '../assets/happy_faces.jpg'
 import career_alt_2 from '../assets/career-alt-2.jpg'
 import event_alt_2 from '../assets/event-alt-2.jpg'
+import pair from '../assets/pair.svg'
 
 
 export default {
@@ -48,5 +49,6 @@ export default {
     service_header,
     career_alt_2,
     happy_faces,
-    event_alt_2
+    event_alt_2,
+    pair
 };
