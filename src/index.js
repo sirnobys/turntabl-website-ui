@@ -11,7 +11,8 @@ root.render(
     domain="dev-l3anocpfmc0j0rvd.us.auth0.com"
     clientId="4asAXbaP2p0B2eo1jbGnkhLnCWSqGQOX"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin+'/admin',
+      
     }}
   >
     <React.StrictMode>

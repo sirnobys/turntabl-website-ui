@@ -16,25 +16,24 @@ const Roles = () => {
 
     let baseUrl = 'http://localhost:5000';
 
-    useEffect(() => {
-
-        const fetchAdmin = () => {
-            fetch(`${baseUrl}/api/v1/authenticate`)
-                .then(response => response.json())
-                .then(data => {
-                    let rowData = []
-                    data.result.map((item) => {
-                        rowData.push({
-                            id: item.id,
-                            name: item.name,
-                            email: item.email,
-                            date_created: item.date_created
-                        })
+    const fetchAdmin = () => {
+        fetch(`${baseUrl}/api/v1/authenticate`)
+            .then(response => response.json())
+            .then(data => {
+                let rowData = []
+                data.result.map((item) => {
+                    rowData.push({
+                        id: item.id,
+                        name: item.name,
+                        email: item.email,
+                        date_created: item.date_created
                     })
-                    setAdmin(rowData)
-                    setLoad(false)
-                }).catch(e=>setLoad(false))
-        }
+                })
+                setAdmin(rowData)
+                setLoad(false)
+            }).catch(e => setLoad(false))
+    }
+    useEffect(() => {
         fetchAdmin();
     }, [])
 
@@ -52,8 +51,9 @@ const Roles = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setNotificationMessage({text:'submitted successfully',type:'success'})
+                setNotificationMessage({ text: 'submitted successfully', type: 'success' })
                 // Handle the response from the backend
+                fetchAdmin()
                 setLoad(false)
             })
             .catch(error => {
@@ -125,7 +125,7 @@ const Roles = () => {
                     checkboxSelection
                 />
             </Box>
-            {!load? admin?.length!==0?"":"No data":<LoadingProgress/>}
+            {!load ? admin?.length !== 0 ? "" : "No data" : <LoadingProgress />}
         </motion.div>
     )
 }

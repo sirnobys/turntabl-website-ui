@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -21,9 +21,15 @@ import FeedIcon from '@mui/icons-material/Feed';
 import ArticleIcon from '@mui/icons-material/Article';
 import CallIcon from '@mui/icons-material/Call';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Events, Blogs, Careers, Newsletters, Contact, Roles } from '../components';
-import { images } from '../constants';
+import { images, links } from '../constants';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Button, Link } from '@mui/material';
+import LoadingProgress from '../components/LoadingProgress';
+import { Avatar } from '@mui/joy';
+
 
 const drawerWidth = 240;
 
@@ -93,6 +99,49 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const AdminPage = () => {
+    const { loginWithRedirect, isLoading, isAuthenticated, user, loginWithPopup, logout } = useAuth0();
+    const [load, setLoad] = useState(true)
+    const confirmLogout = () => {
+        const goOff = window.confirm('logout?')
+        if (goOff) {
+            logout()
+        }
+    }
+
+    const handleLogout = () => {
+        window.alert('Access denied!')
+        logout()
+    }
+    const handleAuth = (data) => {
+        if (isAuthenticated) {
+            console.log(data?.some(e => e.email == user.email));
+            data?.some(e => e.email == user.email) ? console.log('success') : handleLogout()
+        }
+    }
+
+    useEffect(() => {
+        if (!isAuthenticated && !isLoading) {
+            loginWithRedirect()
+        }
+        if (isAuthenticated) {
+
+            fetch(`${links.BASE_URL}/api/v1/authenticate`)
+                .then(response => response.json())
+                .then(data => {
+                    // setNotificationMessage({ text: 'loaded successfully' })
+                    console.log(data.result);
+                    handleAuth(data.result)
+                    setLoad(false)
+                    // setLoad(false)
+                    // setSelectedCareer(data.result[0])
+                }).catch((e) => {
+                    // setLoad(false)
+                })
+
+        }
+    }, [isLoading])
+
+    
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [section, setSection] = useState('events');
@@ -114,8 +163,12 @@ const AdminPage = () => {
         roles: <SupervisorAccountIcon />
     }
 
+    if (!isAuthenticated || load) {
+        return <LoadingProgress />
+    }
+
     return (
-        <Box>
+        <Box sx={{ width: "100%" }}>
             <CssBaseline />
             <AppBar position="fixed" open={open} sx={{ backgroundColor: 'white' }}>
                 <Toolbar>
@@ -131,7 +184,21 @@ const AdminPage = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box><img width={150} src={images.logo} alt="logo" /></Box>
+                    <Box sx={{
+                        width: "100%",
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                    }}>
+                        <img width={150} src={images.logo} alt="logo" />
+                        <Box sx={{
+                        display: 'flex',
+                    }}>
+                            <Avatar alt="profile picture" src={user.picture} />
+                            <Button variant="text" className={'text-grey'} onClick={() => confirmLogout()} startIcon={<LogoutIcon />}> <Link className={'text-grey'} underline='none'>Logout</Link></Button>
+                        </Box>
+                    </Box>
+
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -187,9 +254,9 @@ const AdminPage = () => {
                                 <Careers />
                                 : section === 'newsletters' ?
                                     <Newsletters />
-                                    :section === 'contact' ?
+                                    : section === 'contact' ?
                                         <Contact />
-                                        : 
+                                        :
                                         <Roles />
                 }
             </Box>
