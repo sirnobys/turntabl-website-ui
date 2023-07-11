@@ -11,10 +11,10 @@ import ServicesCard from '../components/ServicesCard';
 import { motion } from "framer-motion"
 
 export const Services = () => {
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0)
 
-    },[])
+    }, [])
     const services = [
         {
             title: 'Development',
@@ -48,32 +48,30 @@ export const Services = () => {
             <div id='content-wrap'>
                 <Banner bgImage={images.event} image={images.pc} page={'Services'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
-                    {services.map((e,idx) => (
+                    {services.map((e, idx) => (
                         <Grid item xs={12} sm={6} md={6} paddingTop={4}>
-                            <div key={idx} align="center">
+                            <motion.div
+                                whileInView={{ opacity: 1 }}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.5, type: 'tween' }}
+                                key={idx}
+                                align="center">
                                 <ServicesCard title={e.title} description={e.description} icon={e.icon} />
-                            </div>
+                            </motion.div>
                         </Grid>
                     ))}
 
                     <Grid item xs={12} lg={12} pt={6}>
-                    <motion.div
-                                animate={{
-                                    rotate: [5, -5, 5, 0],
-                                    // scale: 1.2
-                                }}
-                                whileHover={{ scale: 1.07 }}
-                                whileTap={{ scale: 0.7 }}
-                            >
-                                <span ><img width="500px" src={images.services} /></span>
-                            </motion.div>
-                    </Grid>
-                    <Grid item xs={12} lg={12}>
-                        <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '60px', } }}>
-                            Leading Global Talent<br/>
-                            to your software
-                            solutions
+                        <Typography className='alt-header-font text-grey' sx={{ fontSize: { xs: '30px', sm: '60px', pb: 5} }}>
+                            Leading Global Talent to your software solutions
                         </Typography>
+                        <motion.div
+                            whileInView={{ opacity: 1 }}
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.5, type: 'tween' }}
+                        >
+                            <span ><img width="500px" src={images.services} /></span>
+                        </motion.div>
                     </Grid>
                 </Grid>
             </div>
