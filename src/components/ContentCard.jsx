@@ -29,14 +29,9 @@ const ContentCard = (props) => {
     return (
         <motion.div
             className="box"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: [null, 1.1, 1.1] }}
-            transition={{
-                duration: 0.8,
-                delay: 0.5,
-                ease: [0, 0.71, 0.2, 1.01]
-            }}
+            whileInView={{ opacity: 1 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.5, type: 'tween' }}
         >
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
@@ -53,7 +48,7 @@ const ContentCard = (props) => {
                         {name}
                     </Typography>
                     <Typography
-                    className='body-font'
+                        className='body-font'
                         sx={{
                             height: '80px',
                             overflow: 'auto'
@@ -85,7 +80,7 @@ const ContentCard = (props) => {
                         </Button> : ''}
                     {status ?
                         <Typography
-                        className='body-font'
+                            className='body-font'
                             hidden={userView}
                             sx={{
                                 color: '#b0b0ff',
