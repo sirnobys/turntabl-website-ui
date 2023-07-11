@@ -8,7 +8,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/joy/IconButton';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ContactForm from '../components/forms/ContactForm';
-import { images } from '../constants';
+import { images, links } from '../constants';
 
 export const Contact = () => {
     useEffect(() => {
@@ -68,13 +68,13 @@ export const Contact = () => {
                             pt: 5
                         }}>
                             <div>
-                                <IconButton size="sm" variant="plain" color="neutral">
+                                <IconButton onClick={() => window.open(links.TWITTER, '_blank')}  size="sm" variant="plain" color="neutral">
                                     <TwitterIcon />
                                 </IconButton>
-                                <IconButton size="sm" variant="plain" color="neutral">
+                                <IconButton onClick={() => window.open(links.LINKEDIN, '_blank')} size="sm" variant="plain" color="neutral">
                                     <LinkedInIcon />
                                 </IconButton>
-                                <IconButton size="sm" variant="plain" color="neutral">
+                                <IconButton onClick={() => window.open(links.YOUTUBE, '_blank')} size="sm" variant="plain" color="neutral">
                                     <YouTubeIcon />
                                 </IconButton>
                             </div>

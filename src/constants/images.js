@@ -25,6 +25,7 @@ import event_alt_2 from '../assets/event-alt-2.jpg'
 import pair from '../assets/pair.svg'
 import pair_2 from '../assets/pair2.svg'
 import contact from '../assets/contact.svg'
+import not_found from '../assets/404.svg'
 
 
 export default {
@@ -54,5 +55,6 @@ export default {
     event_alt_2,
     pair,
     pair_2,
-    contact
+    contact,
+    not_found
 };
