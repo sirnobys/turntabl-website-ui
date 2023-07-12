@@ -93,7 +93,7 @@ const Newsletters = () => {
                     : 'No Data'
             }
         </motion.div>
-            {!load ? subscribers?.length !== 0 ? "" : "No data" : <LoadingProgress />}
+            {!load ? subscribers?.length !== 0 ? "" : "No Newsletters" : <LoadingProgress />}
             {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
         </div>
     )

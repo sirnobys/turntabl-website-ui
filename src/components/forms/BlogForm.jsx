@@ -8,6 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Textarea from '@mui/joy/Textarea';
+import { validateImage } from '../../shared_logic/Validators';
 
 
 const BlogForm = (props) => {
@@ -16,9 +17,22 @@ const BlogForm = (props) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [urlTitle, setUrlTitle] = useState(null);
     const [urlLink, setUrlLink] = useState(null);
+    const [error,setError]= useState('')
 
     const { sendBlogData, handleClose, open } = props;
 
+    const handleImage = (e) => {
+        // validate image first
+        let { status, message } = validateImage(e.target.files[0]);
+        if (!status) {
+            setError(message)
+        }
+        else {
+            setError("")
+        }
+        console.log(status, message)
+        setSelectedImage(e.target.files[0])
+    }
     const handleBlogSubmit = () => {
         let data = {
             name: name,
@@ -72,11 +86,13 @@ const BlogForm = (props) => {
                             />
                             <TextField
                                 autoFocus
+                                error={error}
+                                helperText={error}
                                 margin="dense"
                                 id="image"
                                 // label="Add Image"
                                 type="file"
-                                onChange={(e) => setSelectedImage(e.target.files[0])}
+                                onChange={(e) => handleImage(e)}
                                 fullWidth
                                 variant="outlined"
                             />
@@ -115,7 +131,7 @@ const BlogForm = (props) => {
                                 sx={{
                                     mt: 1
                                 }}
-                                placeholder="Event Description..."
+                                placeholder="Blog Description..."
                                 minRows={3}
                                 variant="outlined"
                                 size="md"
@@ -125,7 +141,7 @@ const BlogForm = (props) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleBlogClose}>Cancel</Button>
-                        <Button onClick={handleBlogSubmit}>Submit</Button>
+                        <Button disabled={!name || !description || !selectedImage || !urlTitle || !urlLink} onClick={handleBlogSubmit}>Submit</Button>
                     </DialogActions>
                 </Dialog>
             </div>

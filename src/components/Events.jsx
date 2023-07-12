@@ -17,22 +17,22 @@ const Events = () => {
 
     let baseUrl = 'http://localhost:5000';
 
+    const fetchEvents = () => {
+        fetch(`${baseUrl}/api/v1/events`)
+            .then(response => response.json())
+            .then(data => {
+                setLoad(false)
+                setNotificationMessage({ text: 'loaded successfully' })
+                setEvents(data.result)
+            }).catch((e) => {
+                console.log(e);
+                setLoad(false)
+            })
+    }
     useEffect(() => {
 
-        const fetchEvents = () => {
-            fetch(`${baseUrl}/api/v1/events`)
-                .then(response => response.json())
-                .then(data => {
-                    setLoad(false)
-                    setNotificationMessage({text:'loaded successfully'})
-                    setEvents(data.result)
-                }).catch((e)=>{
-                    console.log(e);
-                    setLoad(false)
-                })
-        }
         fetchEvents();
-    }, [load])
+    }, [])
 
     const sendEventData = (data) => {
         const formData = new FormData();
@@ -48,10 +48,12 @@ const Events = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setNotificationMessage({text:'details submitted successfully',type:'success'})
+                setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
 
                 // Handle the response from the backend
                 setLoad(false)
+                fetchEvents();
+
             })
             .catch(error => {
                 setLoad(false)
@@ -74,7 +76,7 @@ const Events = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setNotificationMessage({text:'deleted successfully'})
+                setNotificationMessage({ text: 'deleted successfully' })
 
                 // Handle the response from the backend
                 setLoad(!load)
@@ -115,7 +117,7 @@ const Events = () => {
             </Box>
             <EventForm open={open} sendEventData={sendEventData} handleClose={handleClose} />
 
-           {!load?events?.length!==0? <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
+            {!load ? events?.length !== 0 ? <Grid container spacing={2} alignItems={'center'} paddingBottom={10}>
                 {events.map((event, idx) => (
                     <Grid item xs={12} sm={6} md={3} key={idx}>
                         <ContentCard
@@ -131,7 +133,7 @@ const Events = () => {
                         />
                     </Grid>
                 ))}
-            </Grid>:'No data':<LoadingProgress/>}
+            </Grid> : 'No data' : <LoadingProgress />}
         </Box>
     )
 }

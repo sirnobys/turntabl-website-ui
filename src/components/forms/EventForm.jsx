@@ -176,6 +176,7 @@ const EventForm = (props) => {
                             }}
                             onClick={handleEventClose}>Cancel</Button>
                         <Button
+                        disabled={!name||!description||error||!selectedImage}
                             sx={{
                                 color: '#b0b0ff',
                                 ":hover": {
