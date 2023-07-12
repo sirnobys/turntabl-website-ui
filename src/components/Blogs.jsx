@@ -33,6 +33,7 @@ const Blogs = () => {
     }, [load])
 
     const sendBlogData = (data) => {
+        setLoad(true)
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('description', data.description);
@@ -51,9 +52,10 @@ const Blogs = () => {
             .then(data => {
                 setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
                 // Handle the response from the backend
-                // setLoad(false)
+                setLoad(false)
             })
             .catch(error => {
+                setLoad(false)
                 // Handle any errors
             });
 
@@ -69,6 +71,7 @@ const Blogs = () => {
     }
 
     const deleteBlog = (id) => {
+        setLoad(true)
         fetch(`${baseUrl}/api/v1/blogs/${id}`, {
             method: 'DELETE'
         })
@@ -77,9 +80,10 @@ const Blogs = () => {
                 // Handle the response from the backend
                 setNotificationMessage({ text: 'deleted successfully', type: 'success' })
 
-                // setLoad(!load)
+                setLoad(false)
             })
             .catch(error => {
+                setLoad(false)
                 // Handle any errors
             });
     }

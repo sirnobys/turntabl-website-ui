@@ -137,10 +137,10 @@ const CareerForm = (props) => {
         }
 
         if (data) {
-            // sendCareerData(careerDetails, data?.id);
+            sendCareerData(careerDetails, data?.id);
         }
         else {
-            // sendCareerData(careerDetails);
+            sendCareerData(careerDetails);
         }
         setName('');
         setDepartment('');
@@ -173,8 +173,8 @@ const CareerForm = (props) => {
                 alignItems: 'center',
             }}
         >
-            <form  onSubmit={handleCareerSubmit}>
-                <Dialog open={open} onClose={handleCareerClose}>
+            <Dialog open={open} onClose={handleCareerClose}>
+                <form onSubmit={handleCareerSubmit}>
                     <DialogTitle>Add New Career</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
@@ -323,6 +323,7 @@ const CareerForm = (props) => {
                                             }}
                                         >
                                             <TextField
+                                            required
                                                 type="text"
                                                 name='technology'
                                                 label="Technology"
@@ -376,10 +377,10 @@ const CareerForm = (props) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCareerClose}>Cancel</Button>
-                        <Button type="submit">{data?.id ? 'Update' : 'Submit'}</Button>
+                        <Button disabled={!name||!department||!description||requirements.length==0||responsibilities.length==0} type="submit">{data?.id ? 'Submit' : 'Submit'}</Button>
                     </DialogActions>
-                </Dialog>
-            </form>
+                </form>
+            </Dialog>
         </Box>
     )
 }

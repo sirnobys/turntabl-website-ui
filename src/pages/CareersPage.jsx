@@ -23,6 +23,7 @@ export const CareersPage = () => {
     const [search, setSearch] = useState(filter);
     const [load, setLoad] = useState(false)
     const navigate = useNavigate(currentUrlParams)
+    const [depart,setDepart]=useState([{name:'All'}])
     const departmentData = [
         { name: 'All' },
         { name: 'Engineering' },
@@ -65,6 +66,11 @@ export const CareersPage = () => {
             fetch(`${baseUrl}/api/v1/careers/`)
                 .then(response => response.json())
                 .then(data => {
+                    let depart_ = [...depart]
+                    data?.result?.forEach(e=>{
+                        depart_.push({name:e.department})
+                    })
+                    setDepart(depart_)
                     setCareers(data.result)
                     setCareers_(data.result)
                     handleSearch(data.result)
@@ -94,7 +100,7 @@ export const CareersPage = () => {
     const Filters = () => {
         return (
             <Grid container spacing={0} textAlign={'center'}>
-                {departmentData.map((dep, idx) => (
+                {depart.map((dep, idx) => (
                     <Grid key={idx} item xs={4} sm={2}>
                         <motion.div
                             onClick={() => { handleDepartmentSelection(dep.name); }}
@@ -132,7 +138,7 @@ export const CareersPage = () => {
                         >
                             <Button key={idx}
                                 sx={{
-                                    border: selectedCareer?.id == career.id ? '2px solid #b0b0ff' : ''
+                                    border: selectedCareer?.id === career.id ? '2px solid #b0b0ff' : ''
                                 }}
                                 onClick={() => handleSelectedCareer(career)}>
                                 <Box boxShadow={0} padding={1.2} py={2} >

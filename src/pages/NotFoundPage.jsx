@@ -1,14 +1,7 @@
 import React, { useEffect } from 'react';
 import { Footer, Nav } from '../components';
-import { Box, Grid, Typography } from '@mui/material';
-import ChatIcon from '@mui/icons-material/Chat';
-import PlaceIcon from '@mui/icons-material/Place';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import IconButton from '@mui/joy/IconButton';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import ContactForm from '../components/forms/ContactForm';
-import { images, links } from '../constants';
+import { Grid } from '@mui/material';
+import { images } from '../constants';
 
 export const NotFoundPage = () => {
     useEffect(() => {

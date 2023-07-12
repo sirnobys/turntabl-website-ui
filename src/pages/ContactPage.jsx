@@ -64,7 +64,7 @@ export const Contact = () => {
                             whileTap={{ scale: 1.2 }}
                         >
 
-                            <img width={300} src={images.contact} />
+                            <img width={300} src={images.contact} alt="contact us"/>
                         </motion.div>
                         <Box sx={{
                             gap: 1,

@@ -62,7 +62,7 @@ function TestimonialCard(name, role, message) {
 }
 
 const Testimonial = () => {
-    const matches = useMediaQuery('(min-width:800px)');
+    // const matches = useMediaQuery('(min-width:800px)');
     const testimonials = [
         { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' },
         { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' },

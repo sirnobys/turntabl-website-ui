@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ContentCard, Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images } from '../constants';
-import { Box, Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 
 import LoadingProgress from '../components/LoadingProgress';
 

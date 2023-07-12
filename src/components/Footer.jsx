@@ -3,7 +3,7 @@ import { Button, Divider, Grid, Link, TextField } from '@mui/material';
 import { Twitter, YouTube, LinkedIn } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
 import { Box } from "@mui/material";
-import { IconButton } from '@mui/joy';
+import { CircularProgress, IconButton } from '@mui/joy';
 import { useNavigate } from 'react-router';
 
 import { images } from '../constants';
@@ -14,12 +14,15 @@ import LoadingProgress from "./LoadingProgress";
 
 const Footer = () => {
     const [email, setEmail] = useState("");
+    const [load, setLoad] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
     const navigate = useNavigate();
     let baseUrl = 'http://localhost:5000';
 
-    const handleNewsletterSubscription = () => {
+    const handleNewsletterSubscription = (e) => {
+        e.preventDefault()
+        setLoad(true)
         console.log(email)
         fetch(`${baseUrl}/api/v1/newsletters/subscriber/${email}`, {
             method: 'POST'
@@ -28,9 +31,10 @@ const Footer = () => {
             .then(data => {
                 setEmail('');
                 setNotificationMessage({ text: 'subscribed successfully!', type: 'success' })
-                // setLoad(!load)
+                setLoad(false)
             })
             .catch(error => {
+                setLoad(false)
                 // Handle any errors
             });
     }
@@ -42,22 +46,23 @@ const Footer = () => {
     return (
         <div id='footer'>
             <div className="footer-ceil">
-                {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
+                {!load && notificationMessage.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
                 <Grid container spacing={2} >
                     <Grid item xs={12} sm={12} md={4} lg={4} pb={2}>
                         <span className='logo' onClick={() => navigate('/')}><img width="50%" src={images.logo} alt='turntabl logo' /></span>
                         <div className='news-letter'>
-                            <span className='layout-x'>
-                                <TextField className='body-font' placeholder='enter email' size='small' label="Subscribe to news letter" value={email} onChange={handleChange} />
+                            <form onSubmit={handleNewsletterSubscription} className='layout-x'>
+                                <TextField required className='body-font' placeholder='enter email' size='small' label="Subscribe to news letter" value={email} onChange={handleChange} />
                                 <Button
+                                type="submit"
                                     className='btn button-pixel-black'
                                     variant='contained'
-                                    endIcon={<SendIcon />}
-                                    onClick={handleNewsletterSubscription}
+                                    endIcon={load?<CircularProgress color='neutral' size='sm' thickness={1} /> :<SendIcon />}
+                                    // onClick={handleNewsletterSubscription}
                                 >
                                     Subscribe
                                 </Button>
-                            </span>
+                            </form>
                         </div>
 
                     </Grid>

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { motion } from "framer-motion"
 
 import { Slider, slides, Testimonial, Nav, Footer } from '../components';
@@ -16,7 +15,7 @@ const clients = [
     { name: 'Finos', location: 'London, UK', image: images.finos },
 ]
 
-export const LandingPage = (props) => {
+export const LandingPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -26,7 +25,7 @@ export const LandingPage = (props) => {
             <Nav />
             <div id="content-wrap">
                 <Box style={{
-                    // height:{xs:"10000vh"}
+                    minHeight:"100vh"
                 }}>
                     <Grid
                         container
@@ -41,7 +40,7 @@ export const LandingPage = (props) => {
                             <div className='section'>
                                 <div className='text'>
                                     <Typography className='leading alt-header-font'>Hello!
-                                        &nbsp;<img width={"5%"} src={images.smile} alt='turntabl smile'/>
+                                        &nbsp;<img width={"35px"} src={images.smile} alt='turntabl smile'/>
                                     </Typography>
                                     <Typography className='leading alt-header-font'>Software: Reinvented</Typography>
                                     <span className='end'>
@@ -112,7 +111,7 @@ export const LandingPage = (props) => {
                             whileInView={{ opacity: [0, 0, 1] }}
                             transition={{ type: "spring", stiffness: 100, duration: 3 }}
                         >
-                            <span><img style={{ borderRadius: 40, padding: 20 }} width="90%" src={images.service} /></span>
+                            <span><img style={{ borderRadius: 40, padding: 20 }} width="90%" src={images.service} alt='services'/></span>
                         </motion.div>
                     </Grid>
                 </Grid>

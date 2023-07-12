@@ -147,6 +147,7 @@ const EventForm = (props) => {
                                         margin="dense"
                                         id="link-url"
                                         label="Url"
+                                        placeholder='http://www.example.com'
                                         type="text"
                                         fullWidth
                                         variant="outlined"

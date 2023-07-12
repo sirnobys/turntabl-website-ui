@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ContentCard, Footer, Nav } from '../components';
 import { Banner } from '../components/Banner';
 import { images, links } from '../constants';
-import { Box, Chip, Grid, Typography } from '@mui/material';
+import { Box, Chip, Grid } from '@mui/material';
 import EventIcon from '@mui/icons-material/Event';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,6 @@ export const EventsPage = () => {
     const [eventStatus, setEventStatus] = useState(currentUrlParams.get("status") ?? "current")
     const navigate = useNavigate()
 
-    let baseUrl = links.BASE_URL
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -26,20 +25,22 @@ export const EventsPage = () => {
     useEffect(() => {
         const fetchEvents = () => {
             setLoad(true)
-            fetch(`${baseUrl}/api/v1/events`)
+            fetch(`${links.BASE_URL}/api/v1/events`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
                     setLoad(false)
                     setEvents(data.result)
                     setEvents_(data.result)
-                    setSelectedFromUrl(data.result)
+                    // setSelectedFromUrl(data.result)
+                    const filter = data?.result?.filter(e => (e.status === eventStatus))
+                    setEvents(filter)
                 }).catch((e) => {
                     setLoad(false)
                 })
         }
         fetchEvents();
-    }, [eventStatus])
+    }, [eventStatus,])
 
     const eventTypes = [
         { name: 'Current Events', status: 'current', icon: <EventAvailableIcon /> },
@@ -50,14 +51,10 @@ export const EventsPage = () => {
         setEventStatus(event.status)
         currentUrlParams.set('status', event.status)
         navigate('?' + currentUrlParams.toString())
-        const filter = events_.filter(e => (e.status == event.status))
+        const filter = events_.filter(e => (e.status === event.status))
         setEvents(filter)
     }
 
-    const setSelectedFromUrl = (events) => {
-        const filter = events.filter(e => (e.status == eventStatus))
-        setEvents(filter)
-    }
 
 
     const intro = () => <span>Get up to speed with our blasts!<br /> Discover what we are celebrating, our benevolence and contributions</span>
@@ -110,17 +107,17 @@ export const EventsPage = () => {
                             <LoadingProgress />
                         </Grid> :
                         <Grid item xs={12} sm={12} md={12} paddingTop={4}>
-                            {!load && eventStatus} events
+                            No {!load && eventStatus} events
                         </Grid>
                     }
 
-                    <Grid item xs={12} lg={12} pt={6}>
+                    <Grid hidden={events?.length!==0} item xs={12} lg={12} pt={6}>
                         <motion.div
                             whileInView={{ opacity: 1 }}
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.5, type: 'tween' }}
                         >
-                            <span ><img width="500px" src={images.party} /></span>
+                            <span ><img width="500px" src={images.party} alt="evens"/></span>
                         </motion.div>
 
                     </Grid>
