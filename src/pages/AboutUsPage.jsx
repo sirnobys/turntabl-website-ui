@@ -23,7 +23,7 @@ export const AboutUs = () => {
         { value: 'Accountability', icon: <HandshakeIcon sx={{ color: '#bdff00' }} /> }
     ]
     const team = [
-        { name: 'Sam Moorhouse', bio: "", role: "CEO", image: images.IMG_9005, twitter: "", linkedIn: "" },
+        { name: 'Enock Boadi-Ansah', bio: "", role: "Lead", image: images.team_frame_2, twitter: "", linkedIn: "" },
         { name: 'Inusah Ibrahim', bio: "", role: "Admin", image: images.team_frame_1, twitter: "", linkedIn: "" },
         { name: 'Sam Appiah', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
         { name: 'Mike Annan', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
@@ -35,7 +35,7 @@ export const AboutUs = () => {
             <div id='content-wrap'>
                 <Banner bgImage={images.happy_faces} image={images.pc} page={'About Us'} intro={intro()} />
                 <Grid container spacing={0} alignItems={'center'}>
-                    <Grid item xs={12} lg={12}>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
                         <motion.div
                             whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
                             transition={{ duration: 0.5 }}
@@ -45,11 +45,23 @@ export const AboutUs = () => {
                                 <Typography className='alt-header-font' >We Are Ghana's
                                     Technology Leaders
                                 </Typography>
-                                {/* <img width="60px" src={images.thumb} /> */}
                                 <Typography className='body-font' >
                                     Turntabl is a technical partner that combines decades of Fortune 500 technology and training experience with a track record in Ghana. We provide highly motivated engineers managed by staff seasoned in western companies. We are based in London and Accra, Ghana.
                                 </Typography>
                             </Box>
+                        </motion.div>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <motion.div
+                            animate={{
+                                rotate: [5, -5, 5, 0],
+                                // scale: 1.2
+                            }}
+                            whileHover={{ scale: 1.07 }}
+                            whileTap={{ scale: 0.7 }}
+                            transition={{ duration: 0.5, type: "tween" }}
+                        >
+                            <span ><img width="90%" src={images.team} alt='turntabl pair' /></span>
                         </motion.div>
                     </Grid>
                     <Grid item xs={12} lg={12}>
@@ -62,7 +74,7 @@ export const AboutUs = () => {
                                     <Typography className='alt-header-font text-insightful'>
                                         Mission
                                     </Typography>
-                                    <img width="70px" src={images.thumb} alt='thumb' />
+                                    <img width="70px" src={images.thumb} alt='turntabl thumb' />
                                 </div>
                                 <Typography className='body-font' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
                                     Our mission is to make a difference in the world of digital technology and more
@@ -73,7 +85,20 @@ export const AboutUs = () => {
                             </motion.div>
                         </Box>
                     </Grid>
-                    <Grid item xs={12} lg={12}>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <motion.div
+                            animate={{
+                                rotate: [5, -5, 5, 0],
+                                // scale: 1.2
+                            }}
+                            whileHover={{ scale: 1.07 }}
+                            whileTap={{ scale: 0.7 }}
+                            transition={{ duration: 0.5, type: "tween" }}
+                        >
+                            <span ><img width="90%" src={images.success} alt='turntabl pair' /></span>
+                        </motion.div>
+                    </Grid>
+                    <Grid item xs={12} lg={6}>
                         <Box className='mission' sx={{ px: { xs: 2, sm: 10 }, py: { xs: 2, sm: 10 }, }}>
                             <motion.div
                                 whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
@@ -102,13 +127,26 @@ export const AboutUs = () => {
                                     <Typography className='alt-header-font text-insightful'>
                                         We Are Making A Difference
                                     </Typography>
-                                    <img width="70px" src={images.thumb} alt='thumb' />
+                                    <img width="70px" src={images.thumb} alt='turntabl thumb' />
                                 </div>
                                 <Typography className='body-font' sx={{ fontSize: { xs: '16px', sm: '16px', } }}>
                                     We have set up Turntabl to make a difference in Ghana. It is our aim to develop a sustainable enterprise with a quality focus and a global outlook. We aim for Turntabl to provide all the employees, including ourselves, with a good wage. At the same time we want to make as much positive change as possible. Ultimately we intend to part with the company, giving it away so that its wealth creation can benefit Ghana to the fullest.
                                 </Typography>
                             </motion.div>
                         </Box>
+                    </Grid>
+                    <Grid item xs={12} lg={12} paddingTop={3}>
+                        <motion.div
+                            animate={{
+                                rotate: [5, -5, 5, 0],
+                                // scale: 1.2
+                            }}
+                            whileHover={{ scale: 0.9 }}
+                            whileTap={{ scale: 0.6 }}
+                            transition={{ duration: 0.5, type: "tween" }}
+                        >
+                            <span ><img width="30%" src={images.programmer} alt='turntabl pair' /></span>
+                        </motion.div>
                     </Grid>
                     <Grid item xs={12} lg={12} paddingTop={3}>
                         <Typography className='alt-header-font' sx={{ fontSize: { xs: '30px', sm: '70px', } }}>Core Values</Typography>

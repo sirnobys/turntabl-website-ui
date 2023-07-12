@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from "framer-motion"
 
@@ -25,33 +25,35 @@ export const LandingPage = (props) => {
         <div id='page-container'>
             <Nav />
             <div id="content-wrap">
-                <div style={{ height: '100vh' }}>
+                <Box style={{
+                    // height:{xs:"10000vh"}
+                }}>
                     <Grid
                         container
                         spacing={1}
                         alignItems={'center'}
                         paddingBottom={10}
                         sx={{
-                            pt: 10
+                            pt: 1
                         }}
                     >
-                        <Grid item xs={12} lg={6}>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
                             <div className='section'>
                                 <div className='text'>
                                     <Typography className='leading alt-header-font'>Hello!
-                                        &nbsp;<img width={"5%"} src={images.smile} />
+                                        &nbsp;<img width={"5%"} src={images.smile} alt='turntabl smile'/>
                                     </Typography>
                                     <Typography className='leading alt-header-font'>Software: Reinvented</Typography>
                                     <span className='end'>
                                         We’ll be a focal point for the tech scene in Ghana, and we’ll help to build the next generation of Ghanaian engineers.
-                                        <img width={16} src={images.smile} /></span>
+                                        <img width={16} src={images.smile} alt='turntabl smile'/></span>
                                     <span>
                                         <Button onClick={() => navigate('/about-us')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                     </span>
                                 </div>
                             </div>
                         </Grid>
-                        <Grid item xs={12} lg={6}>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
                             <motion.div
                                 animate={{
                                     rotate: [5, -5, 5, 0],
@@ -61,11 +63,11 @@ export const LandingPage = (props) => {
                                 whileTap={{ scale: 0.7 }}
                                 transition={{ duration: 0.5, type: "tween" }}
                             >
-                                <span ><img width="90%" src={images.pair} /></span>
+                                <span ><img width="90%" src={images.pair} alt='turntabl pair'/></span>
                             </motion.div>
                         </Grid>
                     </Grid>
-                </div>
+                </Box>
 
 
                 <div className='slider'>
@@ -79,8 +81,10 @@ export const LandingPage = (props) => {
                         whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>Next Level of Software Engineering</span><img width="70px" src={images.thumb} /></div>
+                        <div className='layout-x'><span className="text-insightful alt-header-font" style={{ fontSize: "40px" }}>Next Level of Software Engineering</span></div>
+                    <Typography sx={{fontSize:'20px'}} className='body-font'>
                         We offer a unique proposition in the software development market with our unparalleled talent pool of developers
+                    </Typography>
                     </motion.div>
                 </div>
 
@@ -96,7 +100,7 @@ export const LandingPage = (props) => {
                                     World class IT solutions delivered to a global client base</span>
                                 <span className='end'>We’ve got a strong focus on technical excellence.<br />
                                     Everyone on our annual graduate intake goes through an intensive two-month training program. When they’re done, we’re ready to work.
-                                    <img width={16} src={images.smile} /> </span>
+                                    <img width={16} src={images.smile} alt='turntabl smile'/> </span>
                                 <span>
                                     <Button onClick={() => navigate('/services')} className='btn button-welcoming button-full-rounded' variant="contained">Learn more</Button>
                                 </span>
@@ -117,13 +121,13 @@ export const LandingPage = (props) => {
                     whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
                     transition={{ duration: 0.5 }}
                     className='layout-y call-to-action'>
-                    <span className='text-grey alt-header-font'>We’re excited to begin this journey<img width={30} src={images.smile} /></span>
+                    <span className='text-grey alt-header-font'>We're excited to begin this journey<img width={30} src={images.smile} alt='turntabl smile'/></span>
                     <motion.div
                         whileHover={{ scale: 0.9 }}
                         transition={{ duration: 0.5, type: "tween" }}
                         style={{ paddingTop: 15 }}
                     >
-                        <img src={images.pair_2} />
+                        <img width={"90%"} src={images.pair_2} alt='turntabl home'/>
                     </motion.div>
                     <Button onClick={() => navigate('/contact')} className='btn button-disruption button-full-rounded' variant="contained">Say hi</Button>
                 </motion.div>

@@ -70,7 +70,7 @@ const Testimonial = () => {
         { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' }
 
     ]
-    if (matches) {
+    if (true) {
         return (
 
             <div>

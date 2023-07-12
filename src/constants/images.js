@@ -27,6 +27,10 @@ import not_found from '../assets/404.svg'
 import services from '../assets/services.svg'
 import party from '../assets/party.svg'
 import team_frame_1 from '../assets/team-frame-1.png'
+import team_frame_2 from '../assets/Enock Boadi-Ansah .png'
+import programmer from '../assets/programmer.svg'
+import team from '../assets/team.svg'
+import success from '../assets/success.svg'
 
 
 export default {
@@ -58,5 +62,9 @@ export default {
     not_found,
     services,
     party,
-    team_frame_1
+    team_frame_1,
+    team_frame_2,
+    programmer,
+    team,
+    success
 };

@@ -17,7 +17,7 @@ export default function Clients(name, image, location) {
           <img
             src={image}
             loading="lazy"
-            alt=""
+            alt="turntabl"
           />
         </AspectRatio>
       </CardOverflow>

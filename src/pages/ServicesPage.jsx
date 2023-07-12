@@ -61,8 +61,8 @@ export const Services = () => {
                         </Grid>
                     ))}
 
-                    <Grid item xs={12} lg={12} pt={6}>
-                        <Typography className='alt-header-font text-grey' sx={{ fontSize: { xs: '30px', sm: '60px', pb: 5} }}>
+                    <Grid item xs={12} sm={12} md={12} lg={12} pt={6}>
+                        <Typography className='alt-header-font text-grey' sx={{ fontSize: { xs: '30px', sm: '60px', pb: 5 } }}>
                             Leading Global Talent to your software solutions
                         </Typography>
                         <motion.div
@@ -70,7 +70,7 @@ export const Services = () => {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.5, type: 'tween' }}
                         >
-                            <span ><img width="500px" src={images.services} /></span>
+                            <span ><img width="500px" src={images.services} alt='services' /></span>
                         </motion.div>
                     </Grid>
                 </Grid>

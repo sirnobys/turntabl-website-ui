@@ -21,7 +21,7 @@ export const NotFoundPage = () => {
             <div id='content-wrap'>
                 <Grid container spacing={2} padding={5}>
                     <Grid  item xs={12} sm={12} md={12} lg={12}>
-                           <img width={"700px"} src={images.not_found}/>
+                           <img width={"700px"} src={images.not_found} alt='page not found'/>
                     </Grid>
                 </Grid>
             </div>

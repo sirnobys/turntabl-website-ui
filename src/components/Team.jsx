@@ -26,11 +26,11 @@ const Team = ({ name, bio, role, image, twitter, linkedIn }) => {
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
                 <Avatar src={image} sx={{ '--Avatar-size': '9rem' }} />
                 <Chip
-                    className="body-font"
+                    className="body-font text-pixel-black"
                     size="sm"
                     variant="soft"
-                    color="primary"
-                    sx={{ mt: -1, border: '3px solid', borderColor: 'background.surface' }}
+                    // color="primary"
+                    sx={{ mt: -1, border: '3px solid',bgcolor:"#bdff00", borderColor: 'background.surface' }}
                 >
                     {role}
                 </Chip>

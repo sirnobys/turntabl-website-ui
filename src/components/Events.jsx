@@ -32,7 +32,7 @@ const Events = () => {
     useEffect(() => {
 
         fetchEvents();
-    }, [])
+    }, [load])
 
     const sendEventData = (data) => {
         const formData = new FormData();

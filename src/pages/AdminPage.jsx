@@ -190,7 +190,7 @@ const AdminPage = () => {
                         flexDirection: 'row',
                         justifyContent: 'space-between'
                     }}>
-                        <img width={150} src={images.logo} alt="logo" />
+                        <img width={150} src={images.logo} alt="turntabl logo" />
                         <Box sx={{
                         display: 'flex',
                     }}>
