@@ -10,8 +10,9 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import CardActions from '@mui/joy/CardActions';
 import Typography from '@mui/joy/Typography';
 import { motion } from "framer-motion"
+import { images } from '../../constants';
 
-function TestimonialCard(name, role, message) {
+function TestimonialCard(name, role, message, img) {
 
     return (
         <Card
@@ -22,7 +23,7 @@ function TestimonialCard(name, role, message) {
             }}
         >
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-                <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
+                <Avatar src={img} sx={{ '--Avatar-size': '9rem' }} />
                 <Chip
                     className='body-font'
                     size="sm"
@@ -64,10 +65,10 @@ function TestimonialCard(name, role, message) {
 const Testimonial = () => {
     // const matches = useMediaQuery('(min-width:800px)');
     const testimonials = [
-        { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' },
-        { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' },
-        { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' },
-        { name: 'Mike Annan', role: 'Engineer', message: 'I love this piece' }
+        { name: 'Samuel Appiah', role: 'Engineer', message: 'I love their tradition',  },
+        { name: 'James Amo', role: 'Engineer', message: 'They are excellent',  },
+        { name: 'Elon Musk', role: 'Engineer', message: 'Marvelous are their works',  },
+        { name: 'Mike Annan', role: 'Engineer', message: 'None like them', }
 
     ]
     if (true) {
@@ -75,8 +76,8 @@ const Testimonial = () => {
 
             <div>
                 <Grid container spacing={0} alignItems={'center'}>
-                    {testimonials.map(e => (
-                        <Grid item xs={12} sm={6} md={3} paddingTop={4}>
+                    {testimonials.map((e,idx) => (
+                        <Grid key={idx} item xs={12} sm={6} md={3} paddingTop={4}>
 
                             <motion.div
                                 whileInView={{ opacity: 1 }}
