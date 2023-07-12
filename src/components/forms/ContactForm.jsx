@@ -66,7 +66,7 @@ const ContactForm = (props) => {
     return (
         <Box>
             <form onSubmit={handleSubmit}>
-                {load && notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
+                {!load && notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
                 <Box borderRadius={4}
                     sx={{
                         minHeight: '40vh',
