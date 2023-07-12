@@ -24,6 +24,8 @@ const ContactForm = (props) => {
 
 
     const submitContactInfo = (formData) => {
+        setLoad(true)
+
         fetch(`${links.BASE_URL}/api/v1/contact/`, {
             method: 'POST',
             body: formData
@@ -33,10 +35,10 @@ const ContactForm = (props) => {
                 // Handle the response from the backend
                 console.log(data)
                 setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
-                setLoad(!load)
+                setLoad(false)
             })
             .catch(error => {
-                setLoad(!load)
+                setLoad(false)
                 // Handle any errors
             });
     }
@@ -64,7 +66,7 @@ const ContactForm = (props) => {
     return (
         <Box>
             <form onSubmit={handleSubmit}>
-                {notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
+                {load && notificationMessage?.text !== "" ? <SnackbarNotification message={notificationMessage} /> : ''}
                 <Box borderRadius={4}
                     sx={{
                         minHeight: '40vh',
