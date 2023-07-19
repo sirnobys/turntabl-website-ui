@@ -25,22 +25,8 @@ const ContactForm = (props) => {
 
     const submitContactInfo = (formData) => {
         setLoad(true)
-
-        fetch(`${links.BASE_URL}/api/v1/contact/`, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the response from the backend
-                console.log(data)
-                setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
-                setLoad(false)
-            })
-            .catch(error => {
-                setLoad(false)
-                // Handle any errors
-            });
+        setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
+        setLoad(false)
     }
 
     const handleSubmit = (e) => {

@@ -30,20 +30,22 @@ const CareerApplicationForm = ({ careerId }) => {
     }
 
     const submitApplication = (formData) => {
-        fetch(`${links.BASE_URL}/api/v1/career-applicants/`, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the response from the backend
-                setNotificationMessage({text:'details submitted successfully',type:'success'})
-                setLoad(false)
-            })
-            .catch(error => {
-                setLoad(false)
-                // Handle any errors
-            });
+        // fetch(`${links.BASE_URL}/api/v1/career-applicants/`, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // Handle the response from the backend
+        //         setNotificationMessage({text:'details submitted successfully',type:'success'})
+        //         setLoad(false)
+        //     })
+        //     .catch(error => {
+        //         setLoad(false)
+        //         // Handle any errors
+        //     });
+        setNotificationMessage({ text: 'details submitted successfully', type: 'success' })
+        setLoad(false)
     }
 
 
@@ -147,8 +149,8 @@ const CareerApplicationForm = ({ careerId }) => {
                         fullWidth
                         variant="outlined"
                     />
-                    
-                    <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={load ? <CircularProgress color='neutral' size='sm' thickness={1} /> :<ArrowOutwardOutlined />}>Apply</Button>
+
+                    <Button disabled={error} type="submit" className={error ? 'btn' : 'btn button-pixel-black'} variant='contained' endIcon={load ? <CircularProgress color='neutral' size='sm' thickness={1} /> : <ArrowOutwardOutlined />}>Apply</Button>
                 </Box>
             </form>
         </Box>

@@ -16,6 +16,7 @@ const clients = [
 ]
 
 export const LandingPage = () => {
+    console.log(window.location);
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])

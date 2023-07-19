@@ -16,30 +16,41 @@ export const EventsPage = () => {
     const currentUrlParams = new URLSearchParams(window.location.search);
     const [eventStatus, setEventStatus] = useState(currentUrlParams.get("status") ?? "current")
     const navigate = useNavigate()
-
+    let data = [
+        { id: 1, name: 'Hackathon', image: images.service_header, description: 'The Hackathon for Social Impact is a two-day event where developers, designers, and innovators come together to create technology solutions for social and humanitarian challenges. Participants work in teams to build software applications, websites, or mobile apps that address real-world problems, promoting social good and positive change in the community.', status: 'upcoming', link: { title: 'view', url: 'http://google.com' }, date_created: '20-10-23' },
+        { id: 1, name: 'Tech Talk Series', image: images.happy_faces, description: 'The Tech Talk Series is a monthly event hosted by the software company, featuring presentations and discussions on the latest trends, technologies, and innovations in the tech industry. Industry experts and internal team members will share their insights, experiences, and best practices, providing valuable knowledge and networking opportunities for attendees.', status: 'upcoming', link: { title: 'view', url: 'http://google.com' }, date_created: '20-10-23' },
+        { id: 1, name: 'Technology Job Fair', image: images.career_alt, description: 'The Technology Job Fair is a recruitment-focused event aimed at connecting the software company with talented professionals seeking job opportunities in the tech industry. The fair provides a platform for job seekers to interact with company representatives, learn about available positions, and participate in on-the-spot interviews. The software company can attract top talent and build its workforce during this event.', status: 'current', link: { title: 'view', url: 'http://google.com' }, date_created: '20-10-23' },
+        { id: 1, name: 'Product Launch', image: images.IMG_9308, description: "The Product Launch and Demo Day is an exciting event where the software company unveils its latest products and features. During the event, the development team showcases the new software offerings through live demos, highlighting key features and improvements. Customers, partners, and stakeholders get a firsthand look at the company's innovations and have the opportunity to provide feedback and suggestions.", status: 'current', link: { title: 'view', url: 'http://google.com' }, date_created: '20-10-23' },
+    ]
 
     useEffect(() => {
         window.scrollTo(0, 0)
 
     }, [])
     useEffect(() => {
-        const fetchEvents = () => {
-            setLoad(true)
-            fetch(`${links.BASE_URL}/api/v1/events`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    setLoad(false)
-                    setEvents(data.result)
-                    setEvents_(data.result)
-                    // setSelectedFromUrl(data.result)
-                    const filter = data?.result?.filter(e => (e.status === eventStatus))
-                    setEvents(filter)
-                }).catch((e) => {
-                    setLoad(false)
-                })
-        }
-        fetchEvents();
+        setEvents(data)
+        setEvents_(data)
+        const filter = data?.filter(e => (e.status === eventStatus))
+        console.log(filter);
+        setEvents(filter)
+        setLoad(false)
+        // const fetchEvents = () => {
+        //     setLoad(true)
+        //     fetch(`${links.BASE_URL}/api/v1/events`)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data)
+        //             setLoad(false)
+        //             setEvents(data.result)
+        //             setEvents_(data.result)
+        //             // setSelectedFromUrl(data.result)
+        //             const filter = data?.result?.filter(e => (e.status === eventStatus))
+        //             setEvents(filter)
+        //         }).catch((e) => {
+        //             setLoad(false)
+        //         })
+        // }
+        // fetchEvents();
     }, [eventStatus,])
 
     const eventTypes = [
@@ -71,7 +82,7 @@ export const EventsPage = () => {
                     textAlign: 'center',
                     gap: 3
                 }}>
-                    {eventTypes.map((event, idx) => (
+                    {eventTypes?.map((event, idx) => (
                         <Chip
                             className='body-font'
                             sx={{
@@ -86,7 +97,7 @@ export const EventsPage = () => {
                 </Box>
                 <Grid container textAlign={'center'}>
 
-                    {!load && events?.length !== 0 ? events.map((event) => (
+                    {!load && events?.length !== 0 ? events?.map((event) => (
                         <Grid px={3} item xs={12} sm={6} md={3} paddingTop={4}>
                             <div align="center">
                                 <ContentCard
@@ -111,13 +122,13 @@ export const EventsPage = () => {
                         </Grid>
                     }
 
-                    <Grid hidden={events?.length!==0} item xs={12} lg={12} pt={6}>
+                    <Grid hidden={events?.length !== 0} item xs={12} lg={12} pt={6}>
                         <motion.div
                             whileInView={{ opacity: 1 }}
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.5, type: 'tween' }}
                         >
-                            <span ><img width="500px" src={images.party} alt="evens"/></span>
+                            <span ><img width="500px" src={images.party} alt="evens" /></span>
                         </motion.div>
 
                     </Grid>

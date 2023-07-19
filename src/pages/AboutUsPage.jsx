@@ -25,8 +25,8 @@ export const AboutUs = () => {
     const team = [
         { name: 'Enock Boadi-Ansah', bio: "", role: "Lead", image: images.team_frame_2, twitter: "", linkedIn: "" },
         { name: 'Inusah Ibrahim', bio: "", role: "Admin", image: images.team_frame_1, twitter: "", linkedIn: "" },
-        { name: 'Sam Appiah', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
-        { name: 'Mike Annan', bio: "", role: "Engineer", image: "", twitter: "", linkedIn: "" },
+        { name: 'James Amo', bio: "", role: "Engineer", image: "https://media.licdn.com/dms/image/D4D03AQFI253-4y0TuQ/profile-displayphoto-shrink_800_800/0/1668616144177?e=1695254400&v=beta&t=87oKrIzyqjRNMmC9UaIh6dCT8kvBFwcsJH369n-iTyc", twitter: "", linkedIn: "" },
+        { name: 'Elvis Amoako', bio: "", role: "Engineer", image: "https://media.licdn.com/dms/image/D4E03AQEHHOhFc7FRaQ/profile-displayphoto-shrink_800_800/0/1683065497615?e=1695254400&v=beta&t=JVSxiKKanatALaeCe2BVHD9WOtIlfbFjJahf2OfAoVs", twitter: "", linkedIn: "" },
     ]
     const intro = () => <span>  We Provide Innovative Software Engineering Solutions <br />To Businesses All Over The World.</span>
     return (

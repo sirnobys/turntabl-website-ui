@@ -23,7 +23,94 @@ export const CareersPage = () => {
     const [search, setSearch] = useState(filter);
     const [load, setLoad] = useState(false)
     const navigate = useNavigate(currentUrlParams)
-    const [depart,setDepart]=useState([{name:'All'}])
+    const [depart, setDepart] = useState([{ name: 'All' }])
+    // formData.append('name', data.name);
+    // formData.append('department', data.department);
+    // formData.append('description', data.description);
+    // formData.append('requirements', JSON.stringify(data.requirements));
+    // formData.append('responsibilities', JSON.stringify(data.responsibilities));
+    // formData.append('technologies', JSON.stringify(data.technologies));
+    // formData.append('salary', data.salary);
+    // formData.append('hidden', data.hidden);
+    let data = [
+        {
+            id: '1',
+            description: 'As a Data Scientist, you will be responsible for analyzing and interpreting complex data sets to provide actionable insights and help drive data-informed decision-making processes.',
+            name: 'Data Science',
+            requirements: [
+                "Bachelor's degree in Computer Science or a related field.",
+                "Proficiency in programming languages such as Java, Python, or Go.",
+                "Experience with backend frameworks like Spring Boot, Flask, or Gin.",
+                "Knowledge of SQL and NoSQL databases.",
+                "Familiarity with cloud platforms(e.g., AWS, Azure) is a plus."
+            ],
+            responsibilities: [
+                "Bachelor's or Master's degree in Computer Science, Data Science, Statistics, or a related field",
+                "Strong proficiency in programming languages such as Python, R, or Scala.",
+                "Experience with data manipulation and analysis libraries like Pandas, NumPy, or SciPy.",
+                "Knowledge of machine learning algorithms and frameworks such as TensorFlow or scikit- learn.",
+                "Excellent problem - solving and communication skills.",
+            ],
+            technologies: [
+                "Python", "TensorFlow", "PyTorch", "Jupyter Notebook", "SQL"
+            ],
+            salary: 'Open',
+            department: 'Developer',
+            hidden: '',
+            date_created: '19-03-23',
+        },
+        {
+            id: '3',
+            description: 'As a Dev Ops, you will be responsible for developing the server-side logic, databases, and APIs that power web applications.',
+            name: 'Dev Ops',
+            requirements: [
+                "Bachelor's degree in Computer Science or a related field.",
+                "Proficiency in programming languages such as Java, Python, or Go.",
+                "Experience with backend frameworks like Spring Boot, Flask, or Gin.",
+                "Knowledge of SQL and NoSQL databases.",
+                "Familiarity with cloud platforms(e.g., AWS, Azure) is a plus."
+            ],
+            responsibilities: [
+                "Design and implement scalable and performant server - side applications.",
+                "Optimize database queries and ensure data integrity.",
+                "Develop and maintain APIs for seamless integration with front - end applications.",
+                "Collaborate with the DevOps team to deploy and monitor applications.",
+                "Write automated tests to ensure the reliability of the backend components."
+            ],
+            technologies: [
+                "Python", "TensorFlow", "PyTorch", "Jupyter Notebook", "SQL"
+            ],
+            salary: 'Open',
+            department: 'DevOps',
+            hidden: '',
+            date_created: '19-03-23',
+        },
+        {
+            id: '4',
+            description: 'The Administrator plays a pivotal role in ensuring the effective and efficient functioning of the organization.',
+            name: 'Administrator',
+            requirements: [
+                "Bachelor's degree in Human Resource or a related field.",
+                "Previous working experience",
+            ],
+            responsibilities: [
+                "Organization and Management",
+                "Team leadership",
+                "Financial Management",
+                "Communication and Coordination",
+                "Policy Implementation"
+            ],
+            technologies: [
+                "Excel", "PowerPoint", "Word",
+            ],
+            salary: 'Open',
+            department: 'Operations',
+            hidden: '',
+            date_created: '19-03-23',
+        },
+
+    ]
+
     const departmentData = [
         { name: 'All' },
         { name: 'Engineering' },
@@ -61,24 +148,35 @@ export const CareersPage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        const fetchCareers = () => {
-            setLoad(true)
-            fetch(`${baseUrl}/api/v1/careers/`)
-                .then(response => response.json())
-                .then(data => {
-                    let depart_ = [...depart]
-                    data?.result?.forEach(e=>{
-                        depart_.push({name:e.department})
-                    })
-                    setDepart(depart_)
-                    setCareers(data.result)
-                    setCareers_(data.result)
-                    handleSearch(data.result)
-                    setSelectedFromUrl(data.result)
-                    setLoad(false)
-                })
-        }
-        fetchCareers();
+        setLoad(true)
+        let depart_ = [...depart]
+        data.forEach(e => {
+            depart_.push({ name: e.department })
+        })
+        setDepart(depart_)
+        setCareers(data)
+        setCareers_(data)
+        handleSearch(data)
+        setSelectedFromUrl(data)
+        setLoad(false)
+        // const fetchCareers = () => {
+        //     setLoad(true)
+        // //     fetch(`${baseUrl}/api/v1/careers/`)
+        // //         .then(response => response.json())
+        // //         .then(data => {
+        // //             let depart_ = [...depart]
+        // //             data?.result?.forEach(e=>{
+        // //                 depart_.push({name:e.department})
+        // //             })
+        // //             setDepart(depart_)
+        // //             setCareers(data.result)
+        // //             setCareers_(data.result)
+        // //             handleSearch(data.result)
+        // //             setSelectedFromUrl(data.result)
+        // //             setLoad(false)
+        // //         })
+        // // }
+        // // fetchCareers();
     }, [])
 
     const handleSelectedCareer = (career) => {
@@ -201,9 +299,9 @@ export const CareersPage = () => {
                     <Chip size='small' icon={<BusinessIcon />} sx={{ fontSize: { xs: '12px', } }} variant='outlined' label={selectedCareer.department} />
                 </Grid>
                 <Grid item xs={12} lg={12}>
-                    <Typography className="body-font" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
+                    {/* <Typography className="body-font" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>
                         {selectedCareer.description}
-                    </Typography>
+                    </Typography> */}
                 </Grid>
                 <Grid item xs={12} lg={12}>
                     <Typography className="body-font" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>

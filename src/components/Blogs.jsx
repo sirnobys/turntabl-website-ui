@@ -14,7 +14,7 @@ const Blogs = () => {
     const [load, setLoad] = useState(true)
     const [notificationMessage, setNotificationMessage] = useState({ text: '', type: '' });
 
-    let baseUrl = 'http://localhost:5000';
+    let baseUrl = 'https://a-team-api.apps.turntabl.io';
 
     useEffect(() => {
 

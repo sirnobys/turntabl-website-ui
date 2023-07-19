@@ -38,7 +38,7 @@ const ContentCard = (props) => {
                     component="img"
                     alt="Event Image"
                     height="140"
-                    image={imageUrl}
+                    image={image}
                 />
                 <CardContent>
                     <Box>
